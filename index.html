@@ -1,0 +1,168 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radiant of Human Consciousness</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; }
+    #info { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 10px; font-size: 18px; display: none; }
+    #info a { color: #00ff00; }
+  </style>
+</head>
+<body>
+  <div id="info"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    // Radiant of Human Consciousness
+    // Copyright (C) 2025 [Your Name]
+    //
+    // This program is free software: you can redistribute it and/or modify
+    // it under the terms of the GNU General Public License as published by
+    // the Free Software Foundation, either version 3 of the License, or
+    // (at your option) any later version.
+    //
+    // This program is distributed in the hope that it will be useful,
+    // but WITHOUT ANY WARRANTY; without even the implied warranty of
+    // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    // GNU General Public License for more details.
+    //
+    // You should have received a copy of the GNU General Public License
+    // along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+    // Scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Sphere (Radiant)
+    const sphereGeometry = new THREE.SphereGeometry(102, 32, 32);
+    const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
+    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    scene.add(sphere);
+
+    // Milestones dataset
+    const milestones = [
+      { id: 1, year: -10000, lat: 33.2232, lon: 43.6793, desc: "Development of agriculture", details: "Transition from hunter-gatherer to farming societies in the Fertile Crescent.", url: "https://en.wikipedia.org/wiki/Neolithic_Revolution" },
+      { id: 2, year: -3000, lat: 29.9792, lon: 31.1342, desc: "Invention of writing", details: "Cuneiform script emerged in Mesopotamia, enabling record-keeping.", url: "https://en.wikipedia.org/wiki/Cuneiform" },
+      { id: 3, year: -1754, lat: 32.5412, lon: 44.4233, desc: "Code of Hammurabi", details: "One of the first written legal codes, established in Babylon.", url: "https://en.wikipedia.org/wiki/Code_of_Hammurabi" },
+      { id: 4, year: -400, lat: 37.9838, lon: 23.7275, desc: "Socratic method", details: "Philosophy by Socrates, using questioning to stimulate critical thinking.", url: "https://en.wikipedia.org/wiki/Socrates" },
+      { id: 5, year: -300, lat: 31.2001, lon: 29.9187, desc: "Euclid’s Elements", details: "Foundational work in geometry, written in Alexandria.", url: "https://en.wikipedia.org/wiki/Euclid%27s_Elements" },
+      { id: 6, year: 105, lat: 34.2583, lon: 112.0833, desc: "Invention of paper", details: "Cai Lun’s innovation in Luoyang, China, revolutionized knowledge sharing.", url: "https://en.wikipedia.org/wiki/Cai_Lun" },
+      { id: 7, year: 1440, lat: 50.0007, lon: 8.2711, desc: "Printing press", details: "Gutenberg’s invention in Mainz, Germany, made books widely accessible.", url: "https://en.wikipedia.org/wiki/Printing_press" },
+      { id: 8, year: 1687, lat: 52.2053, lon: 0.1218, desc: "Theory of gravity", details: "Newton’s laws in Cambridge, England, explaining planetary motion.", url: "https://en.wikipedia.org/wiki/Isaac_Newton" },
+      { id: 9, year: 1915, lat: 47.3769, lon: 8.5417, desc: "Theory of relativity", details: "Einstein’s breakthrough in Zurich, Switzerland, redefining physics.", url: "https://en.wikipedia.org/wiki/Theory_of_relativity" },
+      { id: 10, year: 1983, lat: 34.0522, lon: -118.2437, desc: "Internet creation", details: "TCP/IP adoption in Los Angeles, USA, marking the internet’s foundation.", url: "https://en.wikipedia.org/wiki/History_of_the_Internet" }
+    ];
+
+    // Convert lat/lon/year to 3D position
+    function getPosition(year, lat, lon) {
+      const r = (100000 + year) / 1000; // Radius: 1cm = 1000 years
+      const phi = (90 - lat) * Math.PI / 180;
+      const theta = lon * Math.PI / 180;
+      return new THREE.Vector3(
+        r * Math.cos(theta) * Math.sin(phi),
+        r * Math.sin(theta) * Math.sin(phi),
+        r * Math.cos(phi)
+      );
+    }
+
+    // Add milestones
+    const milestoneMeshes = [];
+    milestones.forEach(m => {
+      const geometry = new THREE.SphereGeometry(2, 16, 16);
+      const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+      const mesh = new THREE.Mesh(geometry, material);
+      mesh.position.copy(getPosition(m.year, m.lat, m.lon));
+      mesh.userData = m;
+      scene.add(mesh);
+      milestoneMeshes.push(mesh);
+    });
+
+    // Camera
+    camera.position.z = 200;
+
+    // Raycaster for clicks
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    const infoDiv = document.getElementById('info');
+
+    window.addEventListener('click', (event) => {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(milestoneMeshes);
+      if (intersects.length > 0) {
+        const m = intersects[0].object.userData;
+        infoDiv.style.display = 'block';
+        infoDiv.innerHTML = `<strong>${m.desc}</strong><br>${m.details}<br><a href="${m.url}" target="_blank">Learn More</a>`;
+      } else {
+        infoDiv.style.display = 'none';
+      }
+    });
+
+    // Orbit controls (drag to rotate)
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
