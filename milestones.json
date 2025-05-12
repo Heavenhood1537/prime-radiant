@@ -1,0 +1,1456 @@
+{
+  "milestones": [
+    {
+      "year": -2900000,
+      "yearsAgo": 2900000,
+      "category": "technology",
+      "title": "Oldowan Stone Tools",
+      "description": "Nyayanga site on the Homa Peninsula in Kenya, Earliest tool tech.",
+      "humanType": "Homo habilis / Paranthropus",
+      "culture": "Early Hominids",
+      "originators": ["Unknown early hominids"],
+      "ideas": ["stone tools", "tool making", "early technology"],
+      "url": "https://en.wikipedia.org/wiki/Oldowan",
+      "location": {
+        "lat": -1.03,
+        "lon": 34.2
+      }
+    },
+    {
+      "year": -1760000,
+      "yearsAgo": 1760000,
+      "category": "technology",
+      "title": "Acheulean Stone Tools",
+      "description": "Oldest found in Kokiselei in Kenya, Konso-Gardula, Ethiopia, and Olduvai Gorge, Tanzania - more complex tools (handaxe)",
+      "humanType": "Homo erectus",
+      "culture": "Early Humans",
+      "originators": ["Unknown Homo erectus groups"],
+      "ideas": ["stone tools", "handaxe", "complex tools"],
+      "url": "https://en.wikipedia.org/wiki/Acheulean",
+      "location": {
+        "lat": 4.0,
+        "lon": 35.7
+      }
+    },
+    {
+      "year": -1420000,
+      "yearsAgo": 1420000,
+      "category": "technology",
+      "title": "Control of Fire (Secure)",
+      "description": "Chesowanja near Lake Baringo, Koobi Fora, and Olorgesailie in Kenya, cooking, warmth, protection",
+      "humanType": "Homo erectus",
+      "culture": "Early Humans",
+      "originators": ["Unknown Homo erectus groups"],
+      "ideas": ["controlled fire", "cooking", "protection"],
+      "url": "https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans",
+      "location": {
+        "lat": -27.8,
+        "lon": 23.5
+      }
+    },
+    {
+      "year": -100000,
+      "yearsAgo": 100000,
+      "category": "agriculture",
+      "title": "Early Symbolic Behavior",
+      "description": "Blombos Cave South Africa, Engravings, beads, ochre use",
+      "humanType": "Homo erectus / Homo sapiens",
+      "culture": "Early Modern Humans",
+      "originators": ["Early modern humans"],
+      "ideas": ["symbolic behavior", "art", "decoration"],
+      "url": "https://en.wikipedia.org/wiki/Symbolic_behavior_in_early_modern_humans",
+      "location": {
+        "lat": -34.4,
+        "lon": 21.2
+      }
+    },
+    {
+      "year": -51200,
+      "yearsAgo": 53225,
+      "category": "art",
+      "title": "Oldest Dated Abstract Cave Art",
+      "description": "Abstract images, along with figurative art found in Leang Karampuang cave, Sulawesi, Indonesia",
+      "humanType": "Homo sapiens / Neanderthals",
+      "culture": "Early Modern Humans",
+      "originators": ["Unknown early artists"],
+      "ideas": ["abstract art", "cave painting", "symbolic expression"],
+      "url": "Nature Magazine - Narrative cave art in Indonesia by 51,200 years ago",
+      "location": {
+        "lat": -5.0,
+        "lon": 119.4
+      }
+    },
+    {
+      "year": -50000,
+      "yearsAgo": 50000,
+      "category": "technology",
+      "title": "Sewing Needles",
+      "description": "Denisova Cave, Siberian Federal District, Russia, Evidence for tailored clothing",
+      "humanType": "Denisovans, Homo sapiens",
+      "culture": "Early Modern Humans",
+      "originators": ["Denisovan people"],
+      "ideas": ["sewing", "clothing", "tool making"],
+      "url": "https://en.wikipedia.org/wiki/Denisova_Cave",
+      "location": {
+        "lat": 51.8,
+        "lon": 84.4
+      }
+    },
+    {
+      "year": -38000,
+      "yearsAgo": 40025,
+      "category": "agriculture",
+      "title": "Oldest Textile Fibers (Flax)",
+      "description": "Dzudzuana Cave, Georgia, fiber manipulation",
+      "humanType": "Homo sapiens",
+      "culture": "Early Modern Humans",
+      "originators": ["Early modern humans"],
+      "ideas": ["textiles", "fiber processing", "clothing"],
+      "url": "https://en.wikipedia.org/wiki/Prehistoric_textiles",
+      "location": {
+        "lat": 42.0,
+        "lon": 42.8
+      }
+    },
+    {
+      "year": -12500,
+      "yearsAgo": 14525,
+      "category": "urban",
+      "title": "Early Sedentism",
+      "description": "Shuqba Cave, in the Judaean Mountains of Mandatory Palestine, permanent settlements based on wild resources",
+      "humanType": "Homo sapiens",
+      "culture": "Natufian Culture",
+      "originators": ["Natufian people"],
+      "ideas": ["permanent settlement", "sedentary lifestyle"],
+      "url": "https://en.wikipedia.org/wiki/Natufian_culture",
+      "location": {
+        "lat": 27.7,
+        "lon": 113.0
+      }
+    },
+    {
+      "year": -11500,
+      "yearsAgo": 13525,
+      "category": "agriculture",
+      "title": "Neolithic Revolution",
+      "description": "Göbekli Tepe, Turkey, Shift to agriculture, sedentism",
+      "humanType": "Homo sapiens",
+      "culture": "Multiple Independent Centers",
+      "originators": ["Multiple cultures"],
+      "ideas": ["agriculture", "sedentism", "civilization"],
+      "url": "https://en.wikipedia.org/wiki/Neolithic_Revolution",
+      "location": {
+        "lat": 33.8,
+        "lon": 38.0
+      }
+    },
+    {
+      "year": -9800,
+      "yearsAgo": 11825,
+      "category": "agriculture",
+      "title": "Agriculture - Fertile Crescent",
+      "description": "Chogha Golan, Iran, and then the Zagros Mountains region, Iran, Iraq and Turkey, wheat, barley, lentils, peas, sheep, goats, cattle, pigs, earliest farming, earliest livestock domestication",
+      "humanType": "Homo sapiens",
+      "culture": "First Settled Farming Cultures",
+      "originators": ["Early farmers"],
+      "ideas": ["farming", "domestication", "agriculture"],
+      "url": "https://en.wikipedia.org/wiki/Fertile_Crescent#Agricultural_revolutions",
+      "location": {
+        "lat": 33.0,
+        "lon": 38.0
+      }
+    },
+    {
+      "year": -500000,
+      "category": "technology",
+      "title": "Advanced Stone Tools",
+      "description": "Development of more sophisticated stone tools including hand axes",
+      "humanType": "Early Homo species",
+      "culture": "Early Tool Makers",
+      "originators": ["Early human groups"],
+      "ideas": ["advanced stone tools", "hand axes", "tool refinement"],
+      "url": "https://en.wikipedia.org/wiki/Stone_tool",
+      "location": {
+        "lat": 31.5,
+        "lon": 35.0
+      }
+    },
+    {
+      "year": -300000,
+      "category": "science",
+      "title": "Early Human Shelters",
+      "description": "First evidence of constructed shelters by early humans",
+      "humanType": "Early Homo species",
+      "culture": "Early Shelter Builders",
+      "originators": ["Early human groups"],
+      "ideas": ["shelter construction", "habitat building", "environmental adaptation"],
+      "url": "https://en.wikipedia.org/wiki/Prehistoric_architecture",
+      "location": {
+        "lat": 31.0,
+        "lon": 35.0
+      }
+    },
+    {
+      "year": -70000,
+      "category": "art",
+      "title": "Early Symbolic Art",
+      "description": "First evidence of symbolic art and decoration",
+      "humanType": "Homo sapiens",
+      "culture": "Early Modern Humans",
+      "originators": ["Early modern humans"],
+      "ideas": ["symbolic expression", "decoration", "abstract thinking"],
+      "url": "https://en.wikipedia.org/wiki/Prehistoric_art",
+      "location": {
+        "lat": -34.0,
+        "lon": 18.5
+      }
+    },
+    {
+      "year": -40000,
+      "category": "art",
+      "title": "Cave Paintings",
+      "description": "Earliest known cave paintings in Europe",
+      "humanType": "Homo sapiens",
+      "culture": "European Early Modern Humans",
+      "originators": ["Early European artists"],
+      "ideas": ["cave art", "pictorial representation", "cultural expression"],
+      "url": "https://en.wikipedia.org/wiki/Cave_painting",
+      "location": {
+        "lat": 43.1,
+        "lon": 1.2
+      }
+    },
+    {
+      "year": -30000,
+      "category": "technology",
+      "title": "Advanced Tools",
+      "description": "Development of specialized tools including needles and fish hooks",
+      "humanType": "Homo sapiens",
+      "culture": "Upper Paleolithic",
+      "originators": ["Upper Paleolithic toolmakers"],
+      "ideas": ["specialized tools", "needles", "fish hooks", "tool diversification"],
+      "url": "https://en.wikipedia.org/wiki/Upper_Paleolithic",
+      "location": {
+        "lat": 48.5,
+        "lon": 2.5
+      }
+    },
+    {
+      "year": -12000,
+      "category": "agriculture",
+      "title": "Early Agriculture",
+      "description": "First evidence of organized farming and crop cultivation",
+      "humanType": "Homo sapiens",
+      "culture": "Early Agricultural Societies",
+      "originators": ["Early farmers"],
+      "ideas": ["farming", "crop cultivation", "food production"],
+      "url": "https://en.wikipedia.org/wiki/History_of_agriculture",
+      "location": {
+        "lat": 33.1,
+        "lon": 35.6
+      }
+    },
+    {
+      "year": -10000,
+      "category": "urban",
+      "title": "First Settlements",
+      "description": "Establishment of first permanent human settlements",
+      "humanType": "Homo sapiens",
+      "culture": "Early Urban Societies",
+      "originators": ["Early settlers"],
+      "ideas": ["permanent settlements", "urban planning", "community organization"],
+      "url": "https://en.wikipedia.org/wiki/History_of_human_settlement",
+      "location": {
+        "lat": 37.0,
+        "lon": 37.0
+      }
+    },
+    {
+      "year": -8000,
+      "category": "technology",
+      "title": "Pottery Development",
+      "description": "First widespread use of pottery for storage and cooking",
+      "humanType": "Homo sapiens",
+      "culture": "Early Pottery Cultures",
+      "originators": ["Early potters"],
+      "ideas": ["pottery making", "storage vessels", "cooking containers"],
+      "url": "https://en.wikipedia.org/wiki/History_of_pottery",
+      "location": {
+        "lat": 34.5,
+        "lon": 43.2
+      }
+    },
+    {
+      "year": -6000,
+      "category": "industry",
+      "title": "Early Metallurgy",
+      "description": "First use of copper and metal working",
+      "humanType": "Homo sapiens",
+      "culture": "Early Metal Workers",
+      "originators": ["Early metallurgists"],
+      "ideas": ["metal working", "copper smelting", "tool making"],
+      "url": "https://en.wikipedia.org/wiki/History_of_metallurgy",
+      "location": {
+        "lat": 42.0,
+        "lon": 44.0
+      }
+    },
+    {
+      "year": -4000,
+      "yearsAgo": 6025,
+      "category": "communication",
+      "title": "Early Writing",
+      "description": "Development of first writing systems in Mesopotamia, including pictographs and early cuneiform",
+      "humanType": "Homo sapiens",
+      "culture": "Sumerian",
+      "originators": ["Sumerian scribes"],
+      "ideas": ["writing systems", "pictographs", "record keeping", "communication"],
+      "url": "https://en.wikipedia.org/wiki/History_of_writing",
+      "location": {
+        "lat": 31.3,
+        "lon": 45.6
+      }
+    },
+    {
+      "year": -3500,
+      "yearsAgo": 5525,
+      "category": "urban",
+      "title": "First Cities",
+      "description": "Development of first major urban centers in Sumer, including Uruk and Ur",
+      "humanType": "Homo sapiens",
+      "culture": "Sumerian",
+      "originators": ["Sumerian city planners"],
+      "ideas": ["urban planning", "city organization", "social hierarchy"],
+      "url": "https://en.wikipedia.org/wiki/History_of_cities",
+      "location": {
+        "lat": 31.0,
+        "lon": 46.0
+      }
+    },
+    {
+      "year": -3200,
+      "yearsAgo": 5225,
+      "category": "governance",
+      "title": "Early State Formation",
+      "description": "First evidence of organized state structures in Egypt, including centralized administration",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Egyptian",
+      "originators": ["Early Egyptian rulers", "Narmer"],
+      "ideas": ["state organization", "centralized power", "administration"],
+      "url": "https://en.wikipedia.org/wiki/Early_Dynastic_Period_of_Egypt",
+      "location": {
+        "lat": 30.0,
+        "lon": 31.2
+      }
+    },
+    {
+      "year": -2700,
+      "yearsAgo": 4725,
+      "category": "engineering",
+      "title": "Pyramid Construction",
+      "description": "Construction of the Great Pyramid of Giza begins, marking a pinnacle of ancient engineering",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Egyptian",
+      "originators": ["Pharaoh Khufu", "Egyptian architects"],
+      "ideas": ["monumental architecture", "engineering", "construction techniques"],
+      "url": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+      "location": {
+        "lat": 29.98,
+        "lon": 31.13
+      }
+    },
+    {
+      "year": -2000,
+      "yearsAgo": 4025,
+      "category": "philosophy",
+      "title": "Early Philosophy",
+      "description": "Development of early philosophical thought in multiple civilizations, including Mesopotamia and Egypt",
+      "humanType": "Homo sapiens",
+      "culture": "Multiple civilizations",
+      "originators": ["Early philosophers", "Religious thinkers"],
+      "ideas": ["philosophical inquiry", "wisdom literature", "ethical thought"],
+      "url": "https://en.wikipedia.org/wiki/Ancient_philosophy",
+      "location": {
+        "lat": 32.5,
+        "lon": 44.5
+      }
+    },
+    {
+      "year": -1750,
+      "yearsAgo": 3775,
+      "category": "science",
+      "title": "Astronomical Observations",
+      "description": "Systematic astronomical observations in Babylon, including star catalogs and planetary movements",
+      "humanType": "Homo sapiens",
+      "culture": "Babylonian",
+      "originators": ["Babylonian astronomers", "Mesopotamian scholars"],
+      "ideas": ["astronomical observation", "celestial prediction", "star mapping", "planetary tracking"],
+      "url": "https://en.wikipedia.org/wiki/Babylonian_astronomy",
+      "location": {
+        "lat": 32.5,
+        "lon": 44.42
+      }
+    },
+    {
+      "year": -1200,
+      "yearsAgo": 3225,
+      "category": "technology",
+      "title": "Iron Age Begins",
+      "description": "Widespread use of iron tools and weapons, revolutionizing agriculture and warfare",
+      "humanType": "Homo sapiens",
+      "culture": "Multiple cultures",
+      "originators": ["Early metallurgists", "Hittite craftsmen"],
+      "ideas": ["iron working", "metallurgy", "tool making"],
+      "url": "https://en.wikipedia.org/wiki/Iron_Age",
+      "location": {
+        "lat": 39.0,
+        "lon": 35.0
+      }
+    },
+    {
+      "year": -800,
+      "yearsAgo": 2825,
+      "category": "communication",
+      "title": "Alphabetic Writing",
+      "description": "Development of alphabetic writing systems, leading to increased literacy",
+      "humanType": "Homo sapiens",
+      "culture": "Phoenician",
+      "originators": ["Phoenician scribes"],
+      "ideas": ["alphabet", "phonetic writing", "literacy"],
+      "url": "https://en.wikipedia.org/wiki/History_of_the_alphabet",
+      "location": {
+        "lat": 33.9,
+        "lon": 35.5
+      }
+    },
+    {
+      "year": -600,
+      "category": "philosophy",
+      "title": "Greek Philosophy",
+      "description": "Rise of systematic philosophical inquiry in Greece",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Greek",
+      "originators": ["Socrates", "Plato", "Aristotle"],
+      "ideas": ["philosophy", "logic", "ethics"],
+      "url": "https://en.wikipedia.org/wiki/Socrates",
+      "location": {
+        "lat": 38.0,
+        "lon": 23.7
+      }
+    },
+    {
+      "year": -500,
+      "yearsAgo": 2525,
+      "category": "science",
+      "title": "Classical Science",
+      "description": "Development of systematic scientific inquiry in Ancient Greece",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Greek",
+      "originators": ["Thales", "Pythagoras", "Aristotle"],
+      "ideas": ["natural philosophy", "mathematics", "systematic inquiry"],
+      "url": "https://en.wikipedia.org/wiki/History_of_science_in_classical_antiquity",
+      "location": {
+        "lat": 37.9,
+        "lon": 23.7
+      }
+    },
+    {
+      "year": -300,
+      "yearsAgo": 2325,
+      "category": "science",
+      "title": "Hellenistic Science",
+      "description": "Advanced mathematical and scientific developments in Alexandria",
+      "humanType": "Homo sapiens",
+      "culture": "Hellenistic",
+      "originators": ["Euclid", "Archimedes", "Ptolemy"],
+      "ideas": ["mathematics", "physics", "astronomy"],
+      "url": "https://en.wikipedia.org/wiki/Hellenistic_period#Science",
+      "location": {
+        "lat": 31.2,
+        "lon": 29.9
+      }
+    },
+    {
+      "year": -200,
+      "yearsAgo": 2225,
+      "category": "engineering",
+      "title": "Roman Engineering",
+      "description": "Advanced Roman engineering and architecture begins, including aqueducts and roads",
+      "humanType": "Homo sapiens",
+      "culture": "Roman",
+      "originators": ["Roman engineers", "Vitruvius"],
+      "ideas": ["civil engineering", "architecture", "infrastructure"],
+      "url": "https://en.wikipedia.org/wiki/Roman_engineering",
+      "location": {
+        "lat": 41.9,
+        "lon": 12.5
+      }
+    },
+    {
+      "year": 100,
+      "yearsAgo": 1925,
+      "category": "technology",
+      "title": "Roman Technology",
+      "description": "Peak of Roman technological innovation, including concrete and advanced machinery",
+      "humanType": "Homo sapiens",
+      "culture": "Roman",
+      "originators": ["Roman inventors", "Roman engineers"],
+      "ideas": ["concrete", "machinery", "construction"],
+      "url": "https://en.wikipedia.org/wiki/Roman_technology",
+      "location": {
+        "lat": 41.89,
+        "lon": 12.48
+      }
+    },
+    {
+      "year": 500,
+      "yearsAgo": 1525,
+      "category": "science",
+      "title": "Indian Mathematics",
+      "description": "Development of advanced mathematics in India, including the concept of zero",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Indian",
+      "originators": ["Aryabhata", "Brahmagupta"],
+      "ideas": ["zero", "decimal system", "algebra"],
+      "url": "https://en.wikipedia.org/wiki/Indian_mathematics",
+      "location": {
+        "lat": 23.2,
+        "lon": 77.4
+      }
+    },
+    {
+      "year": 800,
+      "yearsAgo": 1225,
+      "category": "science",
+      "title": "Islamic Golden Age",
+      "description": "Major advances in science and mathematics in the Islamic world",
+      "humanType": "Homo sapiens",
+      "culture": "Islamic",
+      "originators": ["Al-Khwarizmi", "Ibn al-Haytham", "Al-Biruni"],
+      "ideas": ["algebra", "optics", "scientific method"],
+      "url": "https://en.wikipedia.org/wiki/Islamic_Golden_Age",
+      "location": {
+        "lat": 33.3,
+        "lon": 44.4
+      }
+    },
+    {
+      "year": 1000,
+      "category": "exploration",
+      "title": "Viking Exploration",
+      "description": "Norse exploration of North America",
+      "location": {
+        "lat": 51.5,
+        "lon": -55.5
+      }
+    },
+    {
+      "year": 1200,
+      "category": "technology",
+      "title": "Medieval Innovation",
+      "description": "Technological innovations in medieval Europe",
+      "location": {
+        "lat": 48.85,
+        "lon": 2.35
+      }
+    },
+    {
+      "year": 1450,
+      "category": "communication",
+      "title": "Printing Press",
+      "description": "Invention of movable type printing",
+      "location": {
+        "lat": 49.98,
+        "lon": 8.25
+      }
+    },
+    {
+      "year": 1500,
+      "category": "exploration",
+      "title": "Age of Discovery",
+      "description": "European maritime exploration begins",
+      "location": {
+        "lat": 38.7,
+        "lon": -9.1
+      }
+    },
+    {
+      "year": 1600,
+      "category": "science",
+      "title": "Scientific Revolution",
+      "description": "Beginning of modern scientific method",
+      "location": {
+        "lat": 45.4,
+        "lon": 11.0
+      }
+    },
+    {
+      "year": 1700,
+      "category": "technology",
+      "title": "Early Industrial",
+      "description": "Early developments of industrial revolution",
+      "location": {
+        "lat": 51.5,
+        "lon": -0.12
+      }
+    },
+    {
+      "year": 1750,
+      "category": "industry",
+      "title": "Industrial Revolution",
+      "description": "Start of industrial revolution in Britain",
+      "location": {
+        "lat": 53.4,
+        "lon": -2.1
+      }
+    },
+    {
+      "year": 1800,
+      "yearsAgo": 225,
+      "category": "science",
+      "title": "Electricity, First battery, Voltaic Pile",
+      "description": "The Voltaic Pile, the first battery, was invented by Italian scientist Alessandro Volta in 1800. He first described it in a letter to the London Royal Society on March 20, 1800",
+      "humanType": "Homo sapiens",
+      "culture": "European",
+      "originators": ["Alessandro Volta"],
+      "ideas": ["electricity", "battery", "electrical power"],
+      "url": "https://en.wikipedia.org/wiki/Voltaic_pile",
+      "location": {
+        "lat": 45.8,
+        "lon": 8.9
+      }
+    },
+    {
+      "year": 1859,
+      "yearsAgo": 166,
+      "category": "science",
+      "title": "Darwin, Theory of Evolution",
+      "description": "Charles Darwin's book, On the Origin of Species, Natural selection, common descent",
+      "humanType": "Homo sapiens",
+      "culture": "British",
+      "originators": ["Charles Darwin"],
+      "ideas": ["evolution", "natural selection", "common descent"],
+      "url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
+      "location": {
+        "lat": 52.7,
+        "lon": -2.7
+      }
+    },
+    {
+      "year": 1900,
+      "yearsAgo": 125,
+      "category": "science",
+      "title": "Quantum Mechanics Foundations",
+      "description": "Max Planck's 1900 work on black-body radiation, Niels Bohr, Describes micro-world laws",
+      "humanType": "Homo sapiens",
+      "culture": "German",
+      "originators": ["Max Planck"],
+      "ideas": ["quantum mechanics", "black-body radiation", "physics"],
+      "url": "https://en.wikipedia.org/wiki/History_of_quantum_mechanics",
+      "location": {
+        "lat": 52.5,
+        "lon": 13.4
+      }
+    },
+    {
+      "year": 1905,
+      "yearsAgo": 120,
+      "category": "science",
+      "title": "Einstein: General Relativity",
+      "description": "Albert Einstein On the Electrodynamics of Moving Bodies, Reshaped space and time",
+      "humanType": "Homo sapiens",
+      "culture": "German",
+      "originators": ["Albert Einstein"],
+      "ideas": ["relativity", "spacetime", "physics"],
+      "url": "https://en.wikipedia.org/wiki/Special_relativity",
+      "location": {
+        "lat": 52.5,
+        "lon": 13.4
+      }
+    },
+    {
+      "year": 1941,
+      "yearsAgo": 84,
+      "category": "technology",
+      "title": "Digital Computers",
+      "description": "Konrad Zuse in Germany i1941 built world's first programmable computer, the Z3.",
+      "humanType": "Homo sapiens",
+      "culture": "German",
+      "originators": ["Konrad Zuse"],
+      "ideas": ["computer", "programming", "digital technology"],
+      "url": "",
+      "location": {
+        "lat": 51.0,
+        "lon": 6.1
+      }
+    },
+    {
+      "year": 1947,
+      "yearsAgo": 78,
+      "category": "technology",
+      "title": "Transistor Invention",
+      "description": "The first successful demonstration of a transistor occurred on December 23, 1947, at Bell Laboratories in Murray Hill, New Jersey, USA, Miniaturization begins",
+      "humanType": "Homo sapiens",
+      "culture": "American",
+      "originators": ["William Shockley", "John Bardeen", "Walter Brattain"],
+      "ideas": ["transistor", "electronics", "miniaturization"],
+      "url": "https://en.wikipedia.org/wiki/Transistor",
+      "location": {
+        "lat": 40.0,
+        "lon": -74.4
+      }
+    },
+    {
+      "year": 1956,
+      "yearsAgo": 69,
+      "category": "technology",
+      "title": "Birth of Artificial Intelligence",
+      "description": "AI is generally considered to have taken place at the Dartmouth workshop in 1956, organized by John McCarthy at Dartmouth College. Machine learning bases",
+      "humanType": "Homo sapiens",
+      "culture": "American",
+      "originators": ["John McCarthy"],
+      "ideas": ["artificial intelligence", "machine learning", "computer science"],
+      "url": "https://en.wikipedia.org/wiki/Dartmouth_Conference",
+      "location": {
+        "lat": 43.7,
+        "lon": -72.2
+      }
+    },
+    {
+      "year": 1958,
+      "yearsAgo": 67,
+      "category": "technology",
+      "title": "Integrated Circuit (Microchip)",
+      "description": "The first demonstrated integrated circuit (IC), or microchip, was developed by Jack Kilby at Texas Instruments in Dallas, TX, in 1958, Robert Noyce, Microprocessor precursor",
+      "humanType": "Homo sapiens",
+      "culture": "American",
+      "originators": ["Jack Kilby"],
+      "ideas": ["integrated circuit", "microchip", "electronics"],
+      "url": "https://en.wikipedia.org/wiki/Integrated_circuit",
+      "location": {
+        "lat": 32.8,
+        "lon": -96.8
+      }
+    },
+    {
+      "year": 1965,
+      "yearsAgo": 60,
+      "category": "technology",
+      "title": "Deep Learning Breakthroughs 1",
+      "description": "in Ukraine USSR developed hierarchical representation of a neural network that uses polynomial activation function and are trained using the Group Method of Data Handling (GMDH). It is considered the first-ever multi-layer perceptron.",
+      "humanType": "Homo sapiens",
+      "culture": "Ukrainian",
+      "originators": ["Alexey Ivakhnenko", "Valentin Lapa"],
+      "ideas": ["neural networks", "deep learning", "artificial intelligence"],
+      "url": "",
+      "location": {
+        "lat": 50.4,
+        "lon": 30.5
+      }
+    },
+    {
+      "year": 1966,
+      "yearsAgo": 59,
+      "category": "technology",
+      "title": "First working AI chatbot for public use",
+      "description": "MIT Artificial Intelligence Laboratory, simulated conversations by using a pattern-recognition algorithm to compare user input to a set of rules and generate typewritten responses. It was named Eliza.",
+      "humanType": "Homo sapiens",
+      "culture": "American",
+      "originators": ["Joseph Weisenbaum"],
+      "ideas": ["chatbot", "artificial intelligence", "natural language processing"],
+      "url": "",
+      "location": {
+        "lat": 42.0,
+        "lon": -71.1
+      }
+    },
+    {
+      "year": 1990,
+      "yearsAgo": 35,
+      "category": "communication",
+      "title": "World Wide Web",
+      "description": "Creation of the World Wide Web by Tim Berners-Lee at CERN",
+      "humanType": "Homo sapiens",
+      "culture": "Global Digital",
+      "originators": ["Tim Berners-Lee"],
+      "ideas": ["world wide web", "hypertext", "internet"],
+      "url": "https://en.wikipedia.org/wiki/History_of_the_World_Wide_Web",
+      "location": {
+        "lat": 46.2,
+        "lon": 6.15
+      }
+    },
+    {
+      "year": 2000,
+      "yearsAgo": 25,
+      "category": "technology",
+      "title": "Digital Age",
+      "description": "Widespread adoption of digital technology and the Internet",
+      "humanType": "Homo sapiens",
+      "culture": "Global Digital",
+      "originators": ["Multiple innovators"],
+      "ideas": ["digital revolution", "internet", "computing"],
+      "url": "https://en.wikipedia.org/wiki/Digital_Revolution",
+      "location": {
+        "lat": 37.4,
+        "lon": -122.1
+      }
+    },
+    {
+      "year": 2010,
+      "yearsAgo": 15,
+      "category": "technology",
+      "title": "Mobile Revolution",
+      "description": "Widespread adoption of mobile computing and smartphones",
+      "humanType": "Homo sapiens",
+      "culture": "Global Digital",
+      "originators": ["Steve Jobs", "Mobile innovators"],
+      "ideas": ["mobile computing", "smartphones", "apps"],
+      "url": "https://en.wikipedia.org/wiki/Smartphone",
+      "location": {
+        "lat": 37.33,
+        "lon": -122.01
+      }
+    },
+    {
+      "year": 2020,
+      "yearsAgo": 5,
+      "category": "science",
+      "title": "AI Revolution",
+      "description": "Advanced AI and machine learning developments transform society",
+      "humanType": "Homo sapiens",
+      "culture": "Global Digital",
+      "originators": ["AI researchers", "Tech companies"],
+      "ideas": ["artificial intelligence", "machine learning", "neural networks"],
+      "url": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+      "location": {
+        "lat": 37.4,
+        "lon": -122.1
+      }
+    },
+    {
+      "year": 2012,
+      "yearsAgo": 13,
+      "category": "technology",
+      "title": "Deep Learning Breakthroughs 2",
+      "description": "A convolutional neural network (CNN) designed by Alex Krizhevsky, published with Ilya Sutskever and Krizhevsky's PhD advisor Hinton",
+      "humanType": "Modern Humans",
+      "culture": "Digital Age",
+      "originators": ["Alex Krizhevsky", "Ilya Sutskever", "Geoffrey Hinton"],
+      "ideas": ["deep learning", "convolutional neural networks", "artificial intelligence"],
+      "url": "https://en.wikipedia.org/wiki/Deep_learning",
+      "location": {
+        "lat": 43.6,
+        "lon": -79.4
+      }
+    },
+    {
+      "year": 2022,
+      "yearsAgo": 3,
+      "category": "technology",
+      "title": "Generative AI Era",
+      "description": "Open AI, San Francisco, California, Google, LLMs like GPT-4 and Gemini, Seatle, Washington",
+      "humanType": "Modern Humans",
+      "culture": "Digital Age",
+      "originators": ["OpenAI", "Elon Musk", "Sam Altman"],
+      "ideas": ["generative AI", "large language models", "artificial intelligence"],
+      "url": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+      "location": {
+        "lat": 42.0,
+        "lon": -71.0
+      }
+    },
+    {
+      "year": -9000,
+      "yearsAgo": 11025,
+      "category": "urban",
+      "title": "Early Towns - Jericho",
+      "description": "Jericho, West Bank of Palestine, walls/tower",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Inhabitants",
+      "originators": ["Early urban settlers"],
+      "ideas": ["urban planning", "fortification", "permanent settlement"],
+      "url": "https://en.wikipedia.org/wiki/Jericho",
+      "location": {
+        "lat": 31.8,
+        "lon": 35.4
+      }
+    },
+    {
+      "year": -8000,
+      "yearsAgo": 10025,
+      "category": "agriculture",
+      "title": "Agriculture - Mesoamerica",
+      "description": "The Guilá Naquitz cave in Oaxaca, Mexico, domestication of squash, maize",
+      "humanType": "Homo sapiens",
+      "culture": "Native Cultures",
+      "originators": ["Native American farmers"],
+      "ideas": ["maize cultivation", "squash domestication", "agriculture"],
+      "url": "https://en.wikipedia.org/wiki/Maize_domestication",
+      "location": {
+        "lat": 17.8,
+        "lon": -96.8
+      }
+    },
+    {
+      "year": -7400,
+      "yearsAgo": 9425,
+      "category": "urban",
+      "title": "Early Towns - Çatalhöyük",
+      "description": "Çatalhöyük, Anatolia, Turkey, dense housing, art, communal living",
+      "humanType": "Homo sapiens",
+      "culture": "Anatolian People",
+      "originators": ["Early urban planners"],
+      "ideas": ["urban planning", "communal living", "early architecture"],
+      "url": "https://en.wikipedia.org/wiki/%C3%87atalh%C3%B6y%C3%BCk",
+      "location": {
+        "lat": 37.4,
+        "lon": 33.5
+      }
+    },
+    {
+      "year": -7000,
+      "yearsAgo": 9025,
+      "category": "urban",
+      "title": "Indus Valley Civilization, Harappan Civilization",
+      "description": "Harappa, Advanced urban planning, sanitation",
+      "humanType": "Homo sapiens",
+      "culture": "Mehrgarh, Balochistan, Pakistan",
+      "originators": ["Harappan people"],
+      "ideas": ["urban planning", "sanitation", "civilization"],
+      "url": "https://en.wikipedia.org/wiki/Mohenjo-daro",
+      "location": {
+        "lat": 29.4,
+        "lon": 67.6
+      }
+    },
+    {
+      "year": -7000,
+      "yearsAgo": 9025,
+      "category": "agriculture",
+      "title": "Agriculture - China",
+      "description": "Hemudu region China, millet crop, Independent origin of rice/millet, beans",
+      "humanType": "Homo sapiens",
+      "culture": "First rice/millet, bean Cultivation Cultures",
+      "originators": ["Early Chinese farmers"],
+      "ideas": ["rice cultivation", "millet farming", "bean domestication"],
+      "url": "https://en.wikipedia.org/wiki/Natufian_culture",
+      "location": {
+        "lat": 28.5,
+        "lon": 121.2
+      }
+    },
+    {
+      "year": -5500,
+      "yearsAgo": 7525,
+      "category": "urban",
+      "title": "First Cities - Uruk",
+      "description": "Eridu, Sumerians, Urban centers with temples",
+      "humanType": "Homo sapiens",
+      "culture": "Sumerians",
+      "originators": ["Sumerian people"],
+      "ideas": ["urban centers", "temples", "civilization"],
+      "url": "https://en.wikipedia.org/wiki/Uruk",
+      "location": {
+        "lat": 31.2,
+        "lon": 45.3
+      }
+    },
+    {
+      "year": -5100,
+      "yearsAgo": 7125,
+      "category": "transport",
+      "title": "Wheeled Vehicles",
+      "description": "Ljubljana, Broconcice Funnelbeaker Culture, Poland, Uruk also, revolutionized transport & trade",
+      "humanType": "Homo sapiens",
+      "culture": "Ljubljana wooden wheel, Broconcice pot, Uruk pictographs",
+      "originators": ["Early inventors"],
+      "ideas": ["wheel", "transport", "trade"],
+      "url": "https://en.wikipedia.org/wiki/Wheel",
+      "location": {
+        "lat": 50.2,
+        "lon": 20.2
+      }
+    },
+    {
+      "year": -5000,
+      "yearsAgo": 7025,
+      "category": "technology",
+      "title": "Copper Smelting",
+      "description": "Vnča-Belo Brdo, Serbia, earliest metal extraction",
+      "humanType": "Homo sapiens",
+      "culture": "Vinča Culture",
+      "originators": ["Vinča metalworkers"],
+      "ideas": ["metallurgy", "copper working", "metal extraction"],
+      "url": "https://en.wikipedia.org/wiki/Vin%C4%8Da_culture",
+      "location": {
+        "lat": 44.4,
+        "lon": 20.4
+      }
+    },
+    {
+      "year": -4500,
+      "yearsAgo": 6525,
+      "category": "technology",
+      "title": "Potter's wheel",
+      "description": "Veterba Cave, Cucuteni–Trypillia culture, Western Ukraine",
+      "humanType": "Homo sapiens",
+      "culture": "Cucuteni–Trypillia culture",
+      "originators": ["Cucuteni–Trypillia artisans"],
+      "ideas": ["pottery", "wheel technology", "crafts"],
+      "url": "https://en.wikipedia.org/wiki/Potter%27s_wheel",
+      "location": {
+        "lat": 48.4,
+        "lon": 25.5
+      }
+    },
+    {
+      "year": -3500,
+      "yearsAgo": 5525,
+      "category": "communication",
+      "title": "Writing - Cuneiform",
+      "description": "Ur, Iraq, proto-cuneiform tablet, evolved from tokens to literature",
+      "humanType": "Homo sapiens",
+      "culture": "Sumerians",
+      "originators": ["Sumerian scribes"],
+      "ideas": ["writing", "record keeping", "communication"],
+      "url": "https://en.wikipedia.org/wiki/Cuneiform_script",
+      "location": {
+        "lat": 31.2,
+        "lon": 45.4
+      }
+    },
+    {
+      "year": -3345,
+      "yearsAgo": 5370,
+      "category": "technology",
+      "title": "Iron Age Begins",
+      "description": "Later widespread metal use",
+      "humanType": "Homo sapiens",
+      "culture": "Sivagali, Tamil Nadu, India",
+      "originators": ["Early metallurgists"],
+      "ideas": ["iron working", "metallurgy", "tools"],
+      "url": "https://en.wikipedia.org/wiki/Iron_Age",
+      "location": {
+        "lat": 39.5,
+        "lon": 34.0
+      }
+    },
+    {
+      "year": -3250,
+      "yearsAgo": 5275,
+      "category": "communication",
+      "title": "Writing - Hieroglyphs",
+      "description": "Abydos, Egypt, Bone and ivory tags first oldest, developing later to Monumental religious writing",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Egypt",
+      "originators": ["Egyptian scribes"],
+      "ideas": ["hieroglyphs", "writing", "record keeping"],
+      "url": "https://en.wikipedia.org/wiki/Egyptian_hieroglyphs",
+      "location": {
+        "lat": 26.2,
+        "lon": 31.2
+      }
+    },
+    {
+      "year": -3200,
+      "yearsAgo": 5225,
+      "category": "technology",
+      "title": "Bronze Age Begins",
+      "description": "Sumerians living in regions around river Tigris and Euphrates convergence, in Al-Qurnah, Egyptians, Aegean Cultures, Stronger tools/weapons, stratification",
+      "humanType": "Homo sapiens",
+      "culture": "Sumerians",
+      "originators": ["Sumerian metallurgists"],
+      "ideas": ["bronze working", "metallurgy", "tools"],
+      "url": "https://en.wikipedia.org/wiki/Bronze_Age",
+      "location": {
+        "lat": 43.3,
+        "lon": 21.9
+      }
+    },
+    {
+      "year": -3129,
+      "yearsAgo": 5154,
+      "category": "technology",
+      "title": "Potter's Wheel",
+      "description": "Ur, Iraq, revolutionized pottery production",
+      "humanType": "Homo sapiens",
+      "culture": "Sumerians",
+      "originators": ["Sumerian craftsmen"],
+      "ideas": ["pottery", "wheel technology", "mass production"],
+      "url": "https://en.wikipedia.org/wiki/Potter%27s_wheel",
+      "location": {
+        "lat": 30.5,
+        "lon": 46.0
+      }
+    },
+    {
+      "year": -1755,
+      "yearsAgo": 3780,
+      "category": "governance",
+      "title": "Code of Hammurabi",
+      "description": "Babylon, Iraq, Legal foundation (~1750 BCE)",
+      "humanType": "Homo sapiens",
+      "culture": "Babylonian",
+      "originators": ["King Hammurabi"],
+      "ideas": ["law code", "justice", "governance"],
+      "url": "https://en.wikipedia.org/wiki/Code_of_Hammurabi",
+      "location": {
+        "lat": 32.3,
+        "lon": 44.4
+      }
+    },
+    {
+      "year": -1600,
+      "yearsAgo": 3625,
+      "category": "science",
+      "title": "Scientific Method",
+      "description": "An Egyptian medical textbook, the Edwin Smith papyrus, (c. 1600 BCE) Aristotle (384 - 322 BC), Athens, Greece, observation and empirical evidence, Francis Bacon 1620 treatise, Novum Organum",
+      "humanType": "Homo sapiens",
+      "culture": "Multiple cultures",
+      "originators": ["Aristotle", "Abu Rayhan Al-Biruni", "Galileo Galilei", "Rene Descartes", "Francis Bacon"],
+      "ideas": ["scientific method", "empirical observation", "systematic inquiry"],
+      "url": "https://en.wikipedia.org/wiki/History_of_scientific_method",
+      "location": {
+        "lat": 25.7,
+        "lon": 32.6
+      }
+    },
+    {
+      "year": -1250,
+      "yearsAgo": 3275,
+      "category": "communication",
+      "title": "Writing - Chinese Oracle Bones",
+      "description": "Yinxu site, Henan province, China, divination system evolved into script",
+      "humanType": "Homo sapiens",
+      "culture": "Shang Dynasty",
+      "originators": ["Shang Dynasty scribes"],
+      "ideas": ["oracle bones", "writing", "divination"],
+      "url": "https://en.wikipedia.org/wiki/Oracle_bone",
+      "location": {
+        "lat": 36.1,
+        "lon": 114.1
+      }
+    },
+    {
+      "year": -1000,
+      "yearsAgo": 3025,
+      "category": "astronomy",
+      "title": "Babylonian Observational Astronomy and calendars",
+      "description": "Babylon, Iraq, Observational astronomy and calendars",
+      "humanType": "Homo sapiens",
+      "culture": "Babylonian",
+      "originators": ["Babylonian Astronomers"],
+      "ideas": ["astronomy", "calendar systems", "celestial observation"],
+      "url": "https://en.wikipedia.org/wiki/Babylonian_astronomy",
+      "location": {
+        "lat": 32.5,
+        "lon": 44.4
+      }
+    },
+    {
+      "year": -800,
+      "yearsAgo": 2825,
+      "category": "philosophy",
+      "title": "Axial Age Philosophies",
+      "description": "Buddha, Zoroaster, Thales, Anaximander, and Heraclitus, Profound global philosophical shift",
+      "humanType": "Homo sapiens",
+      "culture": "Multiple cultures",
+      "originators": ["Confucius", "Lao Tzu", "Buddha", "Zoroaster"],
+      "ideas": ["philosophy", "ethics", "metaphysics"],
+      "url": "https://en.wikipedia.org/wiki/Axial_Age",
+      "location": {
+        "lat": 41.9,
+        "lon": 12.5
+      }
+    },
+    {
+      "year": -600,
+      "yearsAgo": 2625,
+      "category": "science",
+      "title": "First Theoretical Science",
+      "description": "Thales of Miletus, Greece, focused on explaining natural phenomena through reason and observation",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Greek",
+      "originators": ["Thales of Miletus", "Anaximander", "Anaximenes"],
+      "ideas": ["natural philosophy", "theoretical science", "rational inquiry"],
+      "url": "",
+      "location": {
+        "lat": 37.0,
+        "lon": 27.3
+      }
+    },
+    {
+      "year": -509,
+      "yearsAgo": 2534,
+      "category": "governance",
+      "title": "Athenian Democracy",
+      "description": "Pnyx hill in Athens, Greece, Cleisthenes, Pericles, Athenian Assembly, Ecclesia, Direct citizen participation",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Greek",
+      "originators": ["Solon"],
+      "ideas": ["democracy", "citizenship", "political participation"],
+      "url": "https://en.wikipedia.org/wiki/Ancient_Athens",
+      "location": {
+        "lat": 37.9,
+        "lon": 23.7
+      }
+    },
+    {
+      "year": -450,
+      "yearsAgo": 2475,
+      "category": "philosophy",
+      "title": "Greek philosophers",
+      "description": "Athens, Greece, Socrates, Plato, Aristotle",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Greek",
+      "originators": ["Socrates", "Plato", "Aristotle"],
+      "ideas": ["philosophy", "logic", "ethics"],
+      "url": "https://en.wikipedia.org/wiki/Socrates",
+      "location": {
+        "lat": 38.0,
+        "lon": 23.7
+      }
+    },
+    {
+      "year": -450,
+      "yearsAgo": 2475,
+      "category": "governance",
+      "title": "Roman Twelve Tables",
+      "description": "Foundational Roman law, publicly displayed in the Roman Forum",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Roman",
+      "originators": ["Decemviri"],
+      "ideas": ["law code", "public law", "civil rights"],
+      "url": "https://en.wikipedia.org/wiki/Twelve_Tables",
+      "location": {
+        "lat": 41.9,
+        "lon": 12.5
+      }
+    },
+    {
+      "year": -312,
+      "yearsAgo": 2337,
+      "category": "engineering",
+      "title": "Roman Engineering - Aqueducts",
+      "description": "The earliest Roman aqueduct, the Aqua Appia, Large-scale infrastructure feats",
+      "humanType": "Homo sapiens",
+      "culture": "Ancient Roman",
+      "originators": ["Ancient Romans"],
+      "ideas": ["aqueducts", "civil engineering", "water management"],
+      "url": "https://en.wikipedia.org/wiki/Roman_concrete",
+      "location": {
+        "lat": 37.9,
+        "lon": 23.7
+      }
+    },
+    {
+      "year": -300,
+      "yearsAgo": 2325,
+      "category": "communication",
+      "title": "Writing - Maya Glyphs",
+      "description": "San Bartolo, Guatemala, decoding history and ritual",
+      "humanType": "Homo sapiens",
+      "culture": "Maya Civilization",
+      "originators": ["Maya scribes"],
+      "ideas": ["writing system", "hieroglyphs", "historical records"],
+      "url": "https://en.wikipedia.org/wiki/Maya_script",
+      "location": {
+        "lat": 15.1,
+        "lon": -91.4
+      }
+    },
+    {
+      "year": -206,
+      "yearsAgo": 2231,
+      "category": "exploration",
+      "title": "Magnetic Compass Navigation",
+      "description": "First invented -206, used for divination, described by Shen Kuo 1088, first maritime use logged by Zhu Yu in 1111, maritime navigation revolution",
+      "humanType": "Homo sapiens",
+      "culture": "Song Dynasty",
+      "originators": ["Chinese inventors"],
+      "ideas": ["compass", "navigation", "maritime technology"],
+      "url": "https://en.wikipedia.org/wiki/History_of_the_compass",
+      "location": {
+        "lat": 30.2,
+        "lon": 120.1
+      }
+    },
+    {
+      "year": -179,
+      "yearsAgo": 2204,
+      "category": "communication",
+      "title": "Paper Invention",
+      "description": "Paper map depicting topographic features, Cai Lun refined it further, Transformed knowledge preservation",
+      "humanType": "Homo sapiens",
+      "culture": "Han Dynasty",
+      "originators": ["Cai Lun"],
+      "ideas": ["paper making", "writing material", "information storage"],
+      "url": "https://en.wikipedia.org/wiki/Paper",
+      "location": {
+        "lat": 34.4,
+        "lon": 106.1
+      }
+    },
+    {
+      "year": 529,
+      "yearsAgo": 1496,
+      "category": "governance",
+      "title": "Roman Law - Justinian Code",
+      "description": "Constantinople (Istanbul) Roman law, including Justinian's Code (Corpus Juris Civilis) Tribonian, Codification of Roman Law",
+      "humanType": "Homo sapiens",
+      "culture": "Byzantine Empire",
+      "originators": ["Justinian I", "Tribonian"],
+      "ideas": ["legal code", "Roman law", "jurisprudence"],
+      "url": "https://en.wikipedia.org/wiki/Corpus_Juris_Civilis",
+      "location": {
+        "lat": 41.0,
+        "lon": 29.0
+      }
+    },
+    {
+      "year": 800,
+      "yearsAgo": 1225,
+      "category": "military",
+      "title": "Gunpowder",
+      "description": "Searching for an elixir of life accidentally discovered gunpowder, fireworks → military revolution, later mining, construction.",
+      "humanType": "Homo sapiens",
+      "culture": "Chinese",
+      "originators": ["Chinese Alchemists"],
+      "ideas": ["gunpowder", "military technology", "explosives"],
+      "url": "https://en.wikipedia.org/wiki/Gunpowder",
+      "location": {
+        "lat": 32.7,
+        "lon": 103.7
+      }
+    },
+    {
+      "year": 1050,
+      "yearsAgo": 975,
+      "category": "communication",
+      "title": "Printing Press (Movable Type)",
+      "description": "Yingshan, Hubei, China, Mass information dissemination",
+      "humanType": "Homo sapiens",
+      "culture": "Chinese",
+      "originators": ["Bi Sheng", "Johannes Gutenberg"],
+      "ideas": ["movable type", "printing", "mass communication"],
+      "url": "https://en.wikipedia.org/wiki/Printing_press",
+      "location": {
+        "lat": 30.6,
+        "lon": 111.5
+      }
+    },
+    {
+      "year": 1350,
+      "yearsAgo": 675,
+      "category": "art",
+      "title": "Renaissance",
+      "description": "Dante Alighieri, Petrarch, Giotto De Bondone, and then it spread through Italian cities, and then through Europe",
+      "humanType": "Homo sapiens",
+      "culture": "Italian",
+      "originators": ["City of Florence"],
+      "ideas": ["humanism", "art", "science", "culture"],
+      "url": "",
+      "location": {
+        "lat": 43.8,
+        "lon": 11.2
+      }
+    },
+    {
+      "year": 1419,
+      "yearsAgo": 606,
+      "category": "exploration",
+      "title": "Age of Discovery Beginnings",
+      "description": "Bartolomiu Dias reaching the Cape of Good Hope in 1488, Globalization and exchange",
+      "humanType": "Homo sapiens",
+      "culture": "European",
+      "originators": ["Bartolomeu Dias", "Christopher Columbus"],
+      "ideas": ["maritime exploration", "navigation", "global trade"],
+      "url": "https://en.wikipedia.org/wiki/Age_of_Discovery",
+      "location": {
+        "lat": 38.7,
+        "lon": -9.1
+      }
+    },
+    {
+      "year": 1543,
+      "yearsAgo": 482,
+      "category": "astronomy",
+      "title": "Scientific Revolution Begins",
+      "description": "Nicolaus Copernicus's De revolutionibus orbium coelestium, Reshaped understanding of universe",
+      "humanType": "Homo sapiens",
+      "culture": "European",
+      "originators": ["Nicolaus Copernicus"],
+      "ideas": ["heliocentrism", "scientific revolution", "astronomy"],
+      "url": "https://en.wikipedia.org/wiki/Scientific_revolution",
+      "location": {
+        "lat": 30.0,
+        "lon": 31.0
+      }
+    },
+    {
+      "year": 1609,
+      "yearsAgo": 416,
+      "category": "astronomy",
+      "title": "Kepler - Planetary Motion",
+      "description": "Kepler's laws of planetary motion, published in 1609, mathematical planetary orbits, stems from Tycho Brahe's work",
+      "humanType": "Homo sapiens",
+      "culture": "European",
+      "originators": ["Johannes Kepler"],
+      "ideas": ["planetary motion", "orbital mechanics", "astronomy"],
+      "url": "https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion",
+      "location": {
+        "lat": 57.5,
+        "lon": 12.8
+      }
+    },
+    {
+      "year": 1687,
+      "yearsAgo": 338,
+      "category": "science",
+      "title": "Newton - Universal Gravitation",
+      "description": "Newton Philosophiæ Naturalis Principia Mathematica, classical physics foundation",
+      "humanType": "Homo sapiens",
+      "culture": "British",
+      "originators": ["Isaac Newton"],
+      "ideas": ["gravity", "classical mechanics", "physics"],
+      "url": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica",
+      "location": {
+        "lat": 53.0,
+        "lon": -0.7
+      }
+    },
+    {
+      "year": 1712,
+      "yearsAgo": 313,
+      "category": "technology",
+      "title": "First Steam Engine",
+      "description": "Thomas Newcomen invented the first commercially successful steam engine, known as the Newcomen atmospheric engine, in 1712. It was developed in England.",
+      "humanType": "Homo sapiens",
+      "culture": "British",
+      "originators": ["Thomas Newcomen"],
+      "ideas": ["steam power", "industrial revolution", "mechanical energy"],
+      "url": "",
+      "location": {
+        "lat": 52.2,
+        "lon": -2.9
+      }
+    },
+    {
+      "year": 1760,
+      "yearsAgo": 265,
+      "category": "industry",
+      "title": "First Industrial Revolution",
+      "description": "Manchester, Liverpool, and Birmingham, arkwright, mechanization reshapes economies",
+      "humanType": "Homo sapiens",
+      "culture": "British",
+      "originators": ["James Watt"],
+      "ideas": ["industrialization", "mechanization", "mass production"],
+      "url": "https://en.wikipedia.org/wiki/Industrial_Revolution",
+      "location": {
+        "lat": 53.5,
+        "lon": -2.2
+      }
+    }
+  ]
+} 

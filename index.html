@@ -1,75 +1,249 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radiant of Human Consciousness</title>
+  <title>Prime Radiant</title>
+  <!-- Add Font Awesome for the magnifying glass icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     body { margin: 0; overflow: hidden; }
     canvas { display: block; }
-    #info { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 10px; font-size: 18px; display: none; }
-    #info a { color: #00ff00; }
+    .search-container {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 10;
+      font-size: 12px;
+      background: rgba(0, 20, 40, 0.7);
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #007bff;
+    }
+    .search-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    select, input {
+      padding: 6px;
+      border-radius: 3px;
+      border: 1px solid #007bff;
+      background: rgba(0, 20, 40, 0.7);
+      color: #007bff;
+      font-size: 12px;
+    }
+    select {
+      width: 120px;
+    }
+    input {
+      width: 100px;
+    }
+    input::placeholder {
+      color: rgba(0, 123, 255, 0.5);
+    }
+    .search-type {
+      width: 140px;
+    }
+    #searchInput {
+      padding: 6px;
+      border-radius: 3px;
+      border: 1px solid #007bff;
+      background: rgba(0, 20, 40, 0.7);
+      color: #007bff;
+      width: 160px;
+      font-size: 12px;
+    }
+    #searchInput::placeholder {
+      color: rgba(0, 123, 255, 0.5);
+    }
+    #focusBtn {
+      padding: 6px 8px;
+      background: rgba(0, 20, 40, 0.7);
+      color: #007bff;
+      border: 1px solid #007bff;
+      border-radius: 3px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+    #focusBtn i {
+      font-size: 12px;
+      color: #007bff;
+    }
+    #infoPanel {
+      display: none;
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      background: rgba(0, 20, 40, 0.7);
+      color: #007bff;
+      padding: 10px;
+      border-radius: 4px;
+      max-width: 200px;
+      z-index: 100;
+      font-size: 12px;
+      border: 1px solid #007bff;
+    }
+    #infoPanel h3 {
+      margin: 0 0 6px 0;
+      font-size: 13px;
+      color: #007bff;
+    }
+    #infoPanel p {
+      margin: 4px 0;
+      color: #007bff;
+    }
+    #closeBtn {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      background: none;
+      border: none;
+      color: #007bff;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 6px;
+    }
+    .search-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .clear-search {
+      color: #007bff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0 6px;
+    }
+    .milestone-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .milestone-list li {
+      padding: 4px 0;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(0, 123, 255, 0.2);
+    }
+    .milestone-list li:hover {
+      background: rgba(0, 123, 255, 0.1);
+    }
+    .milestone-year {
+      font-weight: bold;
+    }
+    .back-to-list {
+      color: #007bff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      padding: 4px 8px;
+      margin-bottom: 8px;
+      border: 1px solid #007bff;
+      border-radius: 3px;
+    }
+    .more-info-btn {
+      color: #007bff;
+      background: none;
+      border: 1px solid #007bff;
+      cursor: pointer;
+      font-size: 12px;
+      padding: 4px 8px;
+      margin-top: 8px;
+      border-radius: 3px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .more-info-btn:hover {
+      background: rgba(0, 123, 255, 0.1);
+    }
   </style>
 </head>
 <body>
-  <div id="info"></div>
+  <div class="search-container">
+    <div class="search-header">
+      <select id="searchType" class="search-type">
+        <option value="year">Exact Year</option>
+        <option value="yearRange">Year Range</option>
+        <option value="yearsAgo">Years Ago</option>
+        <option value="yearsAgoRange">Years Ago Range</option>
+        <option value="humanType">Human Type</option>
+        <option value="culture">Human Culture</option>
+        <option value="category">Category</option>
+        <option value="idea">Originating Idea</option>
+        <option value="originator">Originator Name</option>
+      </select>
+      <button class="clear-search" id="clearSearch">×</button>
+    </div>
+    <div id="searchInputs" class="search-row">
+      <!-- Dynamic inputs will be added here -->
+    </div>
+    <div class="search-row">
+      <button id="searchBtn">
+        <i class="fas fa-search"></i>
+        Search
+      </button>
+      <button id="focusBtn">
+        <i class="fas fa-search"></i>
+        Focus on ancient milestones
+      </button>
+    </div>
+  </div>
+  <div id="infoPanel">
+    <button id="closeBtn">×</button>
+    <div id="listView">
+      <h3>Search Results</h3>
+      <ul class="milestone-list" id="milestoneList"></ul>
+    </div>
+    <div id="detailView" style="display: none;">
+      <button class="back-to-list" id="backToList">← Back to List</button>
+      <h3 id="infoTitle"></h3>
+      <p id="infoDescription"></p>
+      <p id="infoCategory"></p>
+      <a id="moreInfoLink" class="more-info-btn" target="_blank" style="display: none;">More Info</a>
+    </div>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script>
-    // Radiant of Human Consciousness
-    // Copyright (C) 2025 [Your Name]
-    //
-    // This program is free software: you can redistribute it and/or modify
-    // it under the terms of the GNU General Public License as published by
-    // the Free Software Foundation, either version 3 of the License, or
-    // (at your option) any later version.
-    //
-    // This program is distributed in the hope that it will be useful,
-    // but WITHOUT ANY WARRANTY; without even the implied warranty of
-    // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    // GNU General Public License for more details.
-    //
-    // You should have received a copy of the GNU General Public License
-    // along with this program.  If not, see <https://www.gnu.org/licenses/>.
+    // Category colors - adjusted for visibility on both black and white backgrounds
+    const categoryColors = {
+      agriculture: 0x33cc33,    // Bright Green
+      art: 0xff1493,           // Deep Pink
+      astronomy: 0x00b4d8,     // Ocean Blue
+      communication: 0xffd700,  // Gold
+      engineering: 0xff8c00,    // Dark Orange
+      exploration: 0x8b4513,    // Saddle Brown
+      governance: 0x9932cc,     // Dark Orchid
+      industry: 0x708090,       // Slate Gray
+      military: 0xdc143c,       // Crimson
+      philosophy: 0x9370db,     // Medium Purple
+      science: 0x0066ff,       // Bright Blue
+      technology: 0xff6b00,     // Bright Orange
+      urban: 0x20b2aa          // Light Sea Green
+    };
+
+    const SELECTED_COLOR = 0x007bff;  // Changed to blue
+    const SELECTED_AGRICULTURE_COLOR = 0xff0000;  // Keeping red for selected agriculture milestones
+
+    // Example milestone data (replace with your actual data)
+    const milestone = {
+      year: -2900000,
+      category: 'science',
+      title: 'Early Stone Tools',
+      description: 'First evidence of stone tool use by early hominids'
+    };
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -78,29 +252,55 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    // Sphere (Radiant)
-    const sphereGeometry = new THREE.SphereGeometry(102, 32, 32);
-    const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
-    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-    scene.add(sphere);
+    // Create arrow indicator
+    let arrowIndicator = null;
+    function createArrowIndicator() {
+      // Create arrow using line segments
+      const points = [
+        new THREE.Vector3(0, 1, 0),    // Top point
+        new THREE.Vector3(-0.5, 0, 0), // Bottom left
+        new THREE.Vector3(0.5, 0, 0),  // Bottom right
+        new THREE.Vector3(0, 1, 0)     // Back to top to close the triangle
+      ];
+      
+      const arrowGeometry = new THREE.BufferGeometry().setFromPoints(points);
+      const arrowMaterial = new THREE.LineBasicMaterial({ 
+        color: 0x007bff,  // Changed to blue
+        linewidth: 2
+      });
+      arrowIndicator = new THREE.Line(arrowGeometry, arrowMaterial);
+      arrowIndicator.visible = false;
+      scene.add(arrowIndicator);
+    }
+    createArrowIndicator();
 
-    // Milestones dataset
-    const milestones = [
-      { id: 1, year: -10000, lat: 33.2232, lon: 43.6793, desc: "Development of agriculture", details: "Transition from hunter-gatherer to farming societies in the Fertile Crescent.", url: "https://en.wikipedia.org/wiki/Neolithic_Revolution" },
-      { id: 2, year: -3000, lat: 29.9792, lon: 31.1342, desc: "Invention of writing", details: "Cuneiform script emerged in Mesopotamia, enabling record-keeping.", url: "https://en.wikipedia.org/wiki/Cuneiform" },
-      { id: 3, year: -1754, lat: 32.5412, lon: 44.4233, desc: "Code of Hammurabi", details: "One of the first written legal codes, established in Babylon.", url: "https://en.wikipedia.org/wiki/Code_of_Hammurabi" },
-      { id: 4, year: -400, lat: 37.9838, lon: 23.7275, desc: "Socratic method", details: "Philosophy by Socrates, using questioning to stimulate critical thinking.", url: "https://en.wikipedia.org/wiki/Socrates" },
-      { id: 5, year: -300, lat: 31.2001, lon: 29.9187, desc: "Euclid’s Elements", details: "Foundational work in geometry, written in Alexandria.", url: "https://en.wikipedia.org/wiki/Euclid%27s_Elements" },
-      { id: 6, year: 105, lat: 34.2583, lon: 112.0833, desc: "Invention of paper", details: "Cai Lun’s innovation in Luoyang, China, revolutionized knowledge sharing.", url: "https://en.wikipedia.org/wiki/Cai_Lun" },
-      { id: 7, year: 1440, lat: 50.0007, lon: 8.2711, desc: "Printing press", details: "Gutenberg’s invention in Mainz, Germany, made books widely accessible.", url: "https://en.wikipedia.org/wiki/Printing_press" },
-      { id: 8, year: 1687, lat: 52.2053, lon: 0.1218, desc: "Theory of gravity", details: "Newton’s laws in Cambridge, England, explaining planetary motion.", url: "https://en.wikipedia.org/wiki/Isaac_Newton" },
-      { id: 9, year: 1915, lat: 47.3769, lon: 8.5417, desc: "Theory of relativity", details: "Einstein’s breakthrough in Zurich, Switzerland, redefining physics.", url: "https://en.wikipedia.org/wiki/Theory_of_relativity" },
-      { id: 10, year: 1983, lat: 34.0522, lon: -118.2437, desc: "Internet creation", details: "TCP/IP adoption in Los Angeles, USA, marking the internet’s foundation.", url: "https://en.wikipedia.org/wiki/History_of_the_Internet" }
-    ];
+    function updateArrowPosition(targetPosition) {
+      if (!arrowIndicator) return;
+      
+      // Position arrow slightly above the milestone
+      const offset = new THREE.Vector3(0, 1.5, 0);
+      arrowIndicator.position.copy(targetPosition).add(offset);
+      
+      // Make arrow always face the camera
+      arrowIndicator.lookAt(camera.position);
+      // Rotate 180 degrees to point downward
+      arrowIndicator.rotateX(Math.PI);
+      
+      arrowIndicator.visible = true;
+    }
 
-    // Convert lat/lon/year to 3D position
+    function hideArrow() {
+      if (arrowIndicator) {
+        arrowIndicator.visible = false;
+      }
+    }
+
+    // OrbitControls
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = false;
+
     function getPosition(year, lat, lon) {
-      const r = (100000 + year) / 1000; // Radius: 1cm = 1000 years
+      const r = (100000 + year) / 1000;
       const phi = (90 - lat) * Math.PI / 180;
       const theta = lon * Math.PI / 180;
       return new THREE.Vector3(
@@ -110,48 +310,399 @@
       );
     }
 
-    // Add milestones
-    const milestoneMeshes = [];
-    milestones.forEach(m => {
-      const geometry = new THREE.SphereGeometry(2, 16, 16);
-      const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-      const mesh = new THREE.Mesh(geometry, material);
-      mesh.position.copy(getPosition(m.year, m.lat, m.lon));
-      mesh.userData = m;
-      scene.add(mesh);
-      milestoneMeshes.push(mesh);
-    });
+    // Load and create all milestones
+    let milestones = [];
+    fetch('milestones.json')
+      .then(response => response.json())
+      .then(data => {
+        milestones = data.milestones;
+        milestones.forEach(milestone => {
+          const position = getPosition(milestone.year, milestone.location.lat, milestone.location.lon);
+          const geometry = new THREE.SphereGeometry(0.3, 16, 16);
+          const material = new THREE.MeshBasicMaterial({ color: categoryColors[milestone.category] });
+          const sphere = new THREE.Mesh(geometry, material);
+          sphere.position.copy(position);
+          sphere.userData = milestone;
+          
+          // Click handler for this milestone
+          sphere.userData.onClick = function() {
+            // Set selection color based on category
+            const selectionColor = milestone.category === 'agriculture' ? SELECTED_AGRICULTURE_COLOR : SELECTED_COLOR;
+            sphere.material.color.setHex(selectionColor);
+            showMilestoneInfo(milestone);
+            focusCameraOnMilestone(sphere.position);
+          };
+          
+          scene.add(sphere);
+        });
+      })
+      .catch(error => console.error('Error loading milestones:', error));
 
-    // Camera
-    camera.position.z = 200;
+    // Initial camera position
+    camera.position.set(0, 0, 200);
+    controls.target.set(0, 0, 0);
+    controls.update();
 
-    // Raycaster for clicks
+    function focusCameraOnMilestone(position) {
+      const direction = position.clone().normalize();
+      const cameraDistance = 20;
+      const cameraPos = position.clone().add(direction.multiplyScalar(cameraDistance));
+      if (typeof controls.setLookAt === 'function') {
+        controls.setLookAt(
+          cameraPos.x, cameraPos.y, cameraPos.z,
+          position.x, position.y, position.z,
+          false
+        );
+      } else {
+        camera.position.copy(cameraPos);
+        controls.target.copy(position);
+        controls.update();
+      }
+    }
+
+    // Show milestone info
+    function showMilestoneInfo(milestone) {
+      const infoPanel = document.getElementById('infoPanel');
+      const listView = document.getElementById('listView');
+      const detailView = document.getElementById('detailView');
+      const moreInfoLink = document.getElementById('moreInfoLink');
+      
+      // Clear any existing additional info elements
+      const existingAdditionalInfo = detailView.querySelectorAll('.additional-info');
+      existingAdditionalInfo.forEach(el => el.remove());
+      
+      listView.style.display = 'none';
+      detailView.style.display = 'block';
+      
+      // Get the milestone data, handling both direct and userData cases
+      const data = milestone.userData || milestone;
+      
+      // Basic info
+      document.getElementById('infoTitle').textContent = `${data.year}: ${data.title}`;
+      document.getElementById('infoDescription').textContent = data.description || 'No description available';
+      document.getElementById('infoCategory').textContent = `Category: ${data.category}`;
+
+      // Add additional information sections
+      const addInfoSection = (label, content) => {
+        if (content && (typeof content === 'string' || (Array.isArray(content) && content.length > 0))) {
+          const element = document.createElement('p');
+          element.className = 'additional-info';
+          element.textContent = `${label}: ${Array.isArray(content) ? content.join(', ') : content}`;
+          detailView.insertBefore(element, moreInfoLink);
+        }
+      };
+
+      // Add all available additional information
+      addInfoSection('Human Type', data.humanType);
+      addInfoSection('Culture', data.culture);
+      addInfoSection('Originators', data.originators);
+      addInfoSection('Ideas', data.ideas);
+      addInfoSection('Years Ago', data.yearsAgo);
+
+      // Handle More Info link
+      moreInfoLink.style.display = 'none';
+      if (data.url && data.url.trim() !== '') {
+        moreInfoLink.href = data.url;
+        moreInfoLink.style.display = 'inline-block';
+      }
+
+      // Show arrow if position exists
+      if (milestone.position) {
+        updateArrowPosition(milestone.position);
+      }
+
+      infoPanel.style.display = 'block';
+    }
+
+    // Reset everything
+    function resetView(resetCamera = true) {
+      const infoPanel = document.getElementById('infoPanel');
+      infoPanel.style.display = 'none';
+      currentSearchResults = [];
+
+      // Hide the arrow indicator
+      hideArrow();
+
+      // Reset all milestone colors
+      scene.children.forEach(child => {
+        if (child.userData && child.userData.category) {
+          child.material.color.setHex(categoryColors[child.userData.category]);
+        }
+      });
+
+      if (resetCamera) {
+        camera.position.copy(initialCameraPosition);
+        controls.target.copy(initialControlsTarget);
+        controls.update();
+      }
+    }
+
+    // Raycaster for click detection
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
-    const infoDiv = document.getElementById('info');
 
     window.addEventListener('click', (event) => {
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
       raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(milestoneMeshes);
-      if (intersects.length > 0) {
-        const m = intersects[0].object.userData;
-        infoDiv.style.display = 'block';
-        infoDiv.innerHTML = `<strong>${m.desc}</strong><br>${m.details}<br><a href="${m.url}" target="_blank">Learn More</a>`;
-      } else {
-        infoDiv.style.display = 'none';
+      const intersects = raycaster.intersectObjects(scene.children);
+      if (intersects.length > 0 && intersects[0].object.userData.onClick) {
+        intersects[0].object.userData.onClick();
       }
     });
 
-    // Orbit controls (drag to rotate)
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
+    // Close button handler
+    document.getElementById('closeBtn').addEventListener('click', resetView);
+
+    // Dynamic search input generation
+    function updateSearchInputs(searchType) {
+      const container = document.getElementById('searchInputs');
+      container.innerHTML = '';
+      
+      switch(searchType) {
+        case 'year':
+          container.innerHTML = `<input type="number" placeholder="Enter year (e.g. -2900000)" id="yearInput">`;
+          break;
+        case 'yearRange':
+          container.innerHTML = `
+            <input type="number" placeholder="Start year" id="startYearInput">
+            <input type="number" placeholder="End year" id="endYearInput">
+          `;
+          break;
+        case 'yearsAgo':
+          container.innerHTML = `<input type="number" placeholder="Years ago" id="yearsAgoInput">`;
+          break;
+        case 'yearsAgoRange':
+          container.innerHTML = `
+            <input type="number" placeholder="Start years ago" id="startYearsAgoInput">
+            <input type="number" placeholder="End years ago" id="endYearsAgoInput">
+          `;
+          break;
+        case 'humanType':
+          container.innerHTML = `<input type="text" placeholder="e.g. Homo erectus" id="humanTypeInput">`;
+          break;
+        case 'culture':
+          container.innerHTML = `<input type="text" placeholder="e.g. Sumerians" id="cultureInput">`;
+          break;
+        case 'category':
+          container.innerHTML = `
+            <select id="categoryInput">
+              <option value="">Select category</option>
+              ${Object.keys(categoryColors).map(cat => 
+                `<option value="${cat}">${cat}</option>`
+              ).join('')}
+            </select>
+          `;
+          break;
+        case 'idea':
+          container.innerHTML = `<input type="text" placeholder="e.g. controlled fire" id="ideaInput">`;
+          break;
+        case 'originator':
+          container.innerHTML = `<input type="text" placeholder="Enter name" id="originatorInput">`;
+          break;
+      }
+    }
+
+    let currentSearchResults = [];
+    let initialCameraPosition = new THREE.Vector3(0, 0, 200);
+    let initialControlsTarget = new THREE.Vector3(0, 0, 0);
+
+    // Store initial camera position
+    camera.position.copy(initialCameraPosition);
+    controls.target.copy(initialControlsTarget);
+    controls.update();
+
+    function showResultsList(results) {
+      currentSearchResults = results;
+      const listView = document.getElementById('listView');
+      const detailView = document.getElementById('detailView');
+      const milestoneList = document.getElementById('milestoneList');
+      
+      listView.style.display = 'block';
+      detailView.style.display = 'none';
+      milestoneList.innerHTML = '';
+
+      results.forEach((result) => {
+        const li = document.createElement('li');
+        const milestoneData = result.userData;
+        li.innerHTML = `
+          <span class="milestone-year">${milestoneData.year}</span>: 
+          ${milestoneData.title}
+        `;
+        li.addEventListener('click', () => {
+          // Create a complete milestone object with both data and position
+          const completeData = {
+            ...milestoneData,
+            position: result.position
+          };
+          showMilestoneInfo(completeData);
+          focusCameraOnMilestone(result.position);
+        });
+        milestoneList.appendChild(li);
+      });
+
+      document.getElementById('infoPanel').style.display = 'block';
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInputs').innerHTML = '';
+      updateSearchInputs(document.getElementById('searchType').value);
+      resetView(true);
+    }
+
+    // Search function
+    function searchMilestones(criteria) {
+      let results = scene.children.filter(child => {
+        if (!child.userData || !child.userData.year) return false;
+        const milestone = child.userData;
+        
+        switch(criteria.type) {
+          case 'year':
+            const searchYear = parseInt(criteria.value);
+            if (isNaN(searchYear)) return false;
+            return milestone.year === searchYear;
+          case 'yearRange':
+            return milestone.year >= parseInt(criteria.start) && 
+                   milestone.year <= parseInt(criteria.end);
+          case 'yearsAgo':
+            return milestone.yearsAgo === parseInt(criteria.value);
+          case 'yearsAgoRange':
+            return milestone.yearsAgo >= parseInt(criteria.start) && 
+                   milestone.yearsAgo <= parseInt(criteria.end);
+          case 'humanType':
+            return milestone.humanType?.toLowerCase().includes(criteria.value.toLowerCase());
+          case 'culture':
+            return milestone.culture?.toLowerCase().includes(criteria.value.toLowerCase());
+          case 'category':
+            return milestone.category === criteria.value;
+          case 'idea':
+            return milestone.ideas?.some(idea => 
+              idea.toLowerCase().includes(criteria.value.toLowerCase())
+            );
+          case 'originator':
+            return milestone.originators?.some(originator => 
+              originator.toLowerCase().includes(criteria.value.toLowerCase())
+            );
+          default:
+            return false;
+        }
+      });
+
+      if (results.length > 0) {
+        // Reset previous selections
+        resetView(false);  // Don't reset camera when showing new results
+        
+        // Highlight all results
+        results.forEach(milestone => {
+          const selectionColor = milestone.userData.category === 'agriculture' ? 
+            SELECTED_AGRICULTURE_COLOR : SELECTED_COLOR;
+          milestone.material.color.setHex(selectionColor);
+        });
+
+        // Focus camera on the center of all results
+        const center = new THREE.Vector3();
+        results.forEach(milestone => {
+          center.add(milestone.position);
+        });
+        center.divideScalar(results.length);
+        focusCameraOnMilestone(center);
+
+        // Show results list
+        showResultsList(results);
+      } else {
+        // If no results found, show a message in the info panel
+        const infoPanel = document.getElementById('infoPanel');
+        const listView = document.getElementById('listView');
+        const detailView = document.getElementById('detailView');
+        
+        infoPanel.style.display = 'block';
+        listView.style.display = 'block';
+        detailView.style.display = 'none';
+        
+        const milestoneList = document.getElementById('milestoneList');
+        milestoneList.innerHTML = '<li style="color: #ff0000;">No milestones found for this search criteria</li>';
+      }
+    }
+
+    // Event listeners
+    document.getElementById('searchType').addEventListener('change', (e) => {
+      updateSearchInputs(e.target.value);
+    });
+
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      const searchType = document.getElementById('searchType').value;
+      let criteria = { type: searchType };
+
+      switch(searchType) {
+        case 'year':
+          criteria.value = document.getElementById('yearInput').value;
+          break;
+        case 'yearRange':
+          criteria.start = document.getElementById('startYearInput').value;
+          criteria.end = document.getElementById('endYearInput').value;
+          break;
+        case 'yearsAgo':
+          criteria.value = document.getElementById('yearsAgoInput').value;
+          break;
+        case 'yearsAgoRange':
+          criteria.start = document.getElementById('startYearsAgoInput').value;
+          criteria.end = document.getElementById('endYearsAgoInput').value;
+          break;
+        case 'humanType':
+          criteria.value = document.getElementById('humanTypeInput').value;
+          break;
+        case 'culture':
+          criteria.value = document.getElementById('cultureInput').value;
+          break;
+        case 'category':
+          criteria.value = document.getElementById('categoryInput').value;
+          break;
+        case 'idea':
+          criteria.value = document.getElementById('ideaInput').value;
+          break;
+        case 'originator':
+          criteria.value = document.getElementById('originatorInput').value;
+          break;
+      }
+
+      searchMilestones(criteria);
+    });
+
+    // Initialize search inputs
+    updateSearchInputs('year');
+
+    // Focus button handler - focus on ancient milestones
+    document.getElementById('focusBtn').onclick = function() {
+      // Find the center position of ancient milestones (between -50000 and -2900000)
+      const ancientMilestones = scene.children.filter(child => 
+        child.userData && 
+        child.userData.year <= -50000 && 
+        child.userData.year >= -2900000
+      );
+      
+      if (ancientMilestones.length > 0) {
+        // Calculate the average position
+        const center = new THREE.Vector3();
+        ancientMilestones.forEach(milestone => {
+          center.add(milestone.position);
+        });
+        center.divideScalar(ancientMilestones.length);
+        
+        // Focus on this center position
+        focusCameraOnMilestone(center);
+      }
+    };
 
     // Animation loop
     function animate() {
       requestAnimationFrame(animate);
+      
+      // Update arrow orientation if visible
+      if (arrowIndicator && arrowIndicator.visible) {
+        arrowIndicator.lookAt(camera.position);
+        arrowIndicator.rotateX(Math.PI);
+      }
+      
       controls.update();
       renderer.render(scene, camera);
     }
@@ -162,6 +713,23 @@
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    document.getElementById('backToList').addEventListener('click', () => {
+      const listView = document.getElementById('listView');
+      const detailView = document.getElementById('detailView');
+      
+      listView.style.display = 'block';
+      detailView.style.display = 'none';
+      
+      // Hide the arrow when going back to list
+      hideArrow();
+    });
+
+    document.getElementById('clearSearch').addEventListener('click', clearSearch);
+
+    document.getElementById('closeBtn').addEventListener('click', () => {
+      resetView(true);
     });
   </script>
 </body>
