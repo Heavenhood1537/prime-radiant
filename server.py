@@ -12,4 +12,4 @@ PORT = 8000
 
 my_server = socketserver.TCPServer(("", PORT), handler_object)
 print(f"Server started at localhost:{PORT}")
-my_server.serve_forever() 
+my_server.serve_forever()
