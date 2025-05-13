@@ -261,19 +261,22 @@
           if (m.category) categories.add(m.category);
         });
 
-        // Create category filters
+        // Create category filters - all unchecked by default
         const categoryFilters = document.getElementById('categoryFilters');
         categories.forEach(category => {
           const div = document.createElement('div');
           div.className = 'category-filter';
           div.innerHTML = `
-            <input type="checkbox" id="${category}" checked>
+            <input type="checkbox" id="${category}">
             <label for="${category}">${category}</label>
           `;
           categoryFilters.appendChild(div);
         });
 
-        displayMilestones(allMilestones);
+        // Initial display without showing results
+        milestoneMeshes = [];
+        document.getElementById('results-panel').style.display = 'none';
+        document.getElementById('info').style.display = 'none';
       })
       .catch(error => {
         console.error('Error loading milestones:', error);
@@ -398,15 +401,20 @@
       document.getElementById('startYear').value = '';
       document.getElementById('endYear').value = '';
       document.getElementById('searchText').value = '';
+      
+      // Reset checkboxes to unchecked state
       categories.forEach(category => {
-        document.getElementById(category).checked = true;
+        document.getElementById(category).checked = false;
       });
       
       // Hide both panels when resetting
       document.getElementById('results-panel').style.display = 'none';
       document.getElementById('info').style.display = 'none';
       
-      displayMilestones(allMilestones);
+      // Clear all milestone markers
+      milestoneMeshes.forEach(mesh => scene.remove(mesh));
+      milestoneMeshes = [];
+      renderer.render(scene, camera);
     }
 
     // Camera
