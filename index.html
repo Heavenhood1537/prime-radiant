@@ -5,11 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Radiant of Human Consciousness</title>
   <style>
-    body { margin: 0; overflow: hidden; }
+    body { margin: 0; overflow: hidden; background-color: #000; }
     canvas { display: block; }
-    #info { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 10px; font-size: 18px; display: none; }
-    #info a { color: #00ff00; }
-    #loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; background: rgba(0,0,0,0.7); padding: 20px; }
+    #info { 
+      position: absolute; 
+      top: 10px; 
+      left: 10px; 
+      background: rgba(0,0,0,0.8); 
+      color: white; 
+      padding: 20px; 
+      font-size: 16px; 
+      font-family: Arial, sans-serif;
+      border-radius: 10px;
+      max-width: 400px;
+      display: none;
+    }
+    #info a { 
+      color: #4CAF50; 
+      text-decoration: none;
+    }
+    #info a:hover {
+      text-decoration: underline;
+    }
+    #loading { 
+      position: absolute; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      color: white; 
+      background: rgba(0,0,0,0.8);
+      padding: 20px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -20,16 +47,29 @@
   <script>
     // Scene setup
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000);
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
     // Sphere (Radiant)
-    const sphereGeometry = new THREE.SphereGeometry(102, 32, 32);
-    const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
+    const sphereGeometry = new THREE.SphereGeometry(102, 64, 64);
+    const sphereMaterial = new THREE.MeshPhongMaterial({ 
+      color: 0x1a237e,
+      transparent: true,
+      opacity: 0.3,
+      wireframe: false
+    });
     const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
     scene.add(sphere);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    const pointLight = new THREE.PointLight(0xffffff, 1);
+    pointLight.position.set(200, 200, 200);
+    scene.add(pointLight);
 
     // Convert lat/lon/year to 3D position
     function getPosition(year, lat, lon) {
@@ -37,34 +77,32 @@
       const phi = (90 - lat) * Math.PI / 180;
       const theta = lon * Math.PI / 180;
       return new THREE.Vector3(
-        r * Math.cos(theta) * Math.sin(phi),
-        r * Math.sin(theta) * Math.sin(phi),
-        r * Math.cos(phi)
+        r * Math.sin(phi) * Math.cos(theta),
+        r * Math.cos(phi),
+        r * Math.sin(phi) * Math.sin(theta)
       );
     }
 
     // Load milestones from JSON
     const milestoneMeshes = [];
-    console.log('Starting to fetch milestones.json');
     fetch('milestones.json')
-      .then(response => {
-        console.log('Got response:', response.status);
-        return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
-        console.log('Parsed JSON data:', data);
         document.getElementById('loading').style.display = 'none';
-        // Access the milestones array from the JSON structure
         const milestones = data.milestones;
-        console.log('Number of milestones:', milestones.length);
+        
+        // Create milestone markers
         milestones.forEach(m => {
-          const geometry = new THREE.SphereGeometry(2, 16, 16);
-          const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+          const geometry = new THREE.SphereGeometry(1, 16, 16);
+          const material = new THREE.MeshPhongMaterial({ 
+            color: getCategoryColor(m.category),
+            emissive: getCategoryColor(m.category),
+            emissiveIntensity: 0.5
+          });
           const mesh = new THREE.Mesh(geometry, material);
-          // Use location.lat and location.lon from the milestone data
+          
           const lat = m.location ? m.location.lat : 0;
           const lon = m.location ? m.location.lon : 0;
-          console.log(`Creating milestone: ${m.year} at lat:${lat}, lon:${lon}`);
           mesh.position.copy(getPosition(m.year, lat, lon));
           mesh.userData = m;
           scene.add(mesh);
@@ -75,6 +113,26 @@
         console.error('Error loading milestones:', error);
         document.getElementById('loading').textContent = 'Error loading milestones. Please refresh the page.';
       });
+
+    // Get color based on milestone category
+    function getCategoryColor(category) {
+      const colors = {
+        technology: 0xff0000,    // Red
+        science: 0x00ff00,       // Green
+        philosophy: 0x0000ff,    // Blue
+        art: 0xff00ff,          // Magenta
+        communication: 0xffff00, // Yellow
+        agriculture: 0x00ffff,   // Cyan
+        urban: 0xff8000,        // Orange
+        industry: 0x8000ff,     // Purple
+        governance: 0x008000,    // Dark Green
+        engineering: 0xff0080,   // Pink
+        military: 0x800000,     // Maroon
+        exploration: 0x0080ff,   // Light Blue
+        astronomy: 0xffffff      // White
+      };
+      return colors[category] || 0xcccccc;
+    }
 
     // Camera
     camera.position.z = 200;
@@ -92,21 +150,26 @@
       if (intersects.length > 0) {
         const m = intersects[0].object.userData;
         infoDiv.style.display = 'block';
-        let html = `<strong>${m.year}: ${m.title}</strong><br>`;
-        if (m.description) html += `${m.description}<br>`;
-        if (m.category) html += `Category: ${m.category}<br>`;
-        if (m.originators) html += `Originators: ${m.originators}<br>`;
-        if (m.url) html += `<a href="${m.url}" target="_blank">Learn More</a>`;
+        let html = `<strong>${m.year}: ${m.title}</strong><br><br>`;
+        if (m.description) html += `${m.description}<br><br>`;
+        if (m.category) html += `<strong>Category:</strong> ${m.category}<br>`;
+        if (m.culture) html += `<strong>Culture:</strong> ${m.culture}<br>`;
+        if (m.humanType) html += `<strong>Human Type:</strong> ${m.humanType}<br>`;
+        if (m.originators && m.originators.length) html += `<strong>Originators:</strong> ${m.originators.join(', ')}<br>`;
+        if (m.ideas && m.ideas.length) html += `<strong>Key Ideas:</strong> ${m.ideas.join(', ')}<br>`;
+        if (m.url) html += `<br><a href="${m.url}" target="_blank">Learn More →</a>`;
         infoDiv.innerHTML = html;
       } else {
         infoDiv.style.display = 'none';
       }
     });
 
-    // Orbit controls (drag to rotate)
+    // Orbit controls
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
+    controls.minDistance = 120;
+    controls.maxDistance = 400;
 
     // Animation loop
     function animate() {
