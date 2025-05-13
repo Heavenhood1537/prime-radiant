@@ -303,14 +303,25 @@
         milestoneMeshes.push(mesh);
       });
 
-      // Update results panel
+      // Update display based on number of results
       const resultsPanel = document.getElementById('results-panel');
       const resultsList = document.getElementById('results-list');
       const resultsCount = document.getElementById('results-count');
+      const infoDiv = document.getElementById('info');
       
-      if (milestones.length > 0) {
+      if (milestones.length === 0) {
+        // No results
+        resultsPanel.style.display = 'none';
+        infoDiv.style.display = 'none';
+      } else if (milestones.length === 1) {
+        // Single result - show info directly
+        resultsPanel.style.display = 'none';
+        showMilestoneInfo(milestones[0]);
+      } else {
+        // Multiple results - show list
+        infoDiv.style.display = 'none';
         resultsPanel.style.display = 'block';
-        resultsCount.textContent = `Found ${milestones.length} milestone${milestones.length === 1 ? '' : 's'}`;
+        resultsCount.textContent = `Found ${milestones.length} milestones`;
         
         resultsList.innerHTML = milestones
           .sort((a, b) => a.year - b.year)
@@ -319,21 +330,19 @@
               ${m.year}: ${m.title}
             </li>
           `).join('');
-      } else {
-        resultsPanel.style.display = 'none';
       }
     }
 
     function showMilestoneInfo(milestone) {
       const infoDiv = document.getElementById('info');
+      const resultsPanel = document.getElementById('results-panel');
+      
+      // Hide results panel when showing individual milestone info
+      resultsPanel.style.display = 'none';
+      
       infoDiv.style.display = 'block';
       let html = `<strong>${milestone.year}: ${milestone.title}</strong><br><br>`;
-      if (milestone.description) html += `${milestone.description}<br><br>`;
-      if (milestone.category) html += `<strong>Category:</strong> ${milestone.category}<br>`;
-      if (milestone.culture) html += `<strong>Culture:</strong> ${milestone.culture}<br>`;
-      if (milestone.humanType) html += `<strong>Human Type:</strong> ${milestone.humanType}<br>`;
-      if (milestone.originators && milestone.originators.length) html += `<strong>Originators:</strong> ${milestone.originators.join(', ')}<br>`;
-      if (milestone.ideas && milestone.ideas.length) html += `<strong>Key Ideas:</strong> ${milestone.ideas.join(', ')}<br>`;
+      if (milestone.description) html += `${milestone.description}<br>`;
       if (milestone.url) html += `<br><a href="${milestone.url}" target="_blank">More Info →</a>`;
       infoDiv.innerHTML = html;
     }
@@ -392,6 +401,11 @@
       categories.forEach(category => {
         document.getElementById(category).checked = true;
       });
+      
+      // Hide both panels when resetting
+      document.getElementById('results-panel').style.display = 'none';
+      document.getElementById('info').style.display = 'none';
+      
       displayMilestones(allMilestones);
     }
 
