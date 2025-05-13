@@ -5,8 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Radiant of Human Consciousness</title>
   <style>
-    body { margin: 0; overflow: hidden; background-color: #000; }
+    body { 
+      margin: 0; 
+      overflow: hidden; 
+      background-color: #000;
+      font-family: Arial, sans-serif;
+    }
     canvas { display: block; }
+    #controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+    }
     #info { 
       position: absolute; 
       top: 10px; 
@@ -14,8 +29,7 @@
       background: rgba(0,0,0,0.8); 
       color: white; 
       padding: 20px; 
-      font-size: 16px; 
-      font-family: Arial, sans-serif;
+      font-size: 16px;
       border-radius: 10px;
       max-width: 400px;
       display: none;
@@ -37,9 +51,61 @@
       padding: 20px;
       border-radius: 10px;
     }
+    .control-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="number"], input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid #444;
+      color: white;
+      border-radius: 4px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .category-filter {
+      margin-bottom: 10px;
+    }
+    .category-filter label {
+      display: inline-block;
+      margin-right: 10px;
+    }
   </style>
 </head>
 <body>
+  <div id="controls">
+    <div class="control-group">
+      <label>Search by Year Range:</label>
+      <input type="number" id="startYear" placeholder="Start Year (e.g. -5000)">
+      <input type="number" id="endYear" placeholder="End Year (e.g. 1000)">
+    </div>
+    <div class="control-group">
+      <label>Search by Text:</label>
+      <input type="text" id="searchText" placeholder="Search title, description, ideas...">
+    </div>
+    <div class="control-group">
+      <label>Filter by Category:</label>
+      <div id="categoryFilters"></div>
+    </div>
+    <button onclick="applyFilters()">Apply Filters</button>
+    <button onclick="resetFilters()">Reset</button>
+  </div>
   <div id="info"></div>
   <div id="loading">Loading milestones...</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -83,37 +149,6 @@
       );
     }
 
-    // Load milestones from JSON
-    const milestoneMeshes = [];
-    fetch('milestones.json')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById('loading').style.display = 'none';
-        const milestones = data.milestones;
-        
-        // Create milestone markers
-        milestones.forEach(m => {
-          const geometry = new THREE.SphereGeometry(1, 16, 16);
-          const material = new THREE.MeshPhongMaterial({ 
-            color: getCategoryColor(m.category),
-            emissive: getCategoryColor(m.category),
-            emissiveIntensity: 0.5
-          });
-          const mesh = new THREE.Mesh(geometry, material);
-          
-          const lat = m.location ? m.location.lat : 0;
-          const lon = m.location ? m.location.lon : 0;
-          mesh.position.copy(getPosition(m.year, lat, lon));
-          mesh.userData = m;
-          scene.add(mesh);
-          milestoneMeshes.push(mesh);
-        });
-      })
-      .catch(error => {
-        console.error('Error loading milestones:', error);
-        document.getElementById('loading').textContent = 'Error loading milestones. Please refresh the page.';
-      });
-
     // Get color based on milestone category
     function getCategoryColor(category) {
       const colors = {
@@ -129,9 +164,115 @@
         engineering: 0xff0080,   // Pink
         military: 0x800000,     // Maroon
         exploration: 0x0080ff,   // Light Blue
-        astronomy: 0xffffff      // White
+        astronomy: 0xffffff,     // White
+        transport: 0x808080     // Gray
       };
       return colors[category] || 0xcccccc;
+    }
+
+    let allMilestones = [];
+    let milestoneMeshes = [];
+    let categories = new Set();
+
+    // Load milestones from JSON
+    fetch('milestones.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('loading').style.display = 'none';
+        allMilestones = data.milestones;
+        
+        // Collect all unique categories
+        allMilestones.forEach(m => {
+          if (m.category) categories.add(m.category);
+        });
+
+        // Create category filters
+        const categoryFilters = document.getElementById('categoryFilters');
+        categories.forEach(category => {
+          const div = document.createElement('div');
+          div.className = 'category-filter';
+          div.innerHTML = `
+            <input type="checkbox" id="${category}" checked>
+            <label for="${category}">${category}</label>
+          `;
+          categoryFilters.appendChild(div);
+        });
+
+        displayMilestones(allMilestones);
+      })
+      .catch(error => {
+        console.error('Error loading milestones:', error);
+        document.getElementById('loading').textContent = 'Error loading milestones. Please refresh the page.';
+      });
+
+    function displayMilestones(milestones) {
+      // Clear existing milestone meshes
+      milestoneMeshes.forEach(mesh => scene.remove(mesh));
+      milestoneMeshes = [];
+
+      // Create new milestone markers
+      milestones.forEach(m => {
+        const geometry = new THREE.SphereGeometry(1, 16, 16);
+        const material = new THREE.MeshPhongMaterial({ 
+          color: getCategoryColor(m.category),
+          emissive: getCategoryColor(m.category),
+          emissiveIntensity: 0.5
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        
+        const lat = m.location ? m.location.lat : 0;
+        const lon = m.location ? m.location.lon : 0;
+        mesh.position.copy(getPosition(m.year, lat, lon));
+        mesh.userData = m;
+        scene.add(mesh);
+        milestoneMeshes.push(mesh);
+      });
+    }
+
+    function applyFilters() {
+      const startYear = parseInt(document.getElementById('startYear').value) || -3000000;
+      const endYear = parseInt(document.getElementById('endYear').value) || 2025;
+      const searchText = document.getElementById('searchText').value.toLowerCase();
+      
+      // Get selected categories
+      const selectedCategories = Array.from(categories)
+        .filter(category => document.getElementById(category).checked);
+
+      const filteredMilestones = allMilestones.filter(m => {
+        // Year range filter
+        if (m.year < startYear || m.year > endYear) return false;
+
+        // Category filter
+        if (!selectedCategories.includes(m.category)) return false;
+
+        // Text search
+        if (searchText) {
+          const searchFields = [
+            m.title,
+            m.description,
+            m.culture,
+            m.humanType,
+            ...(m.ideas || []),
+            ...(m.originators || [])
+          ].map(field => (field || '').toLowerCase());
+
+          return searchFields.some(field => field.includes(searchText));
+        }
+
+        return true;
+      });
+
+      displayMilestones(filteredMilestones);
+    }
+
+    function resetFilters() {
+      document.getElementById('startYear').value = '';
+      document.getElementById('endYear').value = '';
+      document.getElementById('searchText').value = '';
+      categories.forEach(category => {
+        document.getElementById(category).checked = true;
+      });
+      displayMilestones(allMilestones);
     }
 
     // Camera
@@ -171,6 +312,13 @@
     controls.minDistance = 120;
     controls.maxDistance = 400;
 
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
     // Animation loop
     function animate() {
       requestAnimationFrame(animate);
@@ -178,13 +326,6 @@
       renderer.render(scene, camera);
     }
     animate();
-
-    // Resize handler
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
   </script>
 </body>
 </html> 
