@@ -110,6 +110,15 @@
       margin-right: 8px;
       font-size: 11px;
     }
+    .year-search-button {
+      background: #1E88E5;
+      width: 100%;
+      margin-top: 4px;
+      padding: 4px 8px;
+    }
+    .year-search-button:hover {
+      background: #1565C0;
+    }
   </style>
 </head>
 <body>
@@ -118,6 +127,7 @@
       <label>Search by Year Range:</label>
       <input type="number" id="startYear" placeholder="Start Year (e.g. -5000)">
       <input type="number" id="endYear" placeholder="End Year (e.g. 1000)">
+      <button onclick="searchByYearRange()" class="year-search-button">Start Search</button>
     </div>
     <div class="control-group">
       <label>Search by Text:</label>
@@ -128,7 +138,7 @@
       <div id="categoryFilters"></div>
     </div>
     <div class="button-group">
-      <button onclick="applyFilters()" class="search-button">🔍 Search</button>
+      <button onclick="applyFilters()" class="search-button">🔍 Search All</button>
       <button onclick="resetFilters()" class="reset-button">↺ Reset</button>
     </div>
   </div>
@@ -253,6 +263,17 @@
         scene.add(mesh);
         milestoneMeshes.push(mesh);
       });
+    }
+
+    function searchByYearRange() {
+      const startYear = parseInt(document.getElementById('startYear').value) || -3000000;
+      const endYear = parseInt(document.getElementById('endYear').value) || 2025;
+      
+      const filteredMilestones = allMilestones.filter(m => {
+        return m.year >= startYear && m.year <= endYear;
+      });
+
+      displayMilestones(filteredMilestones);
     }
 
     function applyFilters() {
