@@ -23,6 +23,39 @@
       width: 210px;
       font-size: 12px;
     }
+    #results-panel {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      width: 250px;
+      max-height: 80vh;
+      overflow-y: auto;
+      display: none;
+    }
+    #results-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #results-list li {
+      padding: 8px;
+      margin: 4px 0;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+    #results-list li:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    #results-count {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #4CAF50;
+    }
     #info { 
       position: absolute; 
       top: 50%; 
@@ -124,7 +157,7 @@
 <body>
   <div id="controls">
     <div class="control-group">
-      <label>Search by Year Range:</label>
+      <label>Search by Period:</label>
       <input type="number" id="startYear" placeholder="Start Year (e.g. -5000)">
       <input type="number" id="endYear" placeholder="End Year (e.g. 1000)">
       <button onclick="searchByYearRange()" class="year-search-button">Start Search</button>
@@ -142,6 +175,12 @@
       <button onclick="resetFilters()" class="reset-button">↺ Reset</button>
     </div>
   </div>
+  
+  <div id="results-panel">
+    <div id="results-count"></div>
+    <ul id="results-list"></ul>
+  </div>
+  
   <div id="info"></div>
   <div id="loading">Loading milestones...</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -263,6 +302,40 @@
         scene.add(mesh);
         milestoneMeshes.push(mesh);
       });
+
+      // Update results panel
+      const resultsPanel = document.getElementById('results-panel');
+      const resultsList = document.getElementById('results-list');
+      const resultsCount = document.getElementById('results-count');
+      
+      if (milestones.length > 0) {
+        resultsPanel.style.display = 'block';
+        resultsCount.textContent = `Found ${milestones.length} milestone${milestones.length === 1 ? '' : 's'}`;
+        
+        resultsList.innerHTML = milestones
+          .sort((a, b) => a.year - b.year)
+          .map(m => `
+            <li onclick="showMilestoneInfo(${JSON.stringify(m).replace(/"/g, '&quot;')})">
+              ${m.year}: ${m.title}
+            </li>
+          `).join('');
+      } else {
+        resultsPanel.style.display = 'none';
+      }
+    }
+
+    function showMilestoneInfo(milestone) {
+      const infoDiv = document.getElementById('info');
+      infoDiv.style.display = 'block';
+      let html = `<strong>${milestone.year}: ${milestone.title}</strong><br><br>`;
+      if (milestone.description) html += `${milestone.description}<br><br>`;
+      if (milestone.category) html += `<strong>Category:</strong> ${milestone.category}<br>`;
+      if (milestone.culture) html += `<strong>Culture:</strong> ${milestone.culture}<br>`;
+      if (milestone.humanType) html += `<strong>Human Type:</strong> ${milestone.humanType}<br>`;
+      if (milestone.originators && milestone.originators.length) html += `<strong>Originators:</strong> ${milestone.originators.join(', ')}<br>`;
+      if (milestone.ideas && milestone.ideas.length) html += `<strong>Key Ideas:</strong> ${milestone.ideas.join(', ')}<br>`;
+      if (milestone.url) html += `<br><a href="${milestone.url}" target="_blank">More Info →</a>`;
+      infoDiv.innerHTML = html;
     }
 
     function searchByYearRange() {
