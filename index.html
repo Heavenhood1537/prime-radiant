@@ -45,12 +45,18 @@
 
     // Load milestones from JSON
     const milestoneMeshes = [];
+    console.log('Starting to fetch milestones.json');
     fetch('milestones.json')
-      .then(response => response.json())
+      .then(response => {
+        console.log('Got response:', response.status);
+        return response.json();
+      })
       .then(data => {
+        console.log('Parsed JSON data:', data);
         document.getElementById('loading').style.display = 'none';
         // Access the milestones array from the JSON structure
         const milestones = data.milestones;
+        console.log('Number of milestones:', milestones.length);
         milestones.forEach(m => {
           const geometry = new THREE.SphereGeometry(2, 16, 16);
           const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
@@ -58,6 +64,7 @@
           // Use location.lat and location.lon from the milestone data
           const lat = m.location ? m.location.lat : 0;
           const lon = m.location ? m.location.lon : 0;
+          console.log(`Creating milestone: ${m.year} at lat:${lat}, lon:${lon}`);
           mesh.position.copy(getPosition(m.year, lat, lon));
           mesh.userData = m;
           scene.add(mesh);
