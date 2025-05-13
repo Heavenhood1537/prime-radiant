@@ -1,1 +1,115 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radiant of Human Consciousness</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; }
+    #info { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 10px; font-size: 18px; display: none; }
+    #info a { color: #00ff00; }
+    #loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; background: rgba(0,0,0,0.7); padding: 20px; }
+  </style>
+</head>
+<body>
+  <div id="info"></div>
+  <div id="loading">Loading milestones...</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script>
+    // Scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Sphere (Radiant)
+    const sphereGeometry = new THREE.SphereGeometry(102, 32, 32);
+    const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true });
+    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    scene.add(sphere);
+
+    // Convert lat/lon/year to 3D position
+    function getPosition(year, lat, lon) {
+      const r = (100000 + year) / 1000; // Radius: 1cm = 1000 years
+      const phi = (90 - lat) * Math.PI / 180;
+      const theta = lon * Math.PI / 180;
+      return new THREE.Vector3(
+        r * Math.cos(theta) * Math.sin(phi),
+        r * Math.sin(theta) * Math.sin(phi),
+        r * Math.cos(phi)
+      );
+    }
+
+    // Load milestones from JSON
+    const milestoneMeshes = [];
+    fetch('milestones.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('loading').style.display = 'none';
+        data.forEach(m => {
+          const geometry = new THREE.SphereGeometry(2, 16, 16);
+          const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.position.copy(getPosition(m.year, m.latitude || 0, m.longitude || 0));
+          mesh.userData = m;
+          scene.add(mesh);
+          milestoneMeshes.push(mesh);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading milestones:', error);
+        document.getElementById('loading').textContent = 'Error loading milestones. Please refresh the page.';
+      });
+
+    // Camera
+    camera.position.z = 200;
+
+    // Raycaster for clicks
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    const infoDiv = document.getElementById('info');
+
+    window.addEventListener('click', (event) => {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(milestoneMeshes);
+      if (intersects.length > 0) {
+        const m = intersects[0].object.userData;
+        infoDiv.style.display = 'block';
+        let html = `<strong>${m.year}: ${m.title}</strong><br>`;
+        if (m.description) html += `${m.description}<br>`;
+        if (m.category) html += `Category: ${m.category}<br>`;
+        if (m.originators) html += `Originators: ${m.originators}<br>`;
+        if (m.url) html += `<a href="${m.url}" target="_blank">Learn More</a>`;
+        infoDiv.innerHTML = html;
+      } else {
+        infoDiv.style.display = 'none';
+      }
+    });
+
+    // Orbit controls (drag to rotate)
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html> 
