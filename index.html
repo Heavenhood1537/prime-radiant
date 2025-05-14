@@ -282,9 +282,17 @@
     let categories = new Set();
 
     // Load milestones from JSON
-    fetch('milestones.json')
-      .then(response => response.json())
+    console.log('Attempting to load milestones.json...');
+    fetch('./milestones.json')
+      .then(response => {
+        console.log('Response status:', response.status);
+        if (!response.ok) {
+          throw new Error('Network response was not ok - Status: ' + response.status);
+        }
+        return response.json();
+      })
       .then(data => {
+        console.log('Data loaded successfully:', data);
         document.getElementById('loading').style.display = 'none';
         allMilestones = data.milestones;
         
@@ -319,7 +327,7 @@
       })
       .catch(error => {
         console.error('Error loading milestones:', error);
-        document.getElementById('loading').textContent = 'Error loading milestones. Please refresh the page.';
+        document.getElementById('loading').textContent = 'Error loading milestones: ' + error.message;
       });
 
     function displayMilestones(milestones) {
