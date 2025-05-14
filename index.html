@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prime Radiant - A 3D visualization of human progress through time">
   <title>Radiant of Human Consciousness</title>
   <style>
     body { 
@@ -17,7 +18,7 @@
       top: 10px;
       left: 10px;
       background: rgba(0,0,0,0.8);
-      color: white;
+      color: rgb(0, 0, 255);  /* Pure blue text */
       padding: 15px;
       border-radius: 8px;
       width: 210px;
@@ -28,13 +29,13 @@
       top: 10px;
       right: 10px;
       background: rgba(0,0,0,0.8);
-      color: white;
+      color: rgb(0, 0, 255);  /* Pure blue text */
       padding: 15px;
       border-radius: 8px;
       width: 250px;
       max-height: 80vh;
       overflow-y: auto;
-      display: none;
+      font-size: 10px;
     }
     #results-list {
       list-style: none;
@@ -47,33 +48,47 @@
       cursor: pointer;
       border-radius: 4px;
       transition: background-color 0.2s;
+      color: rgb(0, 0, 255);  /* Pure blue text */
     }
     #results-list li:hover {
-      background: rgba(255,255,255,0.1);
+      background: rgba(0, 0, 255, 0.1);  /* Slight blue tint on hover */
     }
     #results-count {
       margin-bottom: 10px;
-      font-size: 14px;
-      color: #4CAF50;
+      font-size: 12px;
+      color: rgb(0, 0, 255);  /* Pure blue text */
     }
-    #info { 
-      position: absolute; 
-      top: 50%; 
-      left: 10px; 
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.8); 
-      color: white; 
-      padding: 15px; 
-      font-size: 14px;
+    #info {
+      background: rgba(0,0,0,0.9);
+      color: rgb(0, 0, 255);  /* Pure blue text */
+      padding: 15px;
+      font-size: 12px;
       border-radius: 8px;
-      max-width: 300px;
+      margin-bottom: 15px;
       display: none;
     }
+    #back-button {
+      background: #1e4976;  /* Marine blue background */
+      color: white;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+      margin-bottom: 10px;
+      display: none;
+      width: 100%;
+      text-align: left;
+    }
+    #back-button:hover {
+      background: #2d6dad;  /* Lighter marine blue on hover */
+    }
     #info a { 
-      color: #4CAF50; 
+      color: rgb(0, 127, 255);  /* Azure blue for links */
       text-decoration: none;
     }
     #info a:hover {
+      color: rgb(0, 255, 255);  /* Cyan for link hover */
       text-decoration: underline;
     }
     #loading { 
@@ -97,11 +112,16 @@
       width: 95%;
       padding: 4px;
       margin-bottom: 8px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid #444;
-      color: white;
+      background: rgb(0, 0, 0);  /* Pure black background */
+      border: 1px solid rgb(0, 0, 255);  /* Pure blue border */
+      color: rgb(0, 0, 255);  /* Pure blue text */
       border-radius: 3px;
       font-size: 11px;
+      outline: none;
+    }
+    input[type="number"]:focus, input[type="text"]:focus {
+      border-color: rgb(0, 127, 255);  /* Azure blue for focus */
+      box-shadow: 0 0 3px rgb(0, 0, 255);  /* Pure blue glow */
     }
     .button-group {
       display: flex;
@@ -137,20 +157,27 @@
     }
     .category-filter {
       margin-bottom: 8px;
+      color: rgb(0, 0, 255);  /* Pure blue text */
     }
     .category-filter label {
       display: inline-block;
       margin-right: 8px;
       font-size: 11px;
+      color: rgb(0, 0, 255);  /* Pure blue text */
+    }
+    .category-filter input[type="checkbox"] {
+      accent-color: rgb(0, 0, 255);  /* Pure blue checkbox */
     }
     .year-search-button {
-      background: #1E88E5;
+      background: rgb(0, 0, 0);  /* Pure black background */
+      border: 1px solid rgb(0, 0, 255);  /* Pure blue border */
+      color: rgb(0, 0, 255);  /* Pure blue text */
       width: 100%;
       margin-top: 4px;
       padding: 4px 8px;
     }
     .year-search-button:hover {
-      background: #1565C0;
+      background: rgba(0, 0, 255, 0.1);  /* Slight blue tint on hover */
     }
   </style>
 </head>
@@ -177,11 +204,12 @@
   </div>
   
   <div id="results-panel">
+    <button id="back-button" onclick="backToList()">← Back to List</button>
+    <div id="info"></div>
     <div id="results-count"></div>
     <ul id="results-list"></ul>
   </div>
   
-  <div id="info"></div>
   <div id="loading">Loading milestones...</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
@@ -194,55 +222,59 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    // Sphere (Radiant)
-    const sphereGeometry = new THREE.SphereGeometry(102, 64, 64);
-    const sphereMaterial = new THREE.MeshPhongMaterial({ 
-      color: 0x1a237e,
-      transparent: true,
-      opacity: 0.3,
-      wireframe: false
-    });
-    const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-    scene.add(sphere);
+    // Helper function to normalize years to a reasonable scale
+    function normalizeYear(year) {
+      const oldestYear = -2900000; // Our oldest milestone
+      const scale = 200; // Maximum radius of our visualization
+      return ((year - oldestYear) / Math.abs(oldestYear)) * scale;
+    }
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(ambientLight);
-    const pointLight = new THREE.PointLight(0xffffff, 1);
-    pointLight.position.set(200, 200, 200);
-    scene.add(pointLight);
-
-    // Convert lat/lon/year to 3D position
+    // Convert lat/lon/year to 3D position with temporal radius
     function getPosition(year, lat, lon) {
-      const r = (100000 + year) / 1000; // Radius: 1cm = 1000 years
+      const radius = normalizeYear(year);
       const phi = (90 - lat) * Math.PI / 180;
       const theta = lon * Math.PI / 180;
       return new THREE.Vector3(
-        r * Math.sin(phi) * Math.cos(theta),
-        r * Math.cos(phi),
-        r * Math.sin(phi) * Math.sin(theta)
+        radius * Math.sin(phi) * Math.cos(theta),
+        radius * Math.cos(phi),
+        radius * Math.sin(phi) * Math.sin(theta)
       );
     }
 
-    // Get color based on milestone category
-    function getCategoryColor(category) {
-      const colors = {
-        technology: 0xff0000,    // Red
-        science: 0x00ff00,       // Green
-        philosophy: 0x0000ff,    // Blue
-        art: 0xff00ff,          // Magenta
-        communication: 0xffff00, // Yellow
-        agriculture: 0x00ffff,   // Cyan
-        urban: 0xff8000,        // Orange
-        industry: 0x8000ff,     // Purple
-        governance: 0x008000,    // Dark Green
-        engineering: 0xff0080,   // Pink
-        military: 0x800000,     // Maroon
-        exploration: 0x0080ff,   // Light Blue
-        astronomy: 0xffffff,     // White
-        transport: 0x808080     // Gray
-      };
-      return colors[category] || 0xcccccc;
+    // Create a central origin point
+    const originGeometry = new THREE.SphereGeometry(2, 32, 32);
+    const originMaterial = new THREE.MeshPhongMaterial({
+      color: 0xffffff,
+      emissive: 0x444444,
+      emissiveIntensity: 0.5
+    });
+    const originSphere = new THREE.Mesh(originGeometry, originMaterial);
+    scene.add(originSphere);
+
+    // Function to create a pearl-like milestone marker without harsh glow
+    function createMilestoneMarker(milestone) {
+      const markerGeometry = new THREE.SphereGeometry(2.5, 32, 32);
+      const markerMaterial = new THREE.MeshPhongMaterial({
+        color: getCategoryColor(milestone.category),
+        emissive: getCategoryColor(milestone.category),
+        emissiveIntensity: 0.3,
+        transparent: false,
+        shininess: 50
+      });
+      
+      const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+      return marker;
+    }
+
+    // Function to create an invisible temporal ray (used only for positioning)
+    function createTemporalRay(start, end) {
+      const points = [start, end];
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      const material = new THREE.LineBasicMaterial({
+        transparent: true,
+        opacity: 0  // Make rays completely invisible
+      });
+      return new THREE.Line(geometry, material);
     }
 
     let allMilestones = [];
@@ -261,22 +293,29 @@
           if (m.category) categories.add(m.category);
         });
 
-        // Create category filters - all unchecked by default
+        // Create category filters with automatic search
         const categoryFilters = document.getElementById('categoryFilters');
         categories.forEach(category => {
           const div = document.createElement('div');
           div.className = 'category-filter';
           div.innerHTML = `
-            <input type="checkbox" id="${category}">
+            <input type="checkbox" id="${category}" onchange="categoryChanged()">
             <label for="${category}">${category}</label>
           `;
           categoryFilters.appendChild(div);
         });
 
-        // Initial display without showing results
-        milestoneMeshes = [];
+        // Initialize with empty display
         document.getElementById('results-panel').style.display = 'none';
         document.getElementById('info').style.display = 'none';
+        
+        // Clear any existing milestone markers
+        milestoneMeshes.forEach(mesh => {
+          if (mesh.parent) mesh.parent.remove(mesh);
+          if (mesh.geometry) mesh.geometry.dispose();
+          if (mesh.material) mesh.material.dispose();
+        });
+        milestoneMeshes = [];
       })
       .catch(error => {
         console.error('Error loading milestones:', error);
@@ -285,45 +324,42 @@
 
     function displayMilestones(milestones) {
       // Clear existing milestone meshes
-      milestoneMeshes.forEach(mesh => scene.remove(mesh));
+      milestoneMeshes.forEach(mesh => {
+        if (mesh.parent) mesh.parent.remove(mesh);
+        if (mesh.geometry) mesh.geometry.dispose();
+        if (mesh.material) mesh.material.dispose();
+      });
       milestoneMeshes = [];
 
-      // Create new milestone markers
+      // Sort milestones by year to ensure temporal order
+      milestones.sort((a, b) => a.year - b.year);
+
       milestones.forEach(m => {
-        const geometry = new THREE.SphereGeometry(1, 16, 16);
-        const material = new THREE.MeshPhongMaterial({ 
-          color: getCategoryColor(m.category),
-          emissive: getCategoryColor(m.category),
-          emissiveIntensity: 0.5
-        });
-        const mesh = new THREE.Mesh(geometry, material);
+        const marker = createMilestoneMarker(m);
+        const position = getPosition(m.year, m.location ? m.location.lat : 0, m.location ? m.location.lon : 0);
+        marker.position.copy(position);
+        marker.userData = m;
         
-        const lat = m.location ? m.location.lat : 0;
-        const lon = m.location ? m.location.lon : 0;
-        mesh.position.copy(getPosition(m.year, lat, lon));
-        mesh.userData = m;
-        scene.add(mesh);
-        milestoneMeshes.push(mesh);
+        scene.add(marker);
+        milestoneMeshes.push(marker);
       });
 
-      // Update display based on number of results
+      // Update display panels
       const resultsPanel = document.getElementById('results-panel');
       const resultsList = document.getElementById('results-list');
       const resultsCount = document.getElementById('results-count');
       const infoDiv = document.getElementById('info');
       
       if (milestones.length === 0) {
-        // No results
         resultsPanel.style.display = 'none';
-        infoDiv.style.display = 'none';
-      } else if (milestones.length === 1) {
-        // Single result - show info directly
-        resultsPanel.style.display = 'none';
-        showMilestoneInfo(milestones[0]);
       } else {
-        // Multiple results - show list
-        infoDiv.style.display = 'none';
+        // Show results panel and list
         resultsPanel.style.display = 'block';
+        resultsList.style.display = 'block';
+        resultsCount.style.display = 'block';
+        
+        // Hide info and back button
+        infoDiv.style.display = 'none';
         resultsCount.textContent = `Found ${milestones.length} milestones`;
         
         resultsList.innerHTML = milestones
@@ -334,48 +370,140 @@
             </li>
           `).join('');
       }
+
+      // Log for debugging
+      console.log(`Displaying ${milestones.length} milestones`);
     }
 
     function showMilestoneInfo(milestone) {
       const infoDiv = document.getElementById('info');
+      const backButton = document.getElementById('back-button');
       const resultsPanel = document.getElementById('results-panel');
+      const resultsList = document.getElementById('results-list');
+      const resultsCount = document.getElementById('results-count');
       
-      // Hide results panel when showing individual milestone info
-      resultsPanel.style.display = 'none';
+      // Keep results panel visible but hide list and count
+      resultsPanel.style.display = 'block';
+      resultsList.style.display = 'none';
+      resultsCount.style.display = 'none';
       
+      // Show back button and info
+      backButton.style.display = 'block';
       infoDiv.style.display = 'block';
+      
       let html = `<strong>${milestone.year}: ${milestone.title}</strong><br><br>`;
-      if (milestone.description) html += `${milestone.description}<br>`;
-      if (milestone.url) html += `<br><a href="${milestone.url}" target="_blank">More Info →</a>`;
+      if (milestone.description) html += `${milestone.description}<br><br>`;
+      if (milestone.category) html += `<strong>Category:</strong> ${milestone.category}<br>`;
+      if (milestone.culture) html += `<strong>Culture:</strong> ${milestone.culture}<br>`;
+      if (milestone.humanType) html += `<strong>Human Type:</strong> ${milestone.humanType}<br>`;
+      if (milestone.originators && milestone.originators.length) html += `<strong>Originators:</strong> ${milestone.originators.join(', ')}<br>`;
+      if (milestone.ideas && milestone.ideas.length) html += `<strong>Key Ideas:</strong> ${milestone.ideas.join(', ')}<br>`;
+      if (milestone.url) html += `<br><a href="${milestone.url}" target="_blank">Learn More →</a>`;
       infoDiv.innerHTML = html;
     }
 
-    function searchByYearRange() {
-      const startYear = parseInt(document.getElementById('startYear').value) || -3000000;
-      const endYear = parseInt(document.getElementById('endYear').value) || 2025;
+    function backToList() {
+      const infoDiv = document.getElementById('info');
+      const backButton = document.getElementById('back-button');
+      const resultsList = document.getElementById('results-list');
+      const resultsCount = document.getElementById('results-count');
       
-      const filteredMilestones = allMilestones.filter(m => {
-        return m.year >= startYear && m.year <= endYear;
-      });
+      // Hide info and back button
+      infoDiv.style.display = 'none';
+      backButton.style.display = 'none';
+      
+      // Show results list and count
+      resultsList.style.display = 'block';
+      resultsCount.style.display = 'block';
+    }
 
-      displayMilestones(filteredMilestones);
+    // Add event listeners for input fields to clear previous results
+    document.getElementById('searchText').addEventListener('focus', function() {
+      clearPreviousResults(true);  // true indicates clearing period search
+    });
+    
+    // Remove period search field listeners that were clearing results
+    
+    // Add enter key listener for text search
+    document.getElementById('searchText').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        applyFilters();
+      }
+    });
+
+    function clearPreviousResults(clearPeriod = false) {
+      const resultsPanel = document.getElementById('results-panel');
+      const infoDiv = document.getElementById('info');
+      const backButton = document.getElementById('back-button');
+      
+      // Only clear period search if explicitly requested
+      if (clearPeriod) {
+        document.getElementById('startYear').value = '';
+        document.getElementById('endYear').value = '';
+      }
+      
+      // Clear text search
+      document.getElementById('searchText').value = '';
+      
+      // Hide all results elements
+      resultsPanel.style.display = 'none';
+      infoDiv.style.display = 'none';
+      backButton.style.display = 'none';
+      
+      // Clear existing milestone markers
+      milestoneMeshes.forEach(mesh => {
+        if (mesh.parent) mesh.parent.remove(mesh);
+        if (mesh.geometry) mesh.geometry.dispose();
+        if (mesh.material) mesh.material.dispose();
+      });
+      milestoneMeshes = [];
+      renderer.render(scene, camera);
+    }
+
+    function categoryChanged() {
+      // Clear text search and period search when using categories
+      document.getElementById('searchText').value = '';
+      document.getElementById('startYear').value = '';
+      document.getElementById('endYear').value = '';
+      
+      // Get selected categories
+      const selectedCategories = Array.from(categories)
+        .filter(category => document.getElementById(category).checked);
+      
+      // If no categories are selected, clear the display
+      if (selectedCategories.length === 0) {
+        clearPreviousResults(true);
+        return;
+      }
+      
+      // Apply filters immediately when categories change
+      applyFilters();
     }
 
     function applyFilters() {
-      const startYear = parseInt(document.getElementById('startYear').value) || -3000000;
-      const endYear = parseInt(document.getElementById('endYear').value) || 2025;
+      const startYear = parseInt(document.getElementById('startYear').value);
+      const endYear = parseInt(document.getElementById('endYear').value);
       const searchText = document.getElementById('searchText').value.toLowerCase();
       
       // Get selected categories
       const selectedCategories = Array.from(categories)
         .filter(category => document.getElementById(category).checked);
 
+      // If using text search without categories, don't require category selection
+      if (!searchText && selectedCategories.length === 0 && !startYear && !endYear) {
+        return;
+      }
+
       const filteredMilestones = allMilestones.filter(m => {
-        // Year range filter
-        if (m.year < startYear || m.year > endYear) return false;
+        // Year range filter (if provided)
+        if (startYear && endYear) {
+          if (m.year < startYear || m.year > endYear) return false;
+        }
 
         // Category filter
-        if (!selectedCategories.includes(m.category)) return false;
+        if (selectedCategories.length > 0) {
+          if (!selectedCategories.includes(m.category)) return false;
+        }
 
         // Text search
         if (searchText) {
@@ -394,65 +522,111 @@
         return true;
       });
 
-      displayMilestones(filteredMilestones);
+      if (filteredMilestones.length === 1) {
+        // For single result, show it directly
+        displayMilestones(filteredMilestones);
+        showMilestoneInfo(filteredMilestones[0]);
+      } else {
+        displayMilestones(filteredMilestones);
+      }
     }
 
-    function resetFilters() {
-      document.getElementById('startYear').value = '';
-      document.getElementById('endYear').value = '';
-      document.getElementById('searchText').value = '';
+    function searchByYearRange() {
+      const startYear = parseInt(document.getElementById('startYear').value);
+      const endYear = parseInt(document.getElementById('endYear').value);
       
-      // Reset checkboxes to unchecked state
+      if (!startYear || !endYear) {
+        alert('Please enter both start and end years');
+        return;
+      }
+      
+      // Clear other search methods when period search is used
+      document.getElementById('searchText').value = '';
       categories.forEach(category => {
         document.getElementById(category).checked = false;
       });
       
-      // Hide both panels when resetting
+      const filteredMilestones = allMilestones.filter(m => {
+        return m.year >= startYear && m.year <= endYear;
+      });
+
+      displayMilestones(filteredMilestones);
+    }
+
+    function resetFilters() {
+      // Clear all search inputs
+      document.getElementById('startYear').value = '';
+      document.getElementById('endYear').value = '';
+      document.getElementById('searchText').value = '';
+      
+      // Reset checkboxes
+      categories.forEach(category => {
+        document.getElementById(category).checked = false;
+      });
+      
+      // Hide all panels
       document.getElementById('results-panel').style.display = 'none';
       document.getElementById('info').style.display = 'none';
+      document.getElementById('back-button').style.display = 'none';
       
       // Clear all milestone markers
-      milestoneMeshes.forEach(mesh => scene.remove(mesh));
+      milestoneMeshes.forEach(mesh => {
+        if (mesh.parent) mesh.parent.remove(mesh);
+        if (mesh.geometry) mesh.geometry.dispose();
+        if (mesh.material) mesh.material.dispose();
+      });
       milestoneMeshes = [];
       renderer.render(scene, camera);
     }
 
-    // Camera
-    camera.position.z = 200;
+    // Get color based on milestone category using color wheel colors
+    function getCategoryColor(category) {
+      const colors = {
+        // Primary Colors
+        technology: 0xFF0000,    // Pure Red
+        science: 0x0000FF,       // Pure Blue
+        philosophy: 0x00FF00,    // Pure Green
+        
+        // Secondary Colors
+        art: 0xFF00FF,          // Magenta
+        communication: 0x00FFFF, // Cyan
+        agriculture: 0xFFFF00,   // Yellow
+        
+        // Tertiary Colors
+        urban: 0xFF7F00,        // Orange
+        industry: 0x7F00FF,     // Violet
+        governance: 0x00FF7F,    // Chartreuse
+        engineering: 0xFF007F,   // Rose
+        military: 0x7FFF00,     // Spring Green
+        exploration: 0x007FFF,   // Azure
+        astronomy: 0xFF7F7F,    // Light Red
+        transport: 0x7F7FFF     // Light Blue
+      };
+      return colors[category] || 0xFF0000; // Default to red if category not found
+    }
 
-    // Raycaster for clicks
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-    const infoDiv = document.getElementById('info');
+    // Adjust lighting for softer appearance
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.4);  // Reduced from 0.6
+    scene.add(ambientLight);
+    
+    const pointLight = new THREE.PointLight(0xffffff, 0.6);  // Reduced from 0.8
+    pointLight.position.set(200, 200, 200);
+    scene.add(pointLight);
 
-    window.addEventListener('click', (event) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-      raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(milestoneMeshes);
-      if (intersects.length > 0) {
-        const m = intersects[0].object.userData;
-        infoDiv.style.display = 'block';
-        let html = `<strong>${m.year}: ${m.title}</strong><br><br>`;
-        if (m.description) html += `${m.description}<br><br>`;
-        if (m.category) html += `<strong>Category:</strong> ${m.category}<br>`;
-        if (m.culture) html += `<strong>Culture:</strong> ${m.culture}<br>`;
-        if (m.humanType) html += `<strong>Human Type:</strong> ${m.humanType}<br>`;
-        if (m.originators && m.originators.length) html += `<strong>Originators:</strong> ${m.originators.join(', ')}<br>`;
-        if (m.ideas && m.ideas.length) html += `<strong>Key Ideas:</strong> ${m.ideas.join(', ')}<br>`;
-        if (m.url) html += `<br><a href="${m.url}" target="_blank">Learn More →</a>`;
-        infoDiv.innerHTML = html;
-      } else {
-        infoDiv.style.display = 'none';
-      }
-    });
+    const pointLight2 = new THREE.PointLight(0xffffff, 0.4);  // Reduced from 0.6
+    pointLight2.position.set(-200, -200, -200);
+    scene.add(pointLight2);
 
-    // Orbit controls
+    // Camera positioning for better initial view
+    camera.position.set(300, 300, 300);  // Moved further out for better overview
+    camera.lookAt(0, 0, 0);
+
+    // Adjust orbit controls
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.minDistance = 100;
+    controls.maxDistance = 1000;
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
-    controls.minDistance = 120;
-    controls.maxDistance = 400;
 
     // Handle window resize
     window.addEventListener('resize', () => {
@@ -468,6 +642,26 @@
       renderer.render(scene, camera);
     }
     animate();
+
+    // Add click event listener for milestone selection
+    window.addEventListener('click', (event) => {
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
+      
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+      
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(milestoneMeshes, true);
+      
+      if (intersects.length > 0) {
+        const selectedObject = intersects[0].object;
+        const milestone = selectedObject.userData;
+        if (milestone) {
+          showMilestoneInfo(milestone);
+        }
+      }
+    });
   </script>
 </body>
 </html> 
