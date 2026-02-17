@@ -7,7 +7,8 @@ A 3D web app inspired by Isaac Asimov's Foundation, mapping the evolution of hum
 - GitHub Pages: (to be added after enabling GitHub Pages)
 
 ## How to Contribute
-I’m looking for help with coding (Three.js) and data collection to expand the milestone dataset to 300–500 entries. This is a GPL-licensed project—join me to visualize humanity’s intellectual journey!
+This updated set contains ~500 entries each signifying the Milestone invention in the human history. If you find this project interesting, please develop it further, visualizing the humanity’s intellectual journey!
 
 ## License
+
 This project is licensed under the GNU General Public License v3.0. See the LICENSE file for details.
