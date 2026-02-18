@@ -50,7 +50,7 @@
     
     <div id="stats" style="margin-top:10px; color: #4b5563; font-style: italic; font-size: 10px;">Initializing Node...</div>
     
-    <select id="categoryFilter" style="margin-top: 15px; background: #1e3a8a; color: #dbeafe; border: 1px solid #3b82f6;">
+    <select id="categoryFilter" onchange="applyCategoryFilter()" style="margin-top: 15px; background: #1e3a8a; color: #dbeafe; border: 1px solid #3b82f6;">
       <option value="all">Categories</option>
     </select>
     
@@ -83,7 +83,7 @@
 
   <script>
     let scene, camera, renderer, milestoneMeshes = [], allMilestones = [];
-    let currentViewData = []; // Tracks if we are in Past, Future, or All mode
+    let currentModeData = []; // Strictly tracks the "Time Mode" (Past vs Future vs All)
     const oldestAnchor = -3300000;
 
     function normalizeYear(year) {
@@ -129,47 +129,43 @@
         if(m.category.toLowerCase() === "economy" || m.category.toLowerCase() === "economics") m.category = "economics";
       });
       document.getElementById('stats').innerText = `${allMilestones.length} Milestones Synced`;
-      currentViewData = allMilestones;
-      populateUI();
+      currentModeData = allMilestones; 
+      populateCategories();
       renderPoints(allMilestones);
     }
 
-    function populateUI() {
+    function populateCategories() {
       const categories = [...new Set(allMilestones.map(m => m.category))].sort();
       const filter = document.getElementById('categoryFilter');
       const legend = document.getElementById('legend');
-      
       filter.innerHTML = '<option value="all">Categories</option>';
       legend.innerHTML = '';
-
       categories.forEach(cat => {
         const opt = document.createElement('option');
         opt.value = cat;
         opt.innerText = cat.charAt(0).toUpperCase() + cat.slice(1);
         filter.appendChild(opt);
-
         const item = document.createElement('div');
         item.className = 'legend-item';
         item.innerHTML = `<div class="color-box" style="background: #${getCategoryColor(cat).toString(16).padStart(6, '0')}"></div>${cat}`;
         legend.appendChild(item);
       });
+    }
 
-      // FIX: Re-attaching the filter listener
-      filter.addEventListener('change', (e) => {
-        const selectedCat = e.target.value;
-        clearSearchFields();
-        if(selectedCat === 'all') {
-          renderPoints(currentViewData);
-        } else {
-          const filtered = currentViewData.filter(m => m.category === selectedCat);
-          renderPoints(filtered);
-        }
-      });
+    // NEW UNIFIED FILTER FUNCTION
+    function applyCategoryFilter() {
+      const selectedCat = document.getElementById('categoryFilter').value;
+      clearSearchFields();
+      if(selectedCat === 'all') {
+        renderPoints(currentModeData);
+      } else {
+        const filtered = currentModeData.filter(m => m.category === selectedCat);
+        renderPoints(filtered);
+      }
     }
 
     function clearKeywordField() { document.getElementById('textSearch').value = ""; resetDetailPanel(); }
     function clearYearFields() { document.getElementById('yearFrom').value = ""; document.getElementById('yearTo').value = ""; resetDetailPanel(); }
-
     function resetDetailPanel() {
       document.getElementById('panel-title').innerText = "System Ready";
       document.getElementById('panel-content').innerHTML = "Select a node or use search tools.";
@@ -187,29 +183,27 @@
       clearKeywordField();
       const from = parseInt(document.getElementById('yearFrom').value) || -4000000;
       const to = parseInt(document.getElementById('yearTo').value) || 2500;
-      const filtered = allMilestones.filter(m => m.year >= from && m.year <= to);
-      renderPoints(filtered);
+      renderPoints(allMilestones.filter(m => m.year >= from && m.year <= to));
     }
 
     function searchByText() {
       clearYearFields();
       const term = document.getElementById('textSearch').value.toLowerCase();
-      const filtered = allMilestones.filter(m => 
+      renderPoints(allMilestones.filter(m => 
         m.title.toLowerCase().includes(term) || m.description.toLowerCase().includes(term)
-      );
-      renderPoints(filtered);
+      ));
     }
 
     function filterPast() { 
       fullConsoleReset(); 
-      currentViewData = allMilestones.filter(m => m.year <= 2026);
-      renderPoints(currentViewData); 
+      currentModeData = allMilestones.filter(m => m.year <= 2026);
+      renderPoints(currentModeData); 
     }
 
     function filterFuture() { 
       fullConsoleReset(); 
-      currentViewData = allMilestones.filter(m => m.year > 2026);
-      renderPoints(currentViewData); 
+      currentModeData = allMilestones.filter(m => m.year > 2026);
+      renderPoints(currentModeData); 
     }
 
     function renderPoints(dataToRender) {
@@ -229,7 +223,7 @@
     function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
     function resetView() { 
       fullConsoleReset(); 
-      currentViewData = allMilestones;
+      currentModeData = allMilestones;
       camera.position.set(450, 450, 450); 
       renderPoints(allMilestones); 
     }
