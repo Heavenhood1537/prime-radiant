@@ -8,42 +8,41 @@
     body { margin: 0; overflow: hidden; background-color: #000; font-family: 'Segoe UI', Arial, sans-serif; }
     canvas { display: block; }
     
-    /* LEFT PANEL - Navigation */
+    /* SYMMETRICAL PANEL WIDTHS (220px) */
     #controls {
       position: absolute; top: 10px; left: 10px; background: rgba(10, 25, 47, 0.9);
       color: #8892b0; padding: 15px; border-radius: 8px;
-      width: 220px; font-size: 12px; border: 1px solid #1e3a8a; z-index: 10;
+      width: 220px; font-size: 11px; border: 1px solid #1e3a8a; z-index: 10;
     }
 
-    /* RIGHT PANEL - Search & Details */
     #results-panel {
       position: absolute; top: 10px; right: 10px; background: rgba(10, 25, 47, 0.95);
-      color: #ccd6f6; padding: 20px; border-radius: 8px;
-      width: 300px; max-height: 90vh; overflow-y: auto; font-size: 13px;
+      color: #ccd6f6; padding: 15px; border-radius: 8px;
+      width: 220px; max-height: 90vh; overflow-y: auto; font-size: 12px;
       display: block; border: 1px solid #1e3a8a; z-index: 10;
     }
 
-    h2 { margin: 0 0 10px 0; color: #007fff; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; }
-    h4 { margin: 15px 0 5px 0; color: #64ffda; font-size: 11px; text-transform: uppercase; }
+    h2 { margin: 0 0 10px 0; color: #007fff; text-transform: uppercase; letter-spacing: 1.5px; font-size: 13px; }
+    h4 { margin: 12px 0 5px 0; color: #64ffda; font-size: 10px; text-transform: uppercase; }
     
     input, select, button {
       width: 100%; margin-top: 5px; background: #112240; color: #ccd6f6;
       border: 1px solid #233554; padding: 8px; cursor: pointer; transition: 0.3s;
-      font-weight: bold; border-radius: 4px; box-sizing: border-box;
+      font-weight: bold; border-radius: 4px; box-sizing: border-box; font-size: 11px;
     }
 
-    /* NAVY THEME BUTTONS & BORDERS */
-    .navy-btn { background: #1e3a8a; border: 1px solid #3b82f6; color: #dbeafe; text-transform: uppercase; font-size: 11px; }
+    .navy-btn { background: #1e3a8a; border: 1px solid #3b82f6; color: #dbeafe; text-transform: uppercase; }
     .navy-btn:hover { background: #1e40af; }
     
-    .search-input { background: #0a192f; border: 1px solid #1e3a8a; color: #64ffda; padding: 5px; margin-bottom: 5px; cursor: text; }
+    .search-input { background: #0a192f; border: 1px solid #1e3a8a; color: #64ffda; padding: 6px; margin-bottom: 5px; cursor: text; }
 
-    .legend-item { display: flex; align-items: center; margin-top: 5px; font-size: 10px; color: #8892b0; }
-    .color-box { width: 10px; height: 10px; margin-right: 8px; border-radius: 2px; }
+    .legend-item { display: flex; align-items: center; margin-top: 4px; font-size: 9px; color: #8892b0; }
+    .color-box { width: 8px; height: 8px; margin-right: 6px; border-radius: 1px; }
     
-    .search-group { border-bottom: 1px solid #233554; padding-bottom: 15px; margin-bottom: 15px; }
-    .row { display: flex; gap: 5px; }
-    .row input { width: 50%; }
+    .search-group { border-bottom: 1px solid #233554; padding-bottom: 12px; margin-bottom: 12px; }
+    
+    /* VERTICAL STACKING FOR INPUTS */
+    .stack { display: flex; flex-direction: column; gap: 2px; }
   </style>
 </head>
 <body>
@@ -53,33 +52,33 @@
     <button class="navy-btn" onclick="filterPast()">Past Milestones</button>
     <button class="navy-btn" onclick="filterFuture()">Future Vision</button>
     
-    <div id="stats" style="margin-top:10px; color: #4b5563; font-style: italic;">Initializing...</div>
+    <div id="stats" style="margin-top:10px; color: #4b5563; font-style: italic; font-size: 10px;">Initializing...</div>
     
     <select id="categoryFilter" style="margin-top: 15px;">
-      <option value="all">Filter Categories</option>
+      <option value="all">Categories</option>
     </select>
     
-    <div id="legend" style="margin-top:15px;"></div>
-    <button onclick="resetView()" style="background: #0f172a; color: #475569; border: 1px solid #1e293b; margin-top: 20px;">Reset View</button>
+    <div id="legend" style="margin-top:10px;"></div>
+    <button onclick="resetView()" style="background: #0f172a; color: #475569; border: 1px solid #1e293b; margin-top: 15px; font-size: 10px;">Reset View</button>
   </div>
 
   <div id="results-panel">
     <div class="search-group">
-      <h4>Temporal Search (Year)</h4>
-      <div class="row">
-        <input type="number" id="yearFrom" class="search-input" placeholder="From (-3.3M)">
-        <input type="number" id="yearTo" class="search-input" placeholder="To (2200)">
+      <h4>Temporal Range</h4>
+      <div class="stack">
+        <input type="number" id="yearFrom" class="search-input" placeholder="Start Year">
+        <input type="number" id="yearTo" class="search-input" placeholder="End Year">
       </div>
       <button class="navy-btn" onclick="searchByPeriod()">Filter Period</button>
 
       <h4>Keyword Search</h4>
-      <input type="text" id="textSearch" class="search-input" placeholder="Name, Idea, Culture...">
-      <button class="navy-btn" onclick="searchByText()">Find Milestone</button>
+      <input type="text" id="textSearch" class="search-input" placeholder="Keyword...">
+      <button class="navy-btn" onclick="searchByText()">Search</button>
     </div>
 
     <div id="milestone-detail">
-      <h3 id="panel-title" style="color:#007fff">System Ready</h3>
-      <div id="panel-content" style="color:#a8b2d1">Select a point or search above to begin.</div>
+      <h3 id="panel-title" style="color:#007fff; font-size: 13px; margin: 0;">System Ready</h3>
+      <div id="panel-content" style="color:#a8b2d1; margin-top: 10px; line-height: 1.4;">Select a node or use search tools above.</div>
     </div>
   </div>
 
@@ -132,10 +131,8 @@
       const data = await response.json();
       allMilestones = data.milestones;
       
-      // Fix Dog Domestication
       allMilestones.forEach(m => { if(m.title.includes("Dog Domestication")) m.category = "evolution"; });
-
-      document.getElementById('stats').innerText = `${allMilestones.length} Milestones Syncing...`;
+      document.getElementById('stats').innerText = `${allMilestones.length} Milestones Synced`;
       populateUI();
       renderPoints(allMilestones);
     }
@@ -163,22 +160,18 @@
       });
     }
 
-    // SEARCH LOGIC
     function searchByPeriod() {
       const from = parseInt(document.getElementById('yearFrom').value) || -4000000;
       const to = parseInt(document.getElementById('yearTo').value) || 2500;
-      const filtered = allMilestones.filter(m => m.year >= from && m.year <= to);
-      renderPoints(filtered);
+      renderPoints(allMilestones.filter(m => m.year >= from && m.year <= to));
     }
 
     function searchByText() {
       const term = document.getElementById('textSearch').value.toLowerCase();
-      const filtered = allMilestones.filter(m => 
+      renderPoints(allMilestones.filter(m => 
         m.title.toLowerCase().includes(term) || 
-        m.description.toLowerCase().includes(term) ||
-        m.originators.some(o => o.toLowerCase().includes(term))
-      );
-      renderPoints(filtered);
+        m.description.toLowerCase().includes(term)
+      ));
     }
 
     function filterPast() { renderPoints(allMilestones.filter(m => m.year <= 2026)); }
@@ -210,11 +203,11 @@
         const m = intersects[0].object.userData;
         document.getElementById('panel-title').innerText = m.title;
         document.getElementById('panel-content').innerHTML = `
-          <p><strong style="color:#64ffda">Timeline:</strong> ${m.year > 0 ? m.year : Math.abs(m.year) + ' BCE'}</p>
+          <p><strong style="color:#64ffda">Year:</strong> ${m.year > 0 ? m.year : Math.abs(m.year) + ' BCE'}</p>
           <p><strong style="color:#64ffda">Context:</strong> ${m.culture || m.humanType}</p>
-          <hr style="border:0; border-top:1px solid #233554;">
-          <p style="line-height:1.6; color:#ccd6f6;">${m.description}</p>
-          <a href="${m.url}" target="_blank" style="color: #64ffda; text-decoration:none; font-size:11px;">[ SOURCE DATA ]</a>
+          <hr style="border:0; border-top:1px solid #233554; margin: 10px 0;">
+          <p style="color:#ccd6f6;">${m.description}</p>
+          <a href="${m.url}" target="_blank" style="color: #64ffda; text-decoration:none; font-size:10px;">[ SOURCE ]</a>
         `;
       }
     });
