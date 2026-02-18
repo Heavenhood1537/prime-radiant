@@ -8,7 +8,6 @@
     body { margin: 0; overflow: hidden; background-color: #000; font-family: 'Segoe UI', Arial, sans-serif; }
     canvas { display: block; }
     
-    /* SYMMETRICAL PANEL WIDTHS (220px) */
     #controls {
       position: absolute; top: 10px; left: 10px; background: rgba(10, 25, 47, 0.9);
       color: #8892b0; padding: 15px; border-radius: 8px;
@@ -38,10 +37,7 @@
 
     .legend-item { display: flex; align-items: center; margin-top: 4px; font-size: 9px; color: #8892b0; }
     .color-box { width: 8px; height: 8px; margin-right: 6px; border-radius: 1px; }
-    
     .search-group { border-bottom: 1px solid #233554; padding-bottom: 12px; margin-bottom: 12px; }
-    
-    /* VERTICAL STACKING FOR INPUTS */
     .stack { display: flex; flex-direction: column; gap: 2px; }
   </style>
 </head>
@@ -78,7 +74,7 @@
 
     <div id="milestone-detail">
       <h3 id="panel-title" style="color:#007fff; font-size: 13px; margin: 0;">System Ready</h3>
-      <div id="panel-content" style="color:#a8b2d1; margin-top: 10px; line-height: 1.4;">Select a node or use search tools above.</div>
+      <div id="panel-content" style="color:#a8b2d1; margin-top: 10px; line-height: 1.4;">Select a node or use search tools.</div>
     </div>
   </div>
 
@@ -130,7 +126,6 @@
       const response = await fetch('./milestones.json');
       const data = await response.json();
       allMilestones = data.milestones;
-      
       allMilestones.forEach(m => { if(m.title.includes("Dog Domestication")) m.category = "evolution"; });
       document.getElementById('stats').innerText = `${allMilestones.length} Milestones Synced`;
       populateUI();
@@ -141,32 +136,33 @@
       const categories = [...new Set(allMilestones.map(m => m.category))].sort();
       const filter = document.getElementById('categoryFilter');
       const legend = document.getElementById('legend');
-      
       categories.forEach(cat => {
         const opt = document.createElement('option');
         opt.value = cat;
         opt.innerText = cat.charAt(0).toUpperCase() + cat.slice(1);
         filter.appendChild(opt);
-
         const item = document.createElement('div');
         item.className = 'legend-item';
         item.innerHTML = `<div class="color-box" style="background: #${getCategoryColor(cat).toString(16).padStart(6, '0')}"></div>${cat}`;
         legend.appendChild(item);
       });
-
       filter.addEventListener('change', (e) => {
         if(e.target.value === 'all') renderPoints(allMilestones);
         else renderPoints(allMilestones.filter(m => m.category === e.target.value));
       });
     }
 
+    // UPDATED SEARCH LOGIC WITH FIELD RESET
     function searchByPeriod() {
+      document.getElementById('textSearch').value = ""; // Clear Keyword field
       const from = parseInt(document.getElementById('yearFrom').value) || -4000000;
       const to = parseInt(document.getElementById('yearTo').value) || 2500;
       renderPoints(allMilestones.filter(m => m.year >= from && m.year <= to));
     }
 
     function searchByText() {
+      document.getElementById('yearFrom').value = ""; // Clear Year From
+      document.getElementById('yearTo').value = "";   // Clear Year To
       const term = document.getElementById('textSearch').value.toLowerCase();
       renderPoints(allMilestones.filter(m => 
         m.title.toLowerCase().includes(term) || 
@@ -185,14 +181,21 @@
         const material = new THREE.MeshPhongMaterial({ color: getCategoryColor(m.category), emissive: getCategoryColor(m.category), emissiveIntensity: 0.2 });
         const mesh = new THREE.Mesh(geometry, material);
         mesh.position.set(m.location.lat * 2.8, normalizeYear(m.year), m.location.lon * 2.2);
-        mesh.userData = m;
+        mesh.userData = m; // Vital link for clicking
         scene.add(mesh);
         milestoneMeshes.push(mesh);
       });
     }
 
     function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
-    function resetView() { camera.position.set(450, 450, 450); renderPoints(allMilestones); document.getElementById('categoryFilter').value = 'all'; }
+    function resetView() { 
+      document.getElementById('yearFrom').value = "";
+      document.getElementById('yearTo').value = "";
+      document.getElementById('textSearch').value = "";
+      camera.position.set(450, 450, 450); 
+      renderPoints(allMilestones); 
+      document.getElementById('categoryFilter').value = 'all'; 
+    }
 
     window.addEventListener('click', (e) => {
       const raycaster = new THREE.Raycaster();
