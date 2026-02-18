@@ -21,7 +21,6 @@
       display: block; border: 1px solid #1e3a8a; z-index: 10;
     }
 
-    /* NAVY BLUE THEME FOR TITLE AND CONTROLS */
     h2 { margin: 0 0 10px 0; color: #1e3a8a; text-transform: uppercase; letter-spacing: 1.5px; font-size: 13px; font-weight: 900; }
     h4 { margin: 12px 0 5px 0; color: #64ffda; font-size: 10px; text-transform: uppercase; }
     
@@ -84,6 +83,7 @@
 
   <script>
     let scene, camera, renderer, milestoneMeshes = [], allMilestones = [];
+    let currentViewData = []; // Tracks if we are in Past, Future, or All mode
     const oldestAnchor = -3300000;
 
     function normalizeYear(year) {
@@ -126,9 +126,10 @@
       allMilestones = data.milestones;
       allMilestones.forEach(m => { 
         if(m.title.includes("Dog Domestication")) m.category = "evolution"; 
-        if(m.category.toLowerCase() === "economy") m.category = "economics";
+        if(m.category.toLowerCase() === "economy" || m.category.toLowerCase() === "economics") m.category = "economics";
       });
       document.getElementById('stats').innerText = `${allMilestones.length} Milestones Synced`;
+      currentViewData = allMilestones;
       populateUI();
       renderPoints(allMilestones);
     }
@@ -137,22 +138,32 @@
       const categories = [...new Set(allMilestones.map(m => m.category))].sort();
       const filter = document.getElementById('categoryFilter');
       const legend = document.getElementById('legend');
+      
       filter.innerHTML = '<option value="all">Categories</option>';
       legend.innerHTML = '';
+
       categories.forEach(cat => {
         const opt = document.createElement('option');
         opt.value = cat;
         opt.innerText = cat.charAt(0).toUpperCase() + cat.slice(1);
         filter.appendChild(opt);
+
         const item = document.createElement('div');
         item.className = 'legend-item';
         item.innerHTML = `<div class="color-box" style="background: #${getCategoryColor(cat).toString(16).padStart(6, '0')}"></div>${cat}`;
         legend.appendChild(item);
       });
+
+      // FIX: Re-attaching the filter listener
       filter.addEventListener('change', (e) => {
-        fullConsoleReset();
-        if(e.target.value === 'all') renderPoints(allMilestones);
-        else renderPoints(allMilestones.filter(m => m.category === e.target.value));
+        const selectedCat = e.target.value;
+        clearSearchFields();
+        if(selectedCat === 'all') {
+          renderPoints(currentViewData);
+        } else {
+          const filtered = currentViewData.filter(m => m.category === selectedCat);
+          renderPoints(filtered);
+        }
       });
     }
 
@@ -176,19 +187,30 @@
       clearKeywordField();
       const from = parseInt(document.getElementById('yearFrom').value) || -4000000;
       const to = parseInt(document.getElementById('yearTo').value) || 2500;
-      renderPoints(allMilestones.filter(m => m.year >= from && m.year <= to));
+      const filtered = allMilestones.filter(m => m.year >= from && m.year <= to);
+      renderPoints(filtered);
     }
 
     function searchByText() {
       clearYearFields();
       const term = document.getElementById('textSearch').value.toLowerCase();
-      renderPoints(allMilestones.filter(m => 
+      const filtered = allMilestones.filter(m => 
         m.title.toLowerCase().includes(term) || m.description.toLowerCase().includes(term)
-      ));
+      );
+      renderPoints(filtered);
     }
 
-    function filterPast() { fullConsoleReset(); renderPoints(allMilestones.filter(m => m.year <= 2026)); }
-    function filterFuture() { fullConsoleReset(); renderPoints(allMilestones.filter(m => m.year > 2026)); }
+    function filterPast() { 
+      fullConsoleReset(); 
+      currentViewData = allMilestones.filter(m => m.year <= 2026);
+      renderPoints(currentViewData); 
+    }
+
+    function filterFuture() { 
+      fullConsoleReset(); 
+      currentViewData = allMilestones.filter(m => m.year > 2026);
+      renderPoints(currentViewData); 
+    }
 
     function renderPoints(dataToRender) {
       milestoneMeshes.forEach(m => scene.remove(m));
@@ -205,7 +227,12 @@
     }
 
     function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
-    function resetView() { fullConsoleReset(); camera.position.set(450, 450, 450); renderPoints(allMilestones); }
+    function resetView() { 
+      fullConsoleReset(); 
+      currentViewData = allMilestones;
+      camera.position.set(450, 450, 450); 
+      renderPoints(allMilestones); 
+    }
 
     window.addEventListener('click', (e) => {
       const raycaster = new THREE.Raycaster();
