@@ -147,22 +147,29 @@
         legend.appendChild(item);
       });
       filter.addEventListener('change', (e) => {
+        clearSearchFields(); // Clear search when switching categories
         if(e.target.value === 'all') renderPoints(allMilestones);
         else renderPoints(allMilestones.filter(m => m.category === e.target.value));
       });
     }
 
-    // UPDATED SEARCH LOGIC WITH FIELD RESET
+    // NEW CONSOLE CLEAR FUNCTION
+    function clearSearchFields() {
+      document.getElementById('textSearch').value = "";
+      document.getElementById('yearFrom').value = "";
+      document.getElementById('yearTo').value = "";
+    }
+
     function searchByPeriod() {
-      document.getElementById('textSearch').value = ""; // Clear Keyword field
+      document.getElementById('textSearch').value = ""; 
       const from = parseInt(document.getElementById('yearFrom').value) || -4000000;
       const to = parseInt(document.getElementById('yearTo').value) || 2500;
       renderPoints(allMilestones.filter(m => m.year >= from && m.year <= to));
     }
 
     function searchByText() {
-      document.getElementById('yearFrom').value = ""; // Clear Year From
-      document.getElementById('yearTo').value = "";   // Clear Year To
+      document.getElementById('yearFrom').value = ""; 
+      document.getElementById('yearTo').value = "";   
       const term = document.getElementById('textSearch').value.toLowerCase();
       renderPoints(allMilestones.filter(m => 
         m.title.toLowerCase().includes(term) || 
@@ -170,8 +177,8 @@
       ));
     }
 
-    function filterPast() { renderPoints(allMilestones.filter(m => m.year <= 2026)); }
-    function filterFuture() { renderPoints(allMilestones.filter(m => m.year > 2026)); }
+    function filterPast() { clearSearchFields(); renderPoints(allMilestones.filter(m => m.year <= 2026)); }
+    function filterFuture() { clearSearchFields(); renderPoints(allMilestones.filter(m => m.year > 2026)); }
 
     function renderPoints(dataToRender) {
       milestoneMeshes.forEach(m => scene.remove(m));
@@ -181,17 +188,16 @@
         const material = new THREE.MeshPhongMaterial({ color: getCategoryColor(m.category), emissive: getCategoryColor(m.category), emissiveIntensity: 0.2 });
         const mesh = new THREE.Mesh(geometry, material);
         mesh.position.set(m.location.lat * 2.8, normalizeYear(m.year), m.location.lon * 2.2);
-        mesh.userData = m; // Vital link for clicking
+        mesh.userData = m; 
         scene.add(mesh);
         milestoneMeshes.push(mesh);
       });
     }
 
     function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
+    
     function resetView() { 
-      document.getElementById('yearFrom').value = "";
-      document.getElementById('yearTo').value = "";
-      document.getElementById('textSearch').value = "";
+      clearSearchFields();
       camera.position.set(450, 450, 450); 
       renderPoints(allMilestones); 
       document.getElementById('categoryFilter').value = 'all'; 
