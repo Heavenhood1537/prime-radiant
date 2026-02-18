@@ -48,9 +48,9 @@
     <button class="navy-btn" onclick="filterPast()">Past Milestones</button>
     <button class="navy-btn" onclick="filterFuture()">Future Vision</button>
     
-    <div id="stats" style="margin-top:10px; color: #4b5563; font-style: italic; font-size: 10px;">Initializing Node...</div>
+    <div id="stats" style="margin-top:10px; color: #4b5563; font-style: italic; font-size: 10px;">Node Sync Active</div>
     
-    <select id="categoryFilter" onchange="applyCategoryFilter()" style="margin-top: 15px; background: #1e3a8a; color: #dbeafe; border: 1px solid #3b82f6;">
+    <select id="categoryFilter" onchange="triggerCategoryFilter()" style="margin-top: 15px; background: #1e3a8a; color: #dbeafe; border: 1px solid #3b82f6;">
       <option value="all">Categories</option>
     </select>
     
@@ -83,7 +83,7 @@
 
   <script>
     let scene, camera, renderer, milestoneMeshes = [], allMilestones = [];
-    let currentModeData = []; // Strictly tracks the "Time Mode" (Past vs Future vs All)
+    let activeTimeSet = []; // Tracks Past, Future, or All
     const oldestAnchor = -3300000;
 
     function normalizeYear(year) {
@@ -124,12 +124,14 @@
       const response = await fetch('./milestones.json');
       const data = await response.json();
       allMilestones = data.milestones;
+      
+      // Data Cleaning
       allMilestones.forEach(m => { 
         if(m.title.includes("Dog Domestication")) m.category = "evolution"; 
         if(m.category.toLowerCase() === "economy" || m.category.toLowerCase() === "economics") m.category = "economics";
       });
-      document.getElementById('stats').innerText = `${allMilestones.length} Milestones Synced`;
-      currentModeData = allMilestones; 
+
+      activeTimeSet = allMilestones; 
       populateCategories();
       renderPoints(allMilestones);
     }
@@ -152,15 +154,16 @@
       });
     }
 
-    // NEW UNIFIED FILTER FUNCTION
-    function applyCategoryFilter() {
-      const selectedCat = document.getElementById('categoryFilter').value;
-      clearSearchFields();
-      if(selectedCat === 'all') {
-        renderPoints(currentModeData);
+    // THE BRIDGE FUNCTION
+    function triggerCategoryFilter() {
+      const selected = document.getElementById('categoryFilter').value;
+      clearKeywordField();
+      clearYearFields();
+      if(selected === 'all') {
+        renderPoints(activeTimeSet);
       } else {
-        const filtered = currentModeData.filter(m => m.category === selectedCat);
-        renderPoints(filtered);
+        const result = activeTimeSet.filter(m => m.category === selected);
+        renderPoints(result);
       }
     }
 
@@ -169,14 +172,6 @@
     function resetDetailPanel() {
       document.getElementById('panel-title').innerText = "System Ready";
       document.getElementById('panel-content').innerHTML = "Select a node or use search tools.";
-    }
-
-    function fullConsoleReset() {
-      document.getElementById('textSearch').value = "";
-      document.getElementById('yearFrom').value = "";
-      document.getElementById('yearTo').value = "";
-      document.getElementById('categoryFilter').value = "all";
-      resetDetailPanel();
     }
 
     function searchByPeriod() {
@@ -195,15 +190,17 @@
     }
 
     function filterPast() { 
-      fullConsoleReset(); 
-      currentModeData = allMilestones.filter(m => m.year <= 2026);
-      renderPoints(currentModeData); 
+      document.getElementById('categoryFilter').value = 'all';
+      clearKeywordField(); clearYearFields();
+      activeTimeSet = allMilestones.filter(m => m.year <= 2026);
+      renderPoints(activeTimeSet); 
     }
 
     function filterFuture() { 
-      fullConsoleReset(); 
-      currentModeData = allMilestones.filter(m => m.year > 2026);
-      renderPoints(currentModeData); 
+      document.getElementById('categoryFilter').value = 'all';
+      clearKeywordField(); clearYearFields();
+      activeTimeSet = allMilestones.filter(m => m.year > 2026);
+      renderPoints(activeTimeSet); 
     }
 
     function renderPoints(dataToRender) {
@@ -222,8 +219,9 @@
 
     function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
     function resetView() { 
-      fullConsoleReset(); 
-      currentModeData = allMilestones;
+      document.getElementById('categoryFilter').value = 'all';
+      clearKeywordField(); clearYearFields();
+      activeTimeSet = allMilestones;
       camera.position.set(450, 450, 450); 
       renderPoints(allMilestones); 
     }
