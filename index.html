@@ -21,7 +21,8 @@
       display: block; border: 1px solid #1e3a8a; z-index: 10;
     }
 
-    h2 { margin: 0 0 10px 0; color: #007fff; text-transform: uppercase; letter-spacing: 1.5px; font-size: 13px; }
+    /* NAVY BLUE THEME FOR TITLE AND CONTROLS */
+    h2 { margin: 0 0 10px 0; color: #1e3a8a; text-transform: uppercase; letter-spacing: 1.5px; font-size: 13px; font-weight: 900; }
     h4 { margin: 12px 0 5px 0; color: #64ffda; font-size: 10px; text-transform: uppercase; }
     
     input, select, button {
@@ -48,9 +49,9 @@
     <button class="navy-btn" onclick="filterPast()">Past Milestones</button>
     <button class="navy-btn" onclick="filterFuture()">Future Vision</button>
     
-    <div id="stats" style="margin-top:10px; color: #4b5563; font-style: italic; font-size: 10px;">Initializing...</div>
+    <div id="stats" style="margin-top:10px; color: #4b5563; font-style: italic; font-size: 10px;">Initializing Node...</div>
     
-    <select id="categoryFilter" style="margin-top: 15px;">
+    <select id="categoryFilter" style="margin-top: 15px; background: #1e3a8a; color: #dbeafe; border: 1px solid #3b82f6;">
       <option value="all">Categories</option>
     </select>
     
@@ -62,13 +63,13 @@
     <div class="search-group">
       <h4>Temporal Range</h4>
       <div class="stack">
-        <input type="number" id="yearFrom" class="search-input" placeholder="Start Year">
-        <input type="number" id="yearTo" class="search-input" placeholder="End Year">
+        <input type="number" id="yearFrom" class="search-input" placeholder="Start Year" onfocus="clearKeywordField()">
+        <input type="number" id="yearTo" class="search-input" placeholder="End Year" onfocus="clearKeywordField()">
       </div>
       <button class="navy-btn" onclick="searchByPeriod()">Filter Period</button>
 
       <h4>Keyword Search</h4>
-      <input type="text" id="textSearch" class="search-input" placeholder="Keyword...">
+      <input type="text" id="textSearch" class="search-input" placeholder="Keyword..." onfocus="clearYearFields()">
       <button class="navy-btn" onclick="searchByText()">Search</button>
     </div>
 
@@ -107,15 +108,12 @@
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
-
       scene.add(new THREE.AmbientLight(0x444444));
       const light = new THREE.PointLight(0xffffff, 1.0);
       camera.add(light);
       scene.add(camera);
       scene.add(new THREE.GridHelper(600, 30, 0x0a192f, 0x0a192f));
-
       loadData();
-
       camera.position.set(450, 450, 450);
       const controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
@@ -126,13 +124,10 @@
       const response = await fetch('./milestones.json');
       const data = await response.json();
       allMilestones = data.milestones;
-
-      // CONSOLIDATION LOGIC: Fixing categories and merging Economics
       allMilestones.forEach(m => { 
         if(m.title.includes("Dog Domestication")) m.category = "evolution"; 
         if(m.category.toLowerCase() === "economy") m.category = "economics";
       });
-
       document.getElementById('stats').innerText = `${allMilestones.length} Milestones Synced`;
       populateUI();
       renderPoints(allMilestones);
@@ -142,11 +137,8 @@
       const categories = [...new Set(allMilestones.map(m => m.category))].sort();
       const filter = document.getElementById('categoryFilter');
       const legend = document.getElementById('legend');
-      
-      // Clear existing to prevent duplicates during re-load
       filter.innerHTML = '<option value="all">Categories</option>';
       legend.innerHTML = '';
-
       categories.forEach(cat => {
         const opt = document.createElement('option');
         opt.value = cat;
@@ -157,52 +149,46 @@
         item.innerHTML = `<div class="color-box" style="background: #${getCategoryColor(cat).toString(16).padStart(6, '0')}"></div>${cat}`;
         legend.appendChild(item);
       });
-      
       filter.addEventListener('change', (e) => {
-        clearSearchFields();
+        fullConsoleReset();
         if(e.target.value === 'all') renderPoints(allMilestones);
         else renderPoints(allMilestones.filter(m => m.category === e.target.value));
       });
     }
 
-    function clearSearchFields() {
+    function clearKeywordField() { document.getElementById('textSearch').value = ""; resetDetailPanel(); }
+    function clearYearFields() { document.getElementById('yearFrom').value = ""; document.getElementById('yearTo').value = ""; resetDetailPanel(); }
+
+    function resetDetailPanel() {
+      document.getElementById('panel-title').innerText = "System Ready";
+      document.getElementById('panel-content').innerHTML = "Select a node or use search tools.";
+    }
+
+    function fullConsoleReset() {
       document.getElementById('textSearch').value = "";
       document.getElementById('yearFrom').value = "";
       document.getElementById('yearTo').value = "";
-    }
-
-    // NEW UI RESET: Clears search fields AND the category dropdown
-    function fullConsoleReset() {
-      clearSearchFields();
       document.getElementById('categoryFilter').value = "all";
+      resetDetailPanel();
     }
 
     function searchByPeriod() {
-      document.getElementById('textSearch').value = ""; 
+      clearKeywordField();
       const from = parseInt(document.getElementById('yearFrom').value) || -4000000;
       const to = parseInt(document.getElementById('yearTo').value) || 2500;
       renderPoints(allMilestones.filter(m => m.year >= from && m.year <= to));
     }
 
     function searchByText() {
-      document.getElementById('yearFrom').value = ""; 
-      document.getElementById('yearTo').value = "";   
+      clearYearFields();
       const term = document.getElementById('textSearch').value.toLowerCase();
       renderPoints(allMilestones.filter(m => 
-        m.title.toLowerCase().includes(term) || 
-        m.description.toLowerCase().includes(term)
+        m.title.toLowerCase().includes(term) || m.description.toLowerCase().includes(term)
       ));
     }
 
-    function filterPast() { 
-      fullConsoleReset(); 
-      renderPoints(allMilestones.filter(m => m.year <= 2026)); 
-    }
-
-    function filterFuture() { 
-      fullConsoleReset(); 
-      renderPoints(allMilestones.filter(m => m.year > 2026)); 
-    }
+    function filterPast() { fullConsoleReset(); renderPoints(allMilestones.filter(m => m.year <= 2026)); }
+    function filterFuture() { fullConsoleReset(); renderPoints(allMilestones.filter(m => m.year > 2026)); }
 
     function renderPoints(dataToRender) {
       milestoneMeshes.forEach(m => scene.remove(m));
@@ -219,12 +205,7 @@
     }
 
     function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
-    
-    function resetView() { 
-      fullConsoleReset();
-      camera.position.set(450, 450, 450); 
-      renderPoints(allMilestones); 
-    }
+    function resetView() { fullConsoleReset(); camera.position.set(450, 450, 450); renderPoints(allMilestones); }
 
     window.addEventListener('click', (e) => {
       const raycaster = new THREE.Raycaster();
