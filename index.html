@@ -7,15 +7,15 @@
   <style>
     body { margin: 0; overflow: hidden; background-color: #000; font-family: 'Segoe UI', Arial, sans-serif; }
     canvas { display: block; }
-
-    /* Left Panel - Controls & Past */
+    
+    /* Left Panel */
     #controls {
       position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.85);
       color: rgb(0, 127, 255); padding: 15px; border-radius: 8px;
       width: 220px; font-size: 12px; border: 1px solid #333; z-index: 10;
     }
 
-    /* Right Panel - Details & Future */
+    /* Right Panel - Now persistent but auto-hiding */
     #results-panel {
       position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.9);
       color: rgb(0, 127, 255); padding: 20px; border-radius: 8px;
@@ -24,19 +24,19 @@
     }
 
     h2, h3 { margin: 0 0 10px 0; color: #fff; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; }
-
+    
     select, button {
       width: 100%; margin-top: 10px; background: #111; color: #fff;
       border: 1px solid #444; padding: 10px; cursor: pointer; transition: 0.3s;
       font-weight: bold; text-transform: uppercase;
     }
 
-    /* Button Styling */
-    #past-btn { background: #331100; border: 1px solid #ff6600; color: #ff6600; }
-    #past-btn:hover { background: #552200; }
-
-    #future-btn { background: #002222; border: 1px solid #00ffff; color: #00ffff; }
-    #future-btn:hover { background: #004444; }
+    /* DARKER, SOFTER BUTTON COLORS */
+    #past-btn { background: #1a0f00; border: 1px solid #8b4513; color: #cd853f; }
+    #past-btn:hover { background: #2b1a00; }
+    
+    #future-btn { background: #001a1a; border: 1px solid #008b8b; color: #00ced1; }
+    #future-btn:hover { background: #002b2b; }
 
     .legend-item { display: flex; align-items: center; margin-top: 5px; font-size: 10px; color: #aaa; }
     .color-box { width: 10px; height: 10px; margin-right: 8px; border-radius: 2px; }
@@ -48,45 +48,50 @@
     <h2>Prime Radiant</h2>
     <button id="past-btn" onclick="filterPast()">View Past Milestones</button>
     <div id="stats" style="margin-top:10px; color: #888;">Synchronizing...</div>
-
+    
     <select id="categoryFilter" style="margin-top: 20px;">
       <option value="all">Filter by Category</option>
     </select>
-
+    
     <div id="legend" style="margin-top:15px;"></div>
     <button onclick="resetView()" style="background: #222; color: #ccc;">Show All / Reset</button>
   </div>
 
   <div id="results-panel">
-    <button id="future-btn" onclick="filterFuture()">View Future Vision</button>
-    <hr style="border: 0; border-top: 1px solid #333; margin: 15px 0;">
     <h3 id="panel-title">Details</h3>
-    <div id="panel-content">Select a milestone in the 3D space to view data.</div>
-    <button onclick="document.getElementById('results-panel').style.display='none'" style="margin-top:20px; font-size:10px;">Close Panel</button>
-  </div>
+    <div id="panel-content">Select a milestone to view data.</div>
+    </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
   <script>
     let scene, camera, renderer, milestoneMeshes = [], allMilestones = [];
-    const oldestAnchor = -3300000; // Lomekwi Anchor
+    const oldestAnchor = -3300000;
 
     function normalizeYear(year) {
-      const scale = 300;
-      // This spreads the 3.3 million years along the Y axis
+      const scale = 300; 
       return ((year - oldestAnchor) / Math.abs(oldestAnchor)) * scale;
     }
 
     function getCategoryColor(category) {
       const colors = {
-        'technology': 0x00ff00, 'science': 0x007fff, 'communication': 0xffff00,
-        'space exploration': 0xff00ff, 'urban': 0x808080, 'governance': 0xffa500,
-        'philosophy': 0xffffff, 'future vision': 0x00ffff, 'evolution': 0x8b4513,
-        'archaeology': 0xcd853f, 'industry': 0x4682b4, 'medicine': 0xff1493,
-        'economics': 0xdaa520, 'planetary stewardship': 0x2e8b57
+        'technology': 0x0055ff,      // DEEPER BLUE (Cobalt) to avoid green blinding
+        'science': 0x00bfff,         // Sky Blue
+        'communication': 0x999900,   // Muted Gold
+        'space exploration': 0x8b008b, // Dark Magenta
+        'urban': 0x555555,           // Dim Gray
+        'governance': 0x8b4513,      // Saddle Brown
+        'philosophy': 0xcccccc,      // Light Gray
+        'future vision': 0x008b8b,    // Dark Cyan
+        'evolution': 0x4d2600,       // Very Dark Brown
+        'archaeology': 0x806040,     // Bronze
+        'industry': 0x2f4f4f,        // Dark Slate Gray
+        'medicine': 0x8b0000,        // Dark Red
+        'economics': 0x556b2f,       // Dark Olive
+        'planetary stewardship': 0x006400 // Dark Green
       };
-      return colors[category.toLowerCase()] || 0xff0000;
+      return colors[category.toLowerCase()] || 0x444444;
     }
 
     function init() {
@@ -96,13 +101,12 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
-      scene.add(new THREE.AmbientLight(0x777777));
-      const light = new THREE.PointLight(0xffffff, 1.5);
+      scene.add(new THREE.AmbientLight(0x555555));
+      const light = new THREE.PointLight(0xffffff, 1.2);
       camera.add(light);
       scene.add(camera);
 
-      // Starfield effect
-      scene.add(new THREE.GridHelper(600, 30, 0x222222, 0x111111));
+      scene.add(new THREE.GridHelper(600, 30, 0x111111, 0x050505));
 
       loadData();
 
@@ -119,15 +123,13 @@
       document.getElementById('stats').innerText = `${allMilestones.length} Milestones Indexed`;
       populateUI();
       renderPoints(allMilestones);
-      // Ensure the right panel is visible so the Future button is seen
-      document.getElementById('results-panel').style.display = 'block';
     }
 
     function populateUI() {
       const categories = [...new Set(allMilestones.map(m => m.category))].sort();
       const filter = document.getElementById('categoryFilter');
       const legend = document.getElementById('legend');
-
+      
       categories.forEach(cat => {
         const opt = document.createElement('option');
         opt.value = cat;
@@ -141,17 +143,24 @@
       });
 
       filter.addEventListener('change', (e) => {
+        hidePanel(); // Automatically hide panel when switching context
         if(e.target.value === 'all') renderPoints(allMilestones);
         else renderPoints(allMilestones.filter(m => m.category === e.target.value));
       });
     }
 
+    function hidePanel() {
+      document.getElementById('results-panel').style.display = 'none';
+    }
+
     function filterPast() {
+      hidePanel();
       const past = allMilestones.filter(m => m.year <= 2026);
       renderPoints(past);
     }
 
     function filterFuture() {
+      hidePanel();
       const future = allMilestones.filter(m => m.year > 2026);
       renderPoints(future);
     }
@@ -162,13 +171,12 @@
 
       dataToRender.forEach(m => {
         const geometry = new THREE.SphereGeometry(2.8, 12, 12);
-        const material = new THREE.MeshPhongMaterial({
+        const material = new THREE.MeshPhongMaterial({ 
           color: getCategoryColor(m.category),
           emissive: getCategoryColor(m.category),
-          emissiveIntensity: 0.5
+          emissiveIntensity: 0.3
         });
         const mesh = new THREE.Mesh(geometry, material);
-        // Mapping: Lat/Lon scaled for visibility, Y is normalized time
         mesh.position.set(m.location.lat * 2.8, normalizeYear(m.year), m.location.lon * 2.2);
         mesh.userData = m;
         scene.add(mesh);
@@ -182,6 +190,7 @@
     }
 
     function resetView() {
+      hidePanel();
       camera.position.set(450, 450, 450);
       renderPoints(allMilestones);
       document.getElementById('categoryFilter').value = 'all';
@@ -192,16 +201,19 @@
       const mouse = new THREE.Vector2((e.clientX/window.innerWidth)*2-1, -(e.clientY/window.innerHeight)*2+1);
       raycaster.setFromCamera(mouse, camera);
       const intersects = raycaster.intersectObjects(milestoneMeshes);
-
+      
       if (intersects.length > 0) {
         const m = intersects[0].object.userData;
+        const panel = document.getElementById('results-panel');
         document.getElementById('panel-title').innerText = m.title;
         document.getElementById('panel-content').innerHTML = `
           <p><strong>Timeline:</strong> ${m.year > 0 ? m.year : Math.abs(m.year) + ' BCE'}</p>
           <p><strong>Context:</strong> ${m.culture || m.humanType}</p>
-          <p style="line-height:1.4;">${m.description}</p>
-          <a href="${m.url}" target="_blank" style="color: #00ffff; text-decoration:none;">[ RESEARCH SOURCE ]</a>
+          <hr style="border:0; border-top:1px solid #333;">
+          <p style="line-height:1.5;">${m.description}</p>
+          <a href="${m.url}" target="_blank" style="color: #00ffff; text-decoration:none; font-size:11px;">[ OPEN KNOWLEDGE SOURCE ]</a>
         `;
+        panel.style.display = 'block'; // Ensure panel opens/stays open on click
       }
     });
 
