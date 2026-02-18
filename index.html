@@ -126,7 +126,13 @@
       const response = await fetch('./milestones.json');
       const data = await response.json();
       allMilestones = data.milestones;
-      allMilestones.forEach(m => { if(m.title.includes("Dog Domestication")) m.category = "evolution"; });
+
+      // CONSOLIDATION LOGIC: Fixing categories and merging Economics
+      allMilestones.forEach(m => { 
+        if(m.title.includes("Dog Domestication")) m.category = "evolution"; 
+        if(m.category.toLowerCase() === "economy") m.category = "economics";
+      });
+
       document.getElementById('stats').innerText = `${allMilestones.length} Milestones Synced`;
       populateUI();
       renderPoints(allMilestones);
@@ -136,6 +142,11 @@
       const categories = [...new Set(allMilestones.map(m => m.category))].sort();
       const filter = document.getElementById('categoryFilter');
       const legend = document.getElementById('legend');
+      
+      // Clear existing to prevent duplicates during re-load
+      filter.innerHTML = '<option value="all">Categories</option>';
+      legend.innerHTML = '';
+
       categories.forEach(cat => {
         const opt = document.createElement('option');
         opt.value = cat;
@@ -146,18 +157,24 @@
         item.innerHTML = `<div class="color-box" style="background: #${getCategoryColor(cat).toString(16).padStart(6, '0')}"></div>${cat}`;
         legend.appendChild(item);
       });
+      
       filter.addEventListener('change', (e) => {
-        clearSearchFields(); // Clear search when switching categories
+        clearSearchFields();
         if(e.target.value === 'all') renderPoints(allMilestones);
         else renderPoints(allMilestones.filter(m => m.category === e.target.value));
       });
     }
 
-    // NEW CONSOLE CLEAR FUNCTION
     function clearSearchFields() {
       document.getElementById('textSearch').value = "";
       document.getElementById('yearFrom').value = "";
       document.getElementById('yearTo').value = "";
+    }
+
+    // NEW UI RESET: Clears search fields AND the category dropdown
+    function fullConsoleReset() {
+      clearSearchFields();
+      document.getElementById('categoryFilter').value = "all";
     }
 
     function searchByPeriod() {
@@ -177,8 +194,15 @@
       ));
     }
 
-    function filterPast() { clearSearchFields(); renderPoints(allMilestones.filter(m => m.year <= 2026)); }
-    function filterFuture() { clearSearchFields(); renderPoints(allMilestones.filter(m => m.year > 2026)); }
+    function filterPast() { 
+      fullConsoleReset(); 
+      renderPoints(allMilestones.filter(m => m.year <= 2026)); 
+    }
+
+    function filterFuture() { 
+      fullConsoleReset(); 
+      renderPoints(allMilestones.filter(m => m.year > 2026)); 
+    }
 
     function renderPoints(dataToRender) {
       milestoneMeshes.forEach(m => scene.remove(m));
@@ -197,10 +221,9 @@
     function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
     
     function resetView() { 
-      clearSearchFields();
+      fullConsoleReset();
       camera.position.set(450, 450, 450); 
       renderPoints(allMilestones); 
-      document.getElementById('categoryFilter').value = 'all'; 
     }
 
     window.addEventListener('click', (e) => {
