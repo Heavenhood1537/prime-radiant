@@ -45,10 +45,7 @@
 
   <div id="controls">
     <h2>Prime Radiant</h2>
-    <button class="navy-btn" onclick="filterPast()">Past Milestones</button>
-    <button class="navy-btn" onclick="filterFuture()">Future Vision</button>
-    
-    <div id="stats" style="margin-top:10px; color: #4b5563; font-style: italic; font-size: 10px;">Node Sync Active</div>
+    <div id="stats" style="margin-top:5px; color: #4b5563; font-style: italic; font-size: 10px;">Registry Active</div>
     
     <select id="categoryFilter" onchange="triggerCategoryFilter()" style="margin-top: 15px; background: #1e3a8a; color: #dbeafe; border: 1px solid #3b82f6;">
       <option value="all">Categories</option>
@@ -83,7 +80,6 @@
 
   <script>
     let scene, camera, renderer, milestoneMeshes = [], allMilestones = [];
-    let activeTimeSet = []; // Tracks Past, Future, or All
     const oldestAnchor = -3300000;
 
     function normalizeYear(year) {
@@ -93,11 +89,17 @@
 
     function getCategoryColor(category) {
       const colors = {
-        'technology': 0x4682b4, 'science': 0x5f9ea0, 'communication': 0xbdb76b,
-        'space exploration': 0x483d8b, 'urban': 0x708090, 'governance': 0x8b4513,
-        'philosophy': 0xe6e6fa, 'future vision': 0x008b8b, 'evolution': 0x556b2f,
-        'archaeology': 0xbc8f8f, 'industry': 0x2f4f4f, 'medicine': 0x800000,
-        'economics': 0x9acd32, 'planetary stewardship': 0x228b22, 'food': 0xd2691e
+        'agriculture': 0x556b2f, 'anthropology': 0xffd700, 'architecture': 0xff7f50,
+        'art': 0xff69b4, 'astronomy': 0xadd8e6, 'communication': 0xbdb76b,
+        'culture': 0xba55d3, 'economy': 0x9acd32, 'education': 0x40e0d0,
+        'engineering': 0x6495ed, 'evolution': 0x8b4513, 'exploration': 0x1e90ff,
+        'governance': 0xcd853f, 'health': 0xff1493, 'history': 0x808080,
+        'human rights': 0xff6347, 'industry': 0x2f4f4f, 'law': 0x4169e1,
+        'linguistics': 0xda70d6, 'mathematics': 0x00ffff, 'medicine': 0x8b0000,
+        'philosophy': 0xe6e6fa, 'planetary stewardship': 0x228b22,
+        'political science': 0xff4500, 'psychology': 0xffb6c1, 'science': 0x5f9ea0,
+        'sociology': 0x20b2aa, 'space': 0x483d8b, 'technology': 0x4682b4,
+        'trade': 0xdaa520, 'transport': 0xffa500, 'urban': 0x708090
       };
       return colors[category.toLowerCase()] || 0x1e3a8a;
     }
@@ -125,13 +127,14 @@
       const data = await response.json();
       allMilestones = data.milestones;
       
-      // Data Cleaning
       allMilestones.forEach(m => { 
-        if(m.title.includes("Dog Domestication")) m.category = "evolution"; 
-        if(m.category.toLowerCase() === "economy" || m.category.toLowerCase() === "economics") m.category = "economics";
+        let cat = (m.category || 'technology').toLowerCase().trim();
+        if (cat === 'economics') cat = 'economy';
+        if (cat === 'transportation') cat = 'transport';
+        if (cat === 'space exploration') cat = 'space';
+        m.category = cat;
       });
 
-      activeTimeSet = allMilestones; 
       populateCategories();
       renderPoints(allMilestones);
     }
@@ -152,19 +155,14 @@
         item.innerHTML = `<div class="color-box" style="background: #${getCategoryColor(cat).toString(16).padStart(6, '0')}"></div>${cat}`;
         legend.appendChild(item);
       });
+      document.getElementById('stats').innerText = `${allMilestones.length} Milestones Synced`;
     }
 
-    // THE BRIDGE FUNCTION
     function triggerCategoryFilter() {
       const selected = document.getElementById('categoryFilter').value;
-      clearKeywordField();
-      clearYearFields();
-      if(selected === 'all') {
-        renderPoints(activeTimeSet);
-      } else {
-        const result = activeTimeSet.filter(m => m.category === selected);
-        renderPoints(result);
-      }
+      clearKeywordField(); clearYearFields();
+      if(selected === 'all') renderPoints(allMilestones);
+      else renderPoints(allMilestones.filter(m => m.category === selected));
     }
 
     function clearKeywordField() { document.getElementById('textSearch').value = ""; resetDetailPanel(); }
@@ -177,7 +175,7 @@
     function searchByPeriod() {
       clearKeywordField();
       const from = parseInt(document.getElementById('yearFrom').value) || -4000000;
-      const to = parseInt(document.getElementById('yearTo').value) || 2500;
+      const to = parseInt(document.getElementById('yearTo').value) || 2026;
       renderPoints(allMilestones.filter(m => m.year >= from && m.year <= to));
     }
 
@@ -187,20 +185,6 @@
       renderPoints(allMilestones.filter(m => 
         m.title.toLowerCase().includes(term) || m.description.toLowerCase().includes(term)
       ));
-    }
-
-    function filterPast() { 
-      document.getElementById('categoryFilter').value = 'all';
-      clearKeywordField(); clearYearFields();
-      activeTimeSet = allMilestones.filter(m => m.year <= 2026);
-      renderPoints(activeTimeSet); 
-    }
-
-    function filterFuture() { 
-      document.getElementById('categoryFilter').value = 'all';
-      clearKeywordField(); clearYearFields();
-      activeTimeSet = allMilestones.filter(m => m.year > 2026);
-      renderPoints(activeTimeSet); 
     }
 
     function renderPoints(dataToRender) {
@@ -221,7 +205,6 @@
     function resetView() { 
       document.getElementById('categoryFilter').value = 'all';
       clearKeywordField(); clearYearFields();
-      activeTimeSet = allMilestones;
       camera.position.set(450, 450, 450); 
       renderPoints(allMilestones); 
     }
