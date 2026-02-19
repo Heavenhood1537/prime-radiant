@@ -725,7 +725,7 @@
       "url": "https://en.wikipedia.org/wiki/Saybur%C3%A7_reliefs"
     },
     {
-      "category": "astronomy",
+      "category": "science",
       "title": "Joruba Calendar, earliest  attested calendar",
       "description": "The traditional Joruba Calendar has 4 days and 7 weeks  a month, 13 months equaling to 364 days. The year begins  on June 3, and finishes on June 2, its now in its year 1067.",
       "year": -8042,
@@ -1299,6 +1299,22 @@
       ],
       "url": "https://en.wikipedia.org/wiki/Tin_sources_and_trade_during_antiquity"
     },
+    {
+      "category": "mathematics",
+      "title": "The Abacus",
+      "description": "Sumeria / Mesopotamia. The earliest known calculating device, using beads or stones on a grid. It represents the first time human mathematical thought was offloaded to a portable, mechanical data-processing interface.",
+      "year": -2700,
+      "yearsAgo": 4726,
+      "location": {
+        "lat": 32.5,
+        "lon": 44.4
+      },
+      "humanType": "Homo sapiens",
+      "culture": "Sumerian",
+      "originators": ["Sumerian Accountants"],
+      "ideas": ["External Memory", "Calculation Hardware", "Digital Logic"],
+      "url": "https://en.wikipedia.org/wiki/Abacus"
+    }
     {
       "category": "architecture",
       "title": "The Pyramid of Djoser (The Stone Milestone)",
@@ -5757,7 +5773,7 @@
       "url": "https://en.wikipedia.org/wiki/Maslow%27s_hierarchy_of_needs"
     },
     {
-      "category": "astronomy",
+      "category": "space",
       "title": "The first rocket to reach space",
       "description": "The first rocket to reach space was the German V-2 rocket, MW 18014, launched from a research center in Peenemünde, Germany.",
       "year": 1944,
@@ -6354,7 +6370,7 @@
       "url": "https://my.clevelandclinic.org/health/treatments/3977-birth-control-the-pill"
     },
     {
-      "category": "astronomy",
+      "category": "space",
       "title": "The First man in cosmos (space)",
       "description": "Ю́рий Алексе́евич Гага́рин the first successful crewed spaceflight, became  the first person to journey into outer space. Traveling on Vostok 1, Gagarin  completed one orbit of Earth, with his flight taking 108 minutes. He became  an international celebrity and was awarded many medals and titles, including  his country's highest distinction: Hero of the Soviet Union.",
       "year": 1961,
@@ -8089,7 +8105,7 @@
       "url": "https://en.wikipedia.org/wiki/Convention_on_Biological_Diversity"
     },
     {
-      "category": "astronomy",
+      "category": "space",
       "title": "The first Global Navigation Satellite System (GNSS)",
       "description": "The first prototype spacecraft was launched in 1978 and the full constellation of 24 satellites became operational in 1993.",
       "year": 1993,
