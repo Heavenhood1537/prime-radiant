@@ -1,66 +1,6 @@
 {
   "milestones": [
     {
-      "category": "evolution",
-      "title": "ViralGenesis (Giant Virus Complexity)",
-      "description": "Discovery of Giant Viruses (Pithovirus/Mollivirus) in Siberian permafrost.  With genomes of 500-2,500+ genes, they challenge the \"cells first\" theory.  These entities suggest that complex \"viral architects\" provided the genetic blueprints  and replication machinery that allowed simple life to transition into complex  cellular life (Eukaryogenesis). This is the \"Software\" preceding the \"Hardware.\"",
-      "year": -1500000000,
-      "yearsAgo": 1500000000,
-      "location": {
-        "lat": 14.24,
-        "lon": 40.3
-      },
-      "humanType": "Homo sapiens",
-      "culture": null,
-      "originators": [
-        "The Pithovirus/Mollivirus Scaffolding (Approx. Eukaryotic Emergence)"
-      ],
-      "ideas": [
-        "ViralGenesis (Giant Virus Complexity)"
-      ],
-      "url": "https://en.wikipedia.org/wiki/Pithovirus"
-    },
-    {
-      "category": "evolution",
-      "title": "Biological Networking",
-      "description": "The first recorded evidence of mycorrhizal fungi interacting with early land plants  (Aglaophyton). This specific \"pin\" represents the birth of the global biological internet.  From this single Scottish bog, the \"software\" of mutual nutrient sharing spread to cover  the entire planetary sphere.",
-      "year": -410000000,
-      "yearsAgo": 410000000,
-      "location": {
-        "lat": 57.34,
-        "lon": -3.65
-      },
-      "humanType": "Homo sapiens",
-      "culture": null,
-      "originators": [
-        "The Rhynie Symbiosis (Mycelial Origin)"
-      ],
-      "ideas": [
-        "Biological Networking"
-      ],
-      "url": "https://en.wikipedia.org/wiki/Rhynie_chert"
-    },
-    {
-      "category": "evolution",
-      "title": "Habitual Bipedalism (Upright Walking)",
-      "description": "Djourab Desert, Chad, the transition to walking on two legs. This shifted the visual perspective,  reduced the body's exposure to the sun, and crucially, freed the hands to eventually hold tools,  make and carry fire.",
-      "year": -7000000,
-      "yearsAgo": 7000000,
-      "location": {
-        "lat": 16.25,
-        "lon": 17.5
-      },
-      "humanType": "Homo sapiens",
-      "culture": null,
-      "originators": [
-        "Sahelanthropus tchadensis (Nickname: \"Toumaï\")"
-      ],
-      "ideas": [
-        "Habitual Bipedalism (Upright Walking)"
-      ],
-      "url": "https://en.wikipedia.org/wiki/Sahelanthropus"
-    },
-    {
       "category": "technology",
       "title": "Lomekwian Tool Tradition",
       "description": "Found at Lomekwi 3, Kenya. These tools predate Homo by 700,000 years, proving  that earlier hominins possessed the cognitive and motor skills for intentional toolmaking.",
@@ -482,7 +422,7 @@
       "url": "https://en.wikipedia.org/wiki/Blombos_Cave"
     },
     {
-      "category": "transportation",
+      "category": "transport",
       "title": "Open Ocean Seafering (The Australia Crossing)",
       "description": "Madjedbebe, Australia. To reach Australia, humans had to cross the \"Wallace Line\" (deep water).  This proves the existence of advanced boat-building and the cognitive ability to navigate by the stars  or currents.",
       "year": -65000,
@@ -664,7 +604,7 @@
       "url": "https://en.wikipedia.org/wiki/Xianren_Cave"
     },
     {
-      "category": "",
+      "category": "urban",
       "title": "Early Sedentism",
       "description": "Shuqba Cave, in the Judaean Mountains of Mandatory Palestine,  permanent settlements based on wild resources",
       "year": -12500,
@@ -827,7 +767,7 @@
       "url": "https://en.wikipedia.org/wiki/Maize_domestication"
     },
     {
-      "category": "transportation",
+      "category": "transport",
       "title": "Early boat building evidence",
       "description": "Dugout-style canoe measuring 298 centimetres in length,  and 44 cm in width discovered near the vVillage of Pesse, Hoogeveen, Netherlands",
       "year": -8000,
@@ -847,7 +787,7 @@
       "url": "https://en.wikipedia.org/wiki/Pesse_canoe"
     },
     {
-      "category": "Technology",
+      "category": "technology",
       "title": "Clay Accounting Tokens (Data Management)",
       "description": "Small clay shapes used to represent quantities of grain or livestock. This marks the first time  human consciousness \"offloaded\" memory to a physical object to manage complex social and  economic systems—the birth of the database.",
       "year": -8000,
@@ -1318,7 +1258,7 @@
       "url": "https://en.wikipedia.org/wiki/Candle"
     },
     {
-      "category": "Science",
+      "category": "science",
       "title": "The first recorded knowledge of geometry",
       "description": "Early geometry was a collection of empirically discovered principles concerning lengths, angles, areas, and volumes, developed to meet practical need in surveying, construction, astronomy, and crafts.",
       "year": -3000,
@@ -1360,7 +1300,7 @@
       "url": "https://en.wikipedia.org/wiki/Tin_sources_and_trade_during_antiquity"
     },
     {
-      "category": "Architecture",
+      "category": "architecture",
       "title": "The Pyramid of Djoser (The Stone Milestone)",
       "description": "Designed by the polymath Imhotep, this is the \"Originating Milestone\" of large-scale stone  architecture. It represents the first time human consciousness moved from building with  mud-bricks to permanent, monumental stone. It reflects a massive leap in social  coordination, engineering, and the desire to create something that transcends the  individual's \"4D Dot\" of time.",
       "year": -2630,
@@ -1575,7 +1515,7 @@
       "url": "https://www.historyofinformation.com/detail.php?id=3090"
     },
     {
-      "category": "food, agriculture",
+      "category": "agriculture",
       "title": "Polyculture fields combining maize, beans, squash, and other crops with local  seeds and ecological knowledge",
       "description": "Over thousands of years, Indigenous farmers in Mesoamerica developed the milpa system, interplanting maize,  beans, squash, and other species in rotations that recycle nutrients, control weeds and pests, and sustain soil  fertility; using diverse, locally adapted seeds and community‑held land, milpa provides a nutritionally balanced  diet and a resilient, low‑input alternative to monoculture, and is now recognized as a living model for  agroecology and food sovereignty in the 21st century.",
       "year": -1500,
@@ -1678,7 +1618,7 @@
       "url": "https://www.microscope.com/education-center/articles/history-of-microscopes"
     },
     {
-      "category": "Astronomy",
+      "category": "astronomy",
       "title": "Babylonian Observational Astronomy and calendars",
       "description": "Babylon, Iraq, Observational astronomy and calendars",
       "year": -1000,
@@ -2031,7 +1971,7 @@
       "url": "https://en.wikipedia.org/wiki/Grid_plan"
     },
     {
-      "category": "Philosophy",
+      "category": "philosophy",
       "title": "The Socratic Method",
       "description": "Around 450 BCE in Athens, Socrates pioneered a form of cooperative dialogue based on asking and answering  questions to stimulate critical thinking; by exposing contradictions in logic, he established \"elenchus\" as a tool for  uncovering truth and remains the primary model for Western pedagogical inquiry.",
       "year": -450,
@@ -2686,7 +2626,7 @@
       "url": "https://www.metmuseum.org/essays/stained-glass-in-medieval-europe"
     },
     {
-      "category": "Law",
+      "category": "law",
       "title": "Magna Carta",
       "description": "n 1215, at Runnymede, King John was forced to sign a \"Great Charter\" that established for the first time that the  Sovereign is not above the law; it introduced the concept of \"due process\" and remains the foundational document for the  rule of law in English-speaking societies and beyond.",
       "year": 1215,
@@ -2728,7 +2668,7 @@
       "url": "https://www.inneseyeclinic.com/blog/a-timeline-of-eyeglasses-history/"
     },
     {
-      "category": "food, agriculture",
+      "category": "agriculture",
       "title": "Raised‑bed “floating” fields built in lakes and wetlands to grow diverse crops  near cities using organic recycling and traditional seeds",
       "description": "Around the lakes of the Valley of Mexico, Indigenous communities constructed chinampas—rectangular raised  beds woven from reeds and filled with lake mud and organic matter—to create highly productive, year‑round  plots for maize, vegetables, flowers, and native crops close to urban centers; managed with hand tools, canals,  and seed‑saving traditions, chinampas sustained dense populations with minimal external inputs and are now  studied as an early example of circular, low‑carbon urban agriculture and wetland stewardship",
       "year": 1325,
@@ -2871,7 +2811,7 @@
       "url": "https://en.wikipedia.org/wiki/Printing_press"
     },
     {
-      "category": "Political Science",
+      "category": "political science",
       "title": "Il Principe, The Prince",
       "description": "Published posthumously in 1532, this text marked the birth of \"realpolitik\" by separating statecraft from religious morality;  Machiavelli’s clinical analysis of how power is actually gained and maintained—rather than how it should be—remains a  cornerstone of modern political strategy and power dynamics.",
       "year": 1513,
@@ -3016,7 +2956,7 @@
       "url": "https://en.wikipedia.org/wiki/Acetone"
     },
     {
-      "category": "Astronomy",
+      "category": "astronomy",
       "title": "Kepler - Planetary Motion",
       "description": "Kepler's laws of planetary motion, published in 1609,  mathematical planetary orbits, stems from Tycho Brahe's work",
       "year": 1609,
@@ -3099,7 +3039,7 @@
       "url": "https://en.wikipedia.org/wiki/William_Harvey"
     },
     {
-      "category": "Philosophy",
+      "category": "philosophy",
       "title": "Cogito, Ergo Sum",
       "description": "n 1637, seeking a foundation for knowledge that could not be doubted, Descartes arrived at the ultimate certainty: \"I  think, therefore I am\"; this shift toward \"subjective certainty\" launched the Enlightenment and established the human  mind as the starting point for all philosophical and scientific inquiry.",
       "year": 1637,
@@ -3230,7 +3170,7 @@
       "url": "https://en.wikipedia.org/wiki/Steam_car"
     },
     {
-      "category": "Mathematics",
+      "category": "mathematics",
       "title": "Laws of Motion/Calculus",
       "description": "With the 1687 publication of \"Philosophiæ Naturalis Principia Mathematica\" Newton synthesized the laws  of gravity and motion into a single mathematical framework; by showing that the same laws apply to a falling apple  and a planet’s orbit, he created a \"clockwork universe\" model that dominated the scientific worldview for centuries.",
       "year": 1687,
@@ -3310,7 +3250,7 @@
       "url": "https://nmc-mic.ca/about-newspapers/the-evolution-of-newspapers/"
     },
     {
-      "category": "Political Science",
+      "category": "political science",
       "title": "Separation of Powers",
       "description": "In 1748, in \"The Spirit of the Laws,\" Montesquieu argued that political liberty requires the division of government into  independent Legislative, Executive, and Judicial branches; this \"checks and balances\" system became the architectural  blueprint for the United States Constitution and modern democracies.",
       "year": 1748,
@@ -3350,7 +3290,7 @@
       "url": "https://en.wikipedia.org/wiki/Industrial_Revolution"
     },
     {
-      "category": "Political Science",
+      "category": "political science",
       "title": "The Social Contract",
       "description": "In 1762, Rousseau proposed that legitimate political authority rests on a \"social contract\" agreed upon by all citizens; his  idea that \"man is born free, and everywhere he is in chains\" fueled the democratic revolutions in America and France by  centering sovereignty in the \"general will\" of the people.",
       "year": 1762,
@@ -3370,7 +3310,7 @@
       "url": "https://en.wikipedia.org/wiki/The_Social_Contract"
     },
     {
-      "category": "Economics",
+      "category": "economy",
       "title": "Wealth of Nations",
       "description": "Published in 1776, this foundational text argued that rational self-interest and competition lead to economic prosperity  through an \"invisible hand\"; it moved the world away from mercantilism by defining the division of labor and free-market  dynamics as the engines of national wealth.",
       "year": 1776,
@@ -3390,7 +3330,7 @@
       "url": "https://en.wikipedia.org/wiki/The_Wealth_of_Nations"
     },
     {
-      "category": "Philosophy",
+      "category": "philosophy",
       "title": "Critique of Pure Reason",
       "description": "In 1781, Kant attempted to bridge the gap between rationalism and empiricism, arguing that the human mind actively  shapes our perception of reality; he proposed that while we can never know \"things-in-themselves,\" we can understand  the universal categories of thought that allow us to experience the world.",
       "year": 1781,
@@ -3471,7 +3411,7 @@
       "url": "https://en.wikipedia.org/wiki/Voltaic_pile"
     },
     {
-      "category": "transportation",
+      "category": "transport",
       "title": "First commercially successful Steam boat",
       "description": "Robert Fulton later obtained a Boulton and Watt steam engine, shipped to America, where his first proper steamship was built  in 1807, North River Steamboat (later known as Clermont),  which carried passengers between New York City and Albany,  New York, making the 150-mile (240 km) trip in 32 hours.",
       "year": 1807,
@@ -3512,7 +3452,7 @@
       "url": "https://en.wikipedia.org/wiki/Atomic_theory"
     },
     {
-      "category": "transportation",
+      "category": "transport",
       "title": "First commercially successful Steam locomotive",
       "description": "The first commercially successful steam locomotive, Salamanca was built in 1812 by Matthew Murray of Holbeck, for the edge-railed  Middleton Railway between Middleton and Leeds, England",
       "year": 1812,
@@ -3533,7 +3473,7 @@
       "url": "https://en.wikipedia.org/wiki/Matthew_Murray"
     },
     {
-      "category": "transportation",
+      "category": "transport",
       "title": "First commercially viable bicycle",
       "description": "Drais invented his Laufmaschine \"running machine\") in 1817, that was called Draisine (English) or draisienne (French)  by the press. Karl von Drais patented this design in 1818.",
       "year": 1817,
@@ -3554,7 +3494,7 @@
       "url": "https://en.wikipedia.org/wiki/History_of_the_bicycle"
     },
     {
-      "category": "Linguistics",
+      "category": "linguistics",
       "title": "Rosetta Stone Decipherment",
       "description": "In 1822, Champollion utilized the trilingual Rosetta Stone to finally crack the code of Egyptian hieroglyphs,  bridging a 1,500-year gap in human literacy; this breakthrough allowed the \"silent\" voices of one  of history’s greatest civilizations to be read and understood by the modern world for the first time.",
       "year": 1822,
@@ -3616,7 +3556,7 @@
       "url": "https://en.wikipedia.org/wiki/Portland_cement"
     },
     {
-      "category": "transportation",
+      "category": "transport",
       "title": "First commercially successful Steam passenger train",
       "description": "Robert Stephenson and Company built Locomotion No. 1, the first steam locomotive to haul passengers on a  public railway, the Stockton and Darlington Railway",
       "year": 1825,
@@ -4034,7 +3974,7 @@
       "url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species"
     },
     {
-      "category": "Biology",
+      "category": "science",
       "title": "Evolution by Natural Selection",
       "description": "In 1859, Darwin published \"On the Origin of Species,\" proposing that all life descended from common ancestors through  \"natural selection\"; this theory unified the biological sciences, explaining the diversity of life through a slow, blind process  of adaptation and survival rather than divine design.",
       "year": 1859,
@@ -4095,7 +4035,7 @@
       "url": "https://en.wikipedia.org/wiki/Germ_theory_of_disease"
     },
     {
-      "category": "Medicine",
+      "category": "medicine",
       "title": "Germ Theory",
       "description": "By 1861, Pasteur’s experiments disproved \"spontaneous generation\" and confirmed that invisible microorganisms cause  disease; this realization led to the invention of pasteurization, life-saving vaccines, and sterile surgical techniques,  radically increasing global life expectancy within a single generation.",
       "year": 1861,
@@ -4135,7 +4075,7 @@
       "url": "https://en.wikipedia.org/wiki/Maxwell%27s_equations"
     },
     {
-      "category": "Biology",
+      "category": "science",
       "title": "Mendelian Inheritance",
       "description": "In Brno, Mendel discovers the laws of inheritance through pea plant experiments, showing that traits are  inherited as discrete units (later called genes). Though ignored until 1900, this work founds genetics and explains  how variation is preserved and transmitted across generations. Between 1856 and 1863, through meticulous  pea plant experiments, Mendel discovered the discrete \"units of heredity\" (now called genes); he established  the laws of segregation and independent assortment, providing the mathematical mechanism that Darwin’s theory  of evolution had been missing.",
       "year": 1865,
@@ -4425,7 +4365,7 @@
       "url": "https://en.wikipedia.org/wiki/Michelson%E2%80%93Morley_experiment"
     },
     {
-      "category": "Anthropology",
+      "category": "anthropology",
       "title": "Cultural Relativism",
       "description": "By 1887, Boas challenged the prevailing notions of \"racial hierarchy\" by arguing that a person’s culture is a result of  historical circumstances rather than biology; his work established that human behavior can only be understood within its  own cultural context, forming the bedrock of modern anthropology.",
       "year": 1887,
@@ -4590,7 +4530,7 @@
       "url": "https://ecampusontario.pressbooks.pub/introtosociology2024edition/chapter/1-2-the-history-of-sociology/"
     },
     {
-      "category": "Sociology",
+      "category": "sociology",
       "title": "Social Facts",
       "description": "In 1895, Durkheim established sociology as a formal academic discipline by arguing that society is composed of \"social  facts\"—norms, values, and structures that exist independently of the individual—and that these forces exert powerful,  measurable influence over human behavior and suicide rates.",
       "year": 1895,
@@ -4651,7 +4591,7 @@
       "url": "https://en.wikipedia.org/wiki/Guglielmo_Marconi"
     },
     {
-      "category": "Psychology",
+      "category": "psychology",
       "title": "Classical Conditioning",
       "description": "By 1897, in St. Petersburg, Pavlov’s research into canine digestion led to the discovery of the  \"conditioned reflex,\" proving that biological responses can be triggered by neutral stimuli;  this laid the scientific foundation for Behaviorism and the understanding of how environment  shapes human habit.",
       "year": 1897,
@@ -4734,7 +4674,7 @@
       "url": "https://en.wikipedia.org/wiki/Garden_city_movement"
     },
     {
-      "category": "Psychology",
+      "category": "psychology",
       "title": "Interpretation of Dreams",
       "description": "In 1899, Freud published \"Die Traumdeutung\" in Vienna, introducing psychoanalysis and the revolutionary idea that the  \"unconscious\" mind governs behavior; he proposed that dreams are not random noise but \"the royal road\" to  understanding repressed human desires and \"wish fulfillment.\"",
       "year": 1899,
@@ -4815,7 +4755,7 @@
       "url": "https://en.wikipedia.org/wiki/Karl_Landsteiner"
     },
     {
-      "category": "transportation",
+      "category": "transport",
       "title": "The First Aeroplane with controlled flight characteristics",
       "description": "They made the first controlled, sustained flight of an engine-powered, heavier-than-air aircraft with the Wright Flyer, North Carolina, USA",
       "year": 1903,
@@ -4877,7 +4817,7 @@
       "url": "https://en.wikipedia.org/wiki/Photoelectric_effect"
     },
     {
-      "category": "Sociology",
+      "category": "sociology",
       "title": "The Protestant Ethic",
       "description": "In 1905, Weber explored the connection between religious values and economic systems, suggesting that the  \"Protestant work ethic\" was a primary driver in the rise of modern capitalism; his work highlighted how subjective  beliefs and cultural meanings shape large-scale social and historical change.",
       "year": 1905,
@@ -4960,7 +4900,7 @@
       "url": "https://en.wikipedia.org/wiki/Haber_process"
     },
     {
-      "category": "Science",
+      "category": "science",
       "title": "The Haber-Bosch Process",
       "description": "By synthesizing ammonia from nitrogen and hydrogen, this process broke the natural \"nitrogen ceiling,\" enabling  mass-produced chemical fertilizers that fundamentally sustain nearly half of the current global population. It  represents the ultimate milestone in human chemical engineering and planetary-scale survival.",
       "year": 1909,
@@ -5043,7 +4983,7 @@
       "url": "https://en.wikipedia.org/wiki/Atomic_nucleus"
     },
     {
-      "category": "Earth Science",
+      "category": "science",
       "title": "Continental Drift",
       "description": "n 1912, Wegener proposed the \"Pangea\" hypothesis, suggesting that Earth's continents were once a single  landmass that slowly drifted apart; though initially ridiculed, his work pioneered the study of plate tectonics,  explaining the global distribution of fossils, mountain ranges, and seismic activity.",
       "year": 1912,
@@ -5125,7 +5065,7 @@
       "url": "https://en.wikipedia.org/wiki/Stainless_steel"
     },
     {
-      "category": "Earth Science",
+      "category": "science",
       "title": "Radiometric Dating",
       "description": "In 1913, Holmes published \"The Age of the Earth,\" using the decay of uranium into lead to provide the first scientifically  rigorous timeline for our planet; this moved geology from guesswork to a precise science, proving the Earth was billions,  not millions, of years old.",
       "year": 1913,
@@ -5464,7 +5404,7 @@
       "url": "https://en.wikipedia.org/wiki/Dirac_equation"
     },
     {
-      "category": "Medicine",
+      "category": "medicine",
       "title": "Discovery of Penicillin",
       "description": "In 1928, Fleming noticed a mold (Penicillium) that killed staphylococci in a petri dish, identifying the world’s first \"miracle  drug\"; this accidental discovery ended the era where a simple scratch or infection could be a death sentence, launching  the age of antibiotics and modern pharmacology.",
       "year": 1928,
@@ -5525,7 +5465,7 @@
       "url": "https://en.wikipedia.org/wiki/Hubble%27s_law"
     },
     {
-      "category": "Mathematics",
+      "category": "mathematics",
       "title": "Completeness Theorems",
       "description": "In 1931, Gödel shook the foundations of logic by proving that in any consistent mathematical system, there are true  statements that cannot be proven within that system; this ended the quest for a \"perfect\" closed logical system and set  the stage for modern computer science and complexity theory.",
       "year": 1931,
@@ -5692,7 +5632,7 @@
       "url": "https://www.bbc.com/historyofthebbc/anniversaries/november/first-regular-television-service"
     },
     {
-      "category": "Economics",
+      "category": "economy",
       "title": "General Theory of Employment",
       "description": "In 1936, responding to the Great Depression, Keynes fundamentally altered macroeconomics by arguing that market  economies do not automatically self-correct to full employment; he proposed that active government intervention and  \"aggregate demand\" management are essential to prevent prolonged stagnation.",
       "year": 1936,
@@ -5797,7 +5737,7 @@
       "url": "https://en.wikipedia.org/wiki/Grand_Coulee_Dam"
     },
     {
-      "category": "Psychology",
+      "category": "psychology",
       "title": "Hierarchy of Needs",
       "description": "In 1943, Maslow published \"A Theory of Human Motivation,\" shifting psychology away from  pathology and toward \"self-actualization\"; his pyramid framework established that humans must satisfy  physiological and safety needs before they can pursue higher-order psychological growth and  creative fulfillment.",
       "year": 1943,
@@ -5963,7 +5903,7 @@
       "url": "https://en.wikipedia.org/wiki/Information_theory"
     },
     {
-      "category": "Human Rights",
+      "category": "human rights",
       "title": "Universal Declaration of Human Rights",
       "description": "On December 10, 1948, in Paris, the UN adopted a document outlining 30 fundamental rights that belong to every  human being regardless of nationality or creed; it represents the first global consensus that the dignity of the individual is  the ultimate responsibility of the international community.",
       "year": 1948,
@@ -6191,7 +6131,7 @@
       "url": "https://en.wikipedia.org/wiki/Sputnik_1"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Sputnik 1 (First Artificial Satellite)",
       "description": "First artificial Earth satellite launched by the Soviet Union on October 4, 1957, marking the  beginning of the Space Age and demonstrating the feasibility of satellite technology for  communications and scientific research.",
       "year": 1957,
@@ -6212,7 +6152,7 @@
       "url": "https://en.wikipedia.org/wiki/Sputnik_1"
     },
     {
-      "category": "Linguistics",
+      "category": "linguistics",
       "title": "Universal Grammar",
       "description": "With his 1957 work \"Syntactic Structures,\" Chomsky launched the \"Cognitive Revolution,\" arguing that humans are born  with an innate biological \"language acquisition device\"; he proposed that all human languages share a deep underlying  structural framework, fundamentally changing our view of human intelligence.",
       "year": 1957,
@@ -6273,7 +6213,7 @@
       "url": "https://en.wikipedia.org/wiki/Integrated_circuit"
     },
     {
-      "category": "Anthropology",
+      "category": "anthropology",
       "title": "Structural Anthropology",
       "description": "In 1958, Lévi-Strauss applied linguistic theories to human culture, arguing that universal mental structures underlie all  human myths and kinship systems; he sought to prove that the \"savage mind\" possesses the same logical complexity as  the \"civilized mind,\" only applied to different materials.",
       "year": 1958,
@@ -6293,7 +6233,7 @@
       "url": "https://en.wikipedia.org/wiki/Structural_anthropology"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Luna 2 (First Spacecraft to Reach Moon surface)",
       "description": "First spacecraft to reach the Moon's surface, impacting the lunar surface on September 14, 1959,  and confirming that it was possible to reach another celestial body.",
       "year": 1959,
@@ -6458,7 +6398,7 @@
       "url": "https://en.wikipedia.org/wiki/Grok"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Vostok 1 (First Human in Space)",
       "description": "Yuri Gagarin becomes the first human in space aboard Vostok 1, completing one orbit around  Earth on April 12, 1961, and proving human spaceflight was possible.",
       "year": 1961,
@@ -6874,7 +6814,7 @@
       "url": "https://en.wikipedia.org/wiki/Relational_model"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Venera 7 (First Venus Landing)",
       "description": "First spacecraft to successfully land on another planet, transmitting data from Venus's  surface for 23 minutes on December 15, 1970, and confirming the extreme conditions  on Venus.",
       "year": 1970,
@@ -6938,7 +6878,7 @@
       "url": "https://www.treasury.govt.nz/sites/default/files/2019-01/dp19-01.pdf https://pmc.ncbi.nlm.nih.gov/articles/PMC5816120/"
     },
     {
-      "category": "Art",
+      "category": "art",
       "title": "Artists donating artworks or portions of sale proceeds to support charities,  education, and community programmes",
       "description": "Since the late 20th century, artists and galleries have increasingly donated works, limited editions, or portions of  their sale profits to benefit auctions and special sales that fund scholarships, arts education, humanitarian relief,  community arts programmes, and other social causes; although tax rules often give artists little direct financial  incentive, they continue to support events where artworks are auctioned or sold with proceeds going to charities,  schools, and community organizations, making “art for auction” and profit‑sharing a recurring form of cultural  philanthropy that links creative practice with public benefit.",
       "year": 1970,
@@ -7022,7 +6962,7 @@
       "url": "https://en.wikipedia.org/wiki/Post-scarcity"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Mars 3 (First Mars Landing)",
       "description": "First spacecraft to achieve a soft landing on Mars on December 2, 1971, transmitting  data for 20 seconds before contact was lost, demonstrating the possibility of landing on  the Red Planet.",
       "year": 1971,
@@ -7043,7 +6983,7 @@
       "url": "https://en.wikipedia.org/wiki/Mars_3"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "First space station program in history, Salyut Space Station Program",
       "description": "First space station program in history, consisting of seven stations launched by the Soviet Union between  1971-1991. Salyut 1 became humanity's first space station in 1971, pioneering long-duration spaceflight and  microgravity research. The program tested critical technologies for sustained human presence in space,  conducted scientific experiments, and paved the way for Mir and the ISS, proving that humans could live and  work in orbit for extended periods.",
       "year": 1971,
@@ -7170,7 +7110,7 @@
       "url": "https://en.wikipedia.org/wiki/Quantum_chromodynamics"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Skylab Space Station",
       "description": "America's first space station, launched in 1973 using a converted Saturn V rocket upper stage. Despite  suffering severe damage during launch that required a dramatic repair mission by its first crew, Skylab  hosted three crews who conducted extensive solar observations, Earth resources studies, and biomedical  experiments. The station demonstrated that humans could work productively in space for months, with the  final crew staying 84 days, setting endurance records that stood until the Mir era.",
       "year": 1973,
@@ -7211,7 +7151,7 @@
       "url": "https://en.wikipedia.org/wiki/Snowy_Mountains_Scheme"
     },
     {
-      "category": "Art",
+      "category": "art",
       "title": "Treating arts and culture as civic infrastructure, funded to ensure broad,  equitable access",
       "description": "In the late 20th century, many European countries and cities strengthened public arts funding by creating  arm’s‑length arts councils and cultural plans that support theatres, museums, festivals, and community arts on  the principle that culture is a public good; these policies allocate stable funding, prioritize underserved  neighborhoods, and tie grants to inclusion and accessibility, allowing more experimental and socially relevant  work while keeping tickets affordable, and they have become influential models for cities worldwide seeking  vibrant, equitable cultural life",
       "year": 1974,
@@ -7275,7 +7215,7 @@
       "url": "https://en.wikipedia.org/wiki/Standard_Model"
     },
     {
-      "category": "Art",
+      "category": "art",
       "title": "Collaborative public‑art projects that build neighborhood pride, reduce stigma,  and increase social cohesion",
       "description": "From the 1970s onward, community mural programs invited local residents—especially youth and marginalized  groups—to design and paint large public artworks on walls, schools, and housing blocks, often depicting  neighborhood history and hopes; research and city reports link these community‑driven arts projects to stronger  local identity, increased trust between neighbors, lower vandalism, and greater youth engagement, showing how  participatory art can measurably improve social cohesion and perceptions of safety.",
       "year": 1975,
@@ -7341,7 +7281,7 @@
       "url": "https://en.wikipedia.org/wiki/Public-key_cryptography"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Voyager Missions (Deep Space Exploration)",
       "description": "Twin spacecraft Voyager 1 and 2 launched in 1977 to explore the outer solar system,  conducting flybys of Jupiter, Saturn, Uranus, and Neptune, and continuing into  interstellar space, with Voyager 1 becoming the first human-made object to leave the  solar system in 2012, providing unprecedented data about the outer planets and  beyond.",
       "year": 1977,
@@ -7361,7 +7301,7 @@
       "url": "https://en.wikipedia.org/wiki/Voyager_program"
     },
     {
-      "category": "food, agriculture",
+      "category": "agriculture",
       "title": "Applying ecological principles to farming and food systems, rooted in traditional  and Indigenous knowledge and farmer movements",
       "description": "Building on earlier ecological agronomy, the term “agroecology” crystallized in the late 20th century to describe  farming systems designed as diverse, resilient ecosystems rather than input‑intensive factories, linking scientific  study of soils, crops, and landscapes with the traditional practices of Indigenous and peasant communities; by  the 1970s and 1980s, Latin American scholars and social movements had turned agroecology into both a  research field and a political project for food sovereignty, championing local seeds, biodiversity, and farmer  control as an alternative to industrial, pesticide‑ and GMO‑dependent agriculture.",
       "year": 1978,
@@ -7715,7 +7655,7 @@
       "url": "https://learn.g2.com/history-of-social-media"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Mir Space Station",
       "description": "Legendary Soviet/Russian space station that operated for 15 years, serving as the first modular space  station and hosting international crews from multiple nations. Mir (meaning \"peace\" or \"world\") welcomed  cosmonauts and astronauts who conducted groundbreaking research in microgravity, set records for longest  continuous human presence in space, and demonstrated unprecedented international cooperation during the  post-Cold War era, ultimately paving the way for the International Space Station.",
       "year": 1986,
@@ -7736,7 +7676,7 @@
       "url": "https://en.wikipedia.org/wiki/Mir"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Giotto Mission (Halley's Comet)",
       "description": "ESA's pioneering mission named after Italian artist Giotto di Bondone who depicted Halley's Comet in  1301. Launched in 1986, Giotto made history by capturing the first close-up images of a comet nucleus,  flying within 596 km of Halley's Comet at 68 km/s. Despite being battered by dust particles, the spacecraft  survived and was redirected to encounter Comet Grigg-Skjellerup in 1992, revealing the icy, dark nucleus  and transforming our understanding of comets.",
       "year": 1986,
@@ -7779,7 +7719,7 @@
       "url": "https://en.wikipedia.org/wiki/High-temperature_superconductivity"
     },
     {
-      "category": "Planetary stewardship",
+      "category": "planetary stewardship",
       "title": "First universal environmental treaty to phase out ozone‑depleting chemicals  in response to scientific evidence of atmospheric harm",
       "description": "Negotiated in Montreal in 1987 and now ratified by all UN member states, the Montreal Protocol committed  countries to phasing down chlorofluorocarbons and related ozone‑depleting substances, demonstrating that  coordinated global policy, grounded in atmospheric science, can slow and begin to reverse planetary‑scale  damage and is widely regarded as one of the most effective environmental treaties in history.",
       "year": 1987,
@@ -7818,7 +7758,7 @@
       "url": "https://en.wikipedia.org/wiki/TAT-8"
     },
     {
-      "category": "Planetary stewardship",
+      "category": "planetary stewardship",
       "title": "Global scientific body to assess climate change and inform international policy",
       "description": "In 1988 UNEP and the World Meteorological Organization created the Intergovernmental Panel on Climate  Change in Geneva to synthesize global research on the causes, impacts, and risks of human‑driven climate  change and to provide rigorous, policy‑relevant assessments that have since underpinned major agreements  like the UN Framework Convention on Climate Change and guided planetary‑scale climate action.",
       "year": 1988,
@@ -7839,7 +7779,7 @@
       "url": "https://www.ipcc.ch/about/history/"
     },
     {
-      "category": "food, agriculture",
+      "category": "agriculture",
       "title": "Community‑run seed banks conserving and sharing local, Indigenous crop  varieties for resilience and food sovereignty",
       "description": "From the late 1980s onward, Indigenous and peasant communities across Africa, Asia, and Latin America began  establishing community seed banks to rescue local and “farmer” varieties threatened by drought, conflict,  industrial seed laws, and the spread of commercial hybrids; these locally governed “seed houses” store,  regenerate, and lend traditional, non‑GMO seeds adapted to their landscapes, strengthening cultural identity,  nutrition, and climate resilience while asserting community control over the genetic foundations of their food  systems.",
       "year": 1988,
@@ -7885,7 +7825,7 @@
       "url": "https://en.wikipedia.org/wiki/World_Wide_Web"
     },
     {
-      "category": "society",
+      "category": "sociology",
       "title": "Letting citizens directly decide how a share of the city budget is spent through  open assemblies and elected delegates",
       "description": "After the 1988 Brazilian constitution expanded municipal powers, Porto Alegre introduced participatory budgeting  in 1989, inviting residents from all neighborhoods to attend assemblies, set priorities, and elect delegates to  negotiate the city’s investment budget; over the 1990s and 2000s, tens of thousands of citizens each year  helped redirect spending toward basic services in poorer areas, and the process became a global reference for  democratic innovation that both strengthened local government legitimacy and gave marginalized communities  real influence over public funds.",
       "year": 1989,
@@ -7944,7 +7884,7 @@
       "url": "https://en.wikipedia.org/wiki/Green_building"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Hubble Space Telescope",
       "description": "Revolutionary space telescope launched in 1990, decades after Edwin Hubble's  pioneering work highlighted the need for observations beyond Earth's atmosphere.  Despite initial optical flaws requiring a 1993 repair mission, Hubble has transformed our  understanding of the universe, providing deep-space observations of distant galaxies,  nebulae, and planets, capturing iconic images, and making groundbreaking discoveries  including confirming the accelerating expansion of the universe.",
       "year": 1990,
@@ -8132,7 +8072,7 @@
       "url": "https://en.wikipedia.org/wiki/Mirror_neuron"
     },
     {
-      "category": "Planetary stewardship",
+      "category": "planetary stewardship",
       "title": "Global treaty to conserve biodiversity, use it sustainably, and share benefits  from genetic resources fairly and equitably",
       "description": "Opened for signature at the 1992 Earth Summit in Rio de Janeiro and entering into force in 1993, the  Convention on Biological Diversity committed nearly all nations to conserve biological diversity, ensure its  sustainable use, and share the benefits from genetic resources and related knowledge, embedding biodiversity  protection and equity into international law as a core pillar of sustainable development.",
       "year": 1992,
@@ -8194,7 +8134,7 @@
       "url": "https://en.wikipedia.org/wiki/Quantum_teleportation"
     },
     {
-      "category": "Planetary stewardship",
+      "category": "planetary stewardship",
       "title": "Legal empowerment of local forest user groups to manage, restore, and  benefit from nearby forests",
       "description": "Building on experiments from the 1970s and a new Forest Act in 1993, Nepal began handing over national  forests to locally elected Community Forest User Groups, giving them legal authority to protect, use, and  regenerate nearby woodlands; over time, more than a million hectares came under community management,  forest cover in the country nearly doubled, and biodiversity and carbon storage improved, making Nepal a widely  cited Global South example of community‑led ecosystem recovery that links environmental stewardship with  local rights and livelihoods.",
       "year": 1993,
@@ -8490,7 +8430,7 @@
       "url": "https://www.tms.org/pubs/journals/jom/9810/Fujimoto-9810.html"
     },
     {
-      "category": "food, agriculture",
+      "category": "agriculture",
       "title": "Co‑management arrangements where small‑scale fishers share legal rights  and decision‑making power with governments to restore fisheries and coastal  ecosystems",
       "description": "In the 1990s, artisanal fishers on the coast of Chile worked with scientists and government to test “territorial use  rights for fisheries,” granting local cooperatives shared authority over near‑shore abalone and shellfish grounds;  the success of this co‑management model—reviving stocks, improving incomes, and reducing conflict—inspired  hundreds of similar managed areas along thousands of kilometers of coastline and helped establish small‑scale,  rights‑based co‑management as a promising path toward sustainable fisheries and healthy marine ecosystems  in many parts of the Global South.",
       "year": 1997,
@@ -8577,7 +8517,7 @@
       "url": "https://en.wikipedia.org/wiki/Dark_energy"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "International Space Station, ISS",
       "description": "Largest international space collaboration launched in 1998, continuously inhabited since  2000, representing partnership among NASA, Roscosmos, ESA, JAXA, and CSA. The  station orbits Earth every 90 minutes, serving as a microgravity laboratory for scientific  research and a testbed for future deep-space exploration technologies.",
       "year": 1998,
@@ -8804,7 +8744,7 @@
       "url": "https://participedia.net/case/5530"
     },
     {
-      "category": "Art",
+      "category": "art",
       "title": "Art auctions and artist‑donated works specifically funding arts education and  youth programmes",
       "description": "In the early 21st century, many arts education charities began organizing recurring charity art auctions in which  local and professional artists donate works, with all or part of the proceeds funding art classes, school  residencies, and creative youth programmes; examples such as ArtReach San Diego’s annual auction show how  donated art can directly finance free or low‑cost arts education for children in under‑resourced communities,  turning the generosity of artists and collectors into sustained investment in the next generation’s creativity.",
       "year": 2005,
@@ -8823,7 +8763,7 @@
       "url": "https://www.artreachsandiego.org/charityartauction/"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Hayabusa Mission (Asteroid Sample Return)",
       "description": "Historic JAXA mission that became the first spacecraft to successfully return asteroid  samples to Earth. Despite facing multiple technical challenges including solar panel  damage and thruster failures, Hayabusa rendezvoused with asteroid Itokawa, collected  surface samples, and returned them to Earth in 2010. The mission demonstrated  remarkable engineering resilience and provided invaluable insights into the composition  of primitive solar system bodies.",
       "year": 2003,
@@ -8844,7 +8784,7 @@
       "url": "https://en.wikipedia.org/wiki/Hayabusa"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Mars Express (Mars Orbiter)",
       "description": "ESA's first mission to another planet, Mars Express has been orbiting and studying Mars since 2003. The  spacecraft has made groundbreaking discoveries including evidence of past water, detection of methane  in the atmosphere suggesting possible biological or geological activity, mapping Martian geology and  mineralogy, and creating detailed 3D maps of the surface. Though its Beagle 2 lander lost contact upon  Mars landing, it was later discovered intact on the surface with solar panels that failed to fully deploy,  preventing communication. The orbiter continues operating far beyond its planned mission, making it one  of the most successful and long-lived Mars missions.",
       "year": 2003,
@@ -8885,7 +8825,7 @@
       "url": "https://learn.g2.com/history-of-social-media"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Mars Rover Missions (Spirit, Opportunity, Curiosity, Perseverance)",
       "description": "Series of robotic rovers exploring Mars's surface, beginning with Spirit and Opportunity's  2004 landings that far exceeded their planned 90-day missions. Curiosity (2012)  investigated past habitability, while Perseverance (2021) actively searches for signs of  ancient microbial life and collects samples for future return to Earth, revolutionizing our  understanding of the Red Planet.",
       "year": 2004,
@@ -8949,7 +8889,7 @@
       "url": "https://wikipedia.nucleos.com/viewer/wikipedia_en_all_maxi_2025-08/Web_2.0"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Rosetta Mission (Comet Landing)",
       "description": "ESA's groundbreaking mission launched in 2004 that achieved the first orbit around a  comet (67P/Churyumov-Gerasimenko) and deployed the Philae lander in 2014, making  the first controlled landing on a comet's surface. The mission revolutionized our  understanding of these ancient celestial bodies, analyzing comet composition and  providing insights into the early solar system.",
       "year": 2004,
@@ -8989,7 +8929,7 @@
       "url": "https://en.wikipedia.org/wiki/Silicon_photonics"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Huygens Probe (Titan Landing)",
       "description": "ESA's Huygens probe, carried by NASA's Cassini spacecraft and named after Dutch astronomer  Christiaan Huygens who discovered Titan, achieved the first landing on a moon in the outer solar system  on January 14, 2005. Descending through Titan's thick atmosphere for 2.5 hours, Huygens transmitted  stunning images and data revealing methane lakes, river channels, and an Earth-like landscape,  fundamentally changing our understanding of this enigmatic moon.",
       "year": 2005,
@@ -9029,7 +8969,7 @@
       "url": "https://en.wikipedia.org/wiki/One_Laptop_per_Child"
     },
     {
-      "category": "society",
+      "category": "sociology",
       "title": "Legal right for citizens to request and obtain government information to promote  transparency and accountability",
       "description": "Enacted in 2005, India’s Right to Information Act gives any citizen the legal right to request information from  public authorities, with strict deadlines for response and independent information commissions to hear appeals;  by overriding older secrecy rules and making proactive disclosure of many records mandatory, RTI has enabled  millions of requests each year and become a cornerstone of social accountability campaigns, allowing  journalists, activists, and ordinary residents to uncover corruption, monitor service delivery, and demand  explanations for government decisions.",
       "year": 2005,
@@ -9094,7 +9034,7 @@
       "url": "https://en.wikipedia.org/wiki/User-generated_content"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "SELENE/Kaguya (Lunar Orbiter)",
       "description": "Largest lunar mission since the Apollo program, JAXA's SELENE (nicknamed Kaguya  after a Japanese moon princess) conducted comprehensive lunar mapping with 14  scientific instruments. The mission created the most detailed three-dimensional map of  the Moon, studied its gravitational field and composition, captured stunning high- definition video of Earth rising over the lunar horizon, and provided crucial data for  future lunar exploration.",
       "year": 2007,
@@ -9155,7 +9095,7 @@
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3148439/"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Chandrayaan Missions (Indian Lunar Exploration)",
       "description": "India's lunar exploration program beginning with Chandrayaan-1 (2008) which  discovered water molecules on the Moon, followed by Chandrayaan-2 (2019) achieving  lunar orbit, and Chandrayaan-3 (2023) successfully landing near the lunar south pole,  making India the fourth nation to achieve a soft landing on the Moon and demonstrating  ISRO's growing space capabilities.",
       "year": 2008,
@@ -9298,7 +9238,7 @@
       "url": "https://en.wikipedia.org/wiki/Circular_economy"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Akatsuki (Venus Climate Orbiter)",
       "description": "JAXA's Venus climate orbiter launched in 2010, which initially failed to enter Venus orbit but remarkably  achieved orbital insertion five years later in 2015, demonstrating exceptional mission recovery. Named  Akatsuki (meaning \"dawn\"), the spacecraft studies Venus's extreme atmosphere, super-rotating winds,  mysterious weather patterns, and thick sulfuric acid clouds, revealing dynamic atmospheric phenomena  including enormous bow-shaped structures and providing crucial insights into planetary atmospheres.",
       "year": 2010,
@@ -9319,7 +9259,7 @@
       "url": "https://en.wikipedia.org/wiki/Akatsuki_(spacecraft)"
     },
     {
-      "category": "Art",
+      "category": "art",
       "title": "Making art creation and appreciation accessible to everyone through  community arts hubs and “art hives”",
       "description": "In the early 21st century, community arts hubs and Art Hives began appearing in cities across North America and  beyond, offering open studios where anyone can paint, sew, sculpt, or make music with shared materials and  gentle facilitation; by welcoming people of all ages and backgrounds into shared creative spaces without  auditions or fees, these initiatives “de‑elitize” art, strengthen social connections, and demonstrate that artistic  expression is a basic dimension of human wellbeing, not a luxury reserved for professionals.",
       "year": 2010,
@@ -9340,7 +9280,7 @@
       "url": "https://www.community-arts.net/"
     },
     {
-      "category": "Art",
+      "category": "art",
       "title": "Community‑driven murals and arts projects in favelas and settlements to build  skills, income, and local pride",
       "description": "Across Latin America, community‑arts and popular‑education initiatives have used large‑scale mural painting  and collaborative art to transform the visual landscape of favelas and informal settlements, as seen in projects in  Rio de Janeiro and Mexican neighbourhoods where hundreds of families helped design and paint their homes;  beyond beautification, these efforts have taught artistic skills, generated income, reduced crime in some areas,  and strengthened residents’ sense of belonging and resilience by turning walls into shared stories and symbols  of local identity.",
       "year": 2010,
@@ -9360,7 +9300,7 @@
       "url": "https://www.archdaily.com/1014602/colors-of-the-favela-the-transformative-impact-of-painting-on-communities"
     },
     {
-      "category": "Art",
+      "category": "art",
       "title": "Community‑based theatre and circus arts for children from disadvantaged or  former slum communities",
       "description": "In cities such as Battambang, Cambodia, and in South Asian slum communities, performing‑arts schools and  NGOs have created programmes where children from disadvantaged areas learn circus, theatre, music, and  dance, using “theatre in education” and community performances to explore local problems and imagine  solutions; by combining artistic training, child‑protection and sponsorship programmes, and public performances,  these initiatives give young people safe spaces to express themselves, build confidence and skills, and open  pathways to education and livelihoods that were previously out of reach",
       "year": 2010,
@@ -9567,7 +9507,7 @@
       "url": "https://zenzeleni.net/our-journey/"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Hayabusa2 (Asteroid Ryugu Sample Return)",
       "description": "Ambitious successor to Hayabusa, this JAXA mission successfully rendezvoused with asteroid Ryugu,  deployed two small rovers and the MASCOT lander, collected subsurface samples by firing a projectile into  the asteroid, and returned over 5 grams of pristine material to Earth in 2020. The mission exceeded all  expectations, providing scientists with invaluable samples from a carbon-rich asteroid that may hold clues to  the origins of life and the solar system.",
       "year": 2014,
@@ -9680,7 +9620,7 @@
       "url": "https://en.wikipedia.org/wiki/Silicon_quantum_computing"
     },
     {
-      "category": "Art",
+      "category": "art",
       "title": "Youth‑led murals and street art as public health messaging and social change  tools.",
       "description": "In Dar es Salaam, Tanzania, the VAS Hub collective launched projects such as Murals for Social Change and  the ZINGATIA Street Art Campaign, engaging more than 100 youth artists to transform blank walls into public  messages about health, justice, and empowerment; their brightly coloured murals, combining Swahili words and  strong imagery, reached hundreds of thousands of residents with accessible messages on issues like disease  prevention and climate, while creating paid work, skills, and visibility for young artists in low‑income  neighbourhoods.",
       "year": 2015,
@@ -9786,7 +9726,7 @@
       "url": "https://en.wikipedia.org/wiki/Quantum_computing"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Chang'e 4 (First Far Side Moon Landing)",
       "description": "Historic mission achieving the first soft landing on the far side of the Moon on January 3,  2019, deployed the Yutu-2 rover to explore the lunar surface, and demonstrated China's  advanced space capabilities. The mission uses a relay satellite to communicate with  Earth, revealing new insights about the Moon's mysterious far side.",
       "year": 2019,
@@ -9941,7 +9881,7 @@
       "url": "https://www.treasury.govt.nz/publications/dp/dp-19-0"
     },
     {
-      "category": "society",
+      "category": "sociology",
       "title": "Randomly selected citizens’ assemblies advising governments on climate  policy and just transitions",
       "description": "In the late 2010s and early 2020s, several European countries convened climate citizens’ assemblies—randomly  selected groups of residents given time, information, and facilitation to deliberate on how to cut emissions fairly  and protect communities; examples include France’s Citizens’ Convention for Climate and assemblies in Ireland  and the UK, whose recommendations on housing, transport, agriculture, and taxation have informed legislation  and sparked debate about using deliberative mini‑publics as a complement to elections for tackling complex,  long‑term issues",
       "year": 2019,
@@ -10053,7 +9993,7 @@
       "url": "https://webfoundation.org/docs/2022/04/MC-Rural-Report-English.pdf"
     },
     {
-      "category": "culture",
+      "category": "sociology",
       "title": "Neighborhood mutual‑aid networks sharing surplus food through publicly  accessible community fridges",
       "description": "During the COVID‑19 pandemic, residents in cities across North America and beyond began installing brightly  painted “community fridges” on sidewalks and in front of local businesses, inviting neighbors to “take what you  need, leave what you can”; stocked and maintained by volunteers, restaurants, and small donors, these fridges  and pantries turned surplus food into a shared commons, addressing hunger and waste while strengthening  local mutual‑aid networks and everyday practices of care between neighbors.",
       "year": 2020,
@@ -10076,7 +10016,7 @@
       "url": "https://socialistproject.ca/2020/10/community-fridges-mutual-aid-amid-pandemic/"
     },
     {
-      "category": "culture",
+      "category": "sociology",
       "title": "Local community organizations and cooperatives managing buffer zones and  livelihoods around World Heritage sites",
       "description": "Beginning around 2000, the COMPACT program piloted an approach in which small grants were channeled  directly to community‑based groups living in and around natural World Heritage sites, supporting projects like  sustainable tourism, small‑scale fisheries, and habitat restoration; by funding hundreds of local initiatives in  buffer zones of sites from the Belize Barrier Reef to Sian Ka’an, COMPACT demonstrated that community  organizations and cooperatives can share responsibility for protecting World Heritage while sustaining local  livelihoods.",
       "year": 2020,
@@ -10122,7 +10062,7 @@
       "url": "https://ccua.com/blog/truth-and-reconciliation-how-credit-unions-are-supporting-indigenous-reconciliation/"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "James Webb Space Telescope",
       "description": "Most powerful space telescope ever built, launched in 2021 as an international  collaboration between NASA, ESA, and CSA. Positioned at the Lagrange L2 point  (discovered by mathematician Joseph-Louis Lagrange) 1.5 million km from Earth, JWST  observes the universe in infrared light, capturing the earliest galaxies formed after the  Big Bang, analyzing exoplanet atmospheres, and revealing unprecedented details of  star formation, fundamentally transforming astronomy and cosmology.",
       "year": 2021,
@@ -10144,7 +10084,7 @@
       "url": "https://en.wikipedia.org/wiki/James_Webb_Space_Telescope"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Tiangong Space Station",
       "description": "China's modular space station, named Tiangong (meaning \"Heavenly Palace\"), with its core module  Tianhe launched in 2021. Following successful test stations Tiangong-1 and Tiangong-2, this permanent  station represents China's growing space capabilities and independence. Continuously inhabited since  2022, it hosts Chinese taikonauts conducting scientific research, and China has extended invitations to  international partners, demonstrating the nation's emergence as a major spacefaring power.",
       "year": 2021,
@@ -10274,7 +10214,7 @@
       "url": "https://en.wikipedia.org/wiki/LaMDA"
     },
     {
-      "category": "space exploration",
+      "category": "space",
       "title": "Artemis Program (Return to Moon)",
       "description": "International program to return humans to the Moon and establish sustainable lunar  presence, named after Apollo's twin sister. Artemis I (2022) successfully tested the  Orion spacecraft and SLS rocket in an uncrewed lunar orbit mission. Future missions  plan to land the first woman and first person of color on the Moon, build the Lunar  Gateway space station, and use the Moon as a stepping stone for eventual Mars  exploration.",
       "year": 2022,
@@ -10320,7 +10260,7 @@
       "url": "https://en.wikipedia.org/wiki/Quantum_network"
     },
     {
-      "category": "culture",
+      "category": "sociology",
       "title": "Ten‑year global initiative to revitalize Indigenous languages, support language  rights, and connect language preservation with sustainable development",
       "description": "Beginning in 2022, the International Decade of Indigenous Languages calls on governments, Indigenous  communities, and partners to protect, revitalize, and promote Indigenous languages through education, digital  tools, media, and community programs, recognizing that thousands of languages are at risk of disappearance;  the decade’s Global Action Plan emphasizes Indigenous leadership, knowledge systems, and the role of  technology in documenting and transmitting languages as a foundation for cultural survival and sustainable  development.",
       "year": 2022,
