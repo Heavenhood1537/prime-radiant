@@ -7,7 +7,7 @@
   <style>
     body { margin: 0; overflow: hidden; background-color: #000; font-family: 'Segoe UI', Arial, sans-serif; }
     canvas { display: block; }
-    
+
     #controls {
       position: absolute; top: 10px; left: 10px; background: rgba(10, 25, 47, 0.9);
       color: #8892b0; padding: 15px; border-radius: 8px;
@@ -17,13 +17,27 @@
     #results-panel {
       position: absolute; top: 10px; right: 10px; background: rgba(10, 25, 47, 0.95);
       color: #ccd6f6; padding: 15px; border-radius: 8px;
-      width: 220px; max-height: 90vh; overflow-y: auto; font-size: 12px;
+      width: 220px; max-height: 80vh; overflow-y: auto; font-size: 12px;
       display: block; border: 1px solid #1e3a8a; z-index: 10;
     }
 
+    #timeline {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      background: rgba(10, 25, 47, 0.95); color: #ccd6f6; padding: 10px 18px;
+      border-radius: 8px; border: 1px solid #1e3a8a; z-index: 10;
+      display: flex; align-items: center; gap: 12px; width: min(560px, 80vw); box-sizing: border-box;
+    }
+    #playBtn {
+      width: 74px; margin: 0; background: #1e3a8a; border: 1px solid #3b82f6;
+      color: #dbeafe; text-transform: uppercase; font-weight: bold; padding: 8px 0; cursor: pointer; border-radius: 4px;
+    }
+    #playBtn:hover { background: #1e40af; }
+    #timeSlider { flex: 1; margin: 0; accent-color: #64ffda; cursor: pointer; background: transparent; border: none; padding: 0; }
+    #timeLabel { min-width: 150px; text-align: right; font-size: 11px; color: #64ffda; white-space: nowrap; }
+
     h2 { margin: 0 0 10px 0; color: #1e3a8a; text-transform: uppercase; letter-spacing: 1.5px; font-size: 13px; font-weight: 900; }
     h4 { margin: 12px 0 5px 0; color: #64ffda; font-size: 10px; text-transform: uppercase; }
-    
+
     input, select, button {
       width: 100%; margin-top: 5px; background: #112240; color: #ccd6f6;
       border: 1px solid #233554; padding: 8px; cursor: pointer; transition: 0.3s;
@@ -32,13 +46,24 @@
 
     .navy-btn { background: #1e3a8a; border: 1px solid #3b82f6; color: #dbeafe; text-transform: uppercase; }
     .navy-btn:hover { background: #1e40af; }
-    
+
     .search-input { background: #0a192f; border: 1px solid #1e3a8a; color: #64ffda; padding: 6px; margin-bottom: 5px; cursor: text; }
 
     .legend-item { display: flex; align-items: center; margin-top: 4px; font-size: 9px; color: #8892b0; }
     .color-box { width: 8px; height: 8px; margin-right: 6px; border-radius: 1px; }
     .search-group { border-bottom: 1px solid #233554; padding-bottom: 12px; margin-bottom: 12px; }
     .stack { display: flex; flex-direction: column; gap: 2px; }
+    .edge-toggle { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 10px; color: #8892b0; cursor: pointer; text-transform: uppercase; font-weight: bold; }
+    .edge-toggle input { width: auto; margin: 0; cursor: pointer; }
+    .link-list { margin: 4px 0 0 0; padding-left: 14px; }
+    .link-list li { margin-top: 2px; font-size: 10px; color: #a8b2d1; }
+    #seldonResults { margin-top: 8px; }
+    .seldon-item { background: #112240; border: 1px solid #233554; border-left: 3px solid #64ffda;
+      border-radius: 4px; padding: 6px 8px; margin-top: 6px; cursor: pointer; transition: 0.2s; }
+    .seldon-item:hover { border-left-color: #ffd700; background: #1b2f4b; }
+    .seldon-item .t { color: #ccd6f6; font-size: 10.5px; font-weight: bold; line-height: 1.3; }
+    .seldon-item .m { color: #64ffda; font-size: 9px; margin-top: 2px; }
+    #seldonStatus { font-size: 9.5px; color: #8892b0; margin-top: 4px; font-style: italic; }
   </style>
 </head>
 <body>
@@ -46,12 +71,13 @@
   <div id="controls">
     <h2>Prime Radiant</h2>
     <div id="stats" style="margin-top:5px; color: #4b5563; font-style: italic; font-size: 10px;">Registry Active</div>
-    
+
     <select id="categoryFilter" onchange="triggerCategoryFilter()" style="margin-top: 15px; background: #1e3a8a; color: #dbeafe; border: 1px solid #3b82f6;">
       <option value="all">Categories</option>
     </select>
-    
+
     <div id="legend" style="margin-top:10px;"></div>
+    <label class="edge-toggle"><input type="checkbox" id="edgeToggle" checked onchange="toggleEdges()"> Influence Web</label>
     <button onclick="resetView()" style="background: #0f172a; color: #475569; border: 1px solid #1e293b; margin-top: 15px; font-size: 10px;">Reset View</button>
   </div>
 
@@ -60,13 +86,19 @@
       <h4>Temporal Range</h4>
       <div class="stack">
         <input type="number" id="yearFrom" class="search-input" placeholder="Start Year" onfocus="clearKeywordField()">
-        <input type="number" id="yearTo" class="search-input" placeholder="End Year" onfocus="clearKeywordField()">
+        <input type="number" id="yearTo" class="search-input" placeholder="End Year" onfocus="clearYearFields()">
       </div>
       <button class="navy-btn" onclick="searchByPeriod()">Filter Period</button>
 
       <h4>Keyword Search</h4>
       <input type="text" id="textSearch" class="search-input" placeholder="Keyword..." onfocus="clearYearFields()">
       <button class="navy-btn" onclick="searchByText()">Search</button>
+
+      <h4 style="margin-top:15px;">Seldon Query (Semantic)</h4>
+      <input type="text" id="seldonInput" class="search-input" placeholder="Ask by meaning..." onkeydown="if(event.key==='Enter')seldonQuery()">
+      <button class="navy-btn" onclick="seldonQuery()">Ask Seldon</button>
+      <div id="seldonStatus"></div>
+      <div id="seldonResults"></div>
     </div>
 
     <div id="milestone-detail">
@@ -75,16 +107,30 @@
     </div>
   </div>
 
+  <div id="timeline">
+    <button id="playBtn" onclick="togglePlay()">Play</button>
+    <input type="range" id="timeSlider" min="0" max="0" value="0" step="1">
+    <span id="timeLabel"></span>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
   <script>
     let scene, camera, renderer, milestoneMeshes = [], allMilestones = [];
-    const oldestAnchor = -3300000;
+    let influenceEdges = [], edgeLines = [], titleMap = {}, meshByTitle = {};
+    let sortedMilestones = [], activeFilter = null;
+    let playing = false, playIndex = 0, showEdges = true, lastFrame = 0;
+    const MILLS_PER_SEC = 25;
+    const EDGE_COLOR = 0x64ffda, EDGE_HIGHLIGHT = 0xffd700;
+    const oldestAnchor = -7000000;
+    const LOG_SPAN = Math.log10(Math.abs(oldestAnchor) + 2027);
 
+    // Logarithmic time: equal screen space per order of magnitude of age.
     function normalizeYear(year) {
-      const scale = 300; 
-      return ((year - oldestAnchor) / Math.abs(oldestAnchor)) * scale;
+      const scale = 300;
+      const yearsBeforePresent = 2026 - year;
+      return (1 - Math.log10(yearsBeforePresent + 1) / LOG_SPAN) * scale;
     }
 
     function getCategoryColor(category) {
@@ -99,9 +145,13 @@
         'philosophy': 0xe6e6fa, 'planetary stewardship': 0x228b22,
         'political science': 0xff4500, 'psychology': 0xffb6c1, 'science': 0x5f9ea0,
         'sociology': 0x20b2aa, 'space': 0x483d8b, 'technology': 0x4682b4,
-        'trade': 0xdaa520, 'transport': 0xffa500, 'urban': 0x708090
+        'trade': 0xdaa520, 'transport': 0xffa500, 'urban': 0x708090, 'military': 0x536878
       };
       return colors[category.toLowerCase()] || 0x1e3a8a;
+    }
+
+    function fmtYear(year) {
+      return year < 0 ? Math.abs(year).toLocaleString('en-US') + ' BCE' : year + ' CE';
     }
 
     function init() {
@@ -116,9 +166,12 @@
       scene.add(camera);
       scene.add(new THREE.GridHelper(600, 30, 0x0a192f, 0x0a192f));
       loadData();
-      camera.position.set(450, 450, 450);
-      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      camera.position.set(260, 230, 260);
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.target.set(0, 150, 0);
       controls.enableDamping = true;
+      document.getElementById('timeSlider').addEventListener('input',
+        (e) => scrubTo(parseInt(e.target.value, 10)));
       animate();
     }
 
@@ -126,8 +179,8 @@
       const response = await fetch('./milestones.json');
       const data = await response.json();
       allMilestones = data.milestones;
-      
-      allMilestones.forEach(m => { 
+
+      allMilestones.forEach(m => {
         let cat = (m.category || 'technology').toLowerCase().trim();
         if (cat === 'economics') cat = 'economy';
         if (cat === 'transportation') cat = 'transport';
@@ -135,8 +188,30 @@
         m.category = cat;
       });
 
+      sortedMilestones = allMilestones.slice().sort((a, b) => a.year - b.year);
+      sortedMilestones.forEach((m, i) => { m.rank = i; });
+      allMilestones.forEach(m => { if (!titleMap[m.title]) titleMap[m.title] = m; });
+
+      try {
+        const res2 = await fetch('./influences.json');
+        if (res2.ok) {
+          const inf = await res2.json();
+          influenceEdges = (inf.edges || []).filter(e => titleMap[e.from] && titleMap[e.to]);
+        }
+      } catch (err) { influenceEdges = []; }
+
+      buildMilestoneMeshes();
+      buildEdges();
       populateCategories();
-      renderPoints(allMilestones);
+
+      playIndex = sortedMilestones.length - 1;
+      const slider = document.getElementById('timeSlider');
+      slider.max = sortedMilestones.length - 1;
+      slider.value = playIndex;
+      applyVisibility();
+      updateTimeLabel();
+      document.getElementById('stats').innerText =
+        allMilestones.length + ' Milestones · ' + influenceEdges.length + ' Links Synced';
     }
 
     function populateCategories() {
@@ -155,13 +230,142 @@
         item.innerHTML = `<div class="color-box" style="background: #${getCategoryColor(cat).toString(16).padStart(6, '0')}"></div>${cat}`;
         legend.appendChild(item);
       });
-      document.getElementById('stats').innerText = `${allMilestones.length} Milestones Synced`;
+    }
+
+    // ---- Influence edges ----
+
+    function nodePosition(m) {
+      if (!m.location || m.location.lat == null || m.location.lon == null) {
+        let h = 0;
+        for (let i = 0; i < m.title.length; i++) h = (h * 31 + m.title.charCodeAt(i)) >>> 0;
+        return new THREE.Vector3((h % 40) - 20, normalizeYear(m.year), ((h >> 8) % 40) - 20);
+      }
+      return new THREE.Vector3(m.location.lat * 2.8, normalizeYear(m.year), m.location.lon * 2.2);
+    }
+
+    function buildMilestoneMeshes() {
+      allMilestones.forEach(m => {
+        const geometry = new THREE.SphereGeometry(2.8, 12, 12);
+        const material = new THREE.MeshPhongMaterial({ color: getCategoryColor(m.category), emissive: getCategoryColor(m.category), emissiveIntensity: 0.2 });
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.position.copy(nodePosition(m));
+        mesh.userData = m;
+        mesh.visible = false;
+        scene.add(mesh);
+        milestoneMeshes.push(mesh);
+        meshByTitle[m.title] = mesh;
+      });
+    }
+
+    function buildEdges() {
+      influenceEdges.forEach(e => {
+        const a = titleMap[e.from], b = titleMap[e.to];
+        if (!a || !b) return;
+        const pa = nodePosition(a), pb = nodePosition(b);
+        const mid = pa.clone().add(pb).multiplyScalar(0.5);
+        const radial = new THREE.Vector3(mid.x, 0, mid.z);
+        const lift = pa.distanceTo(pb) * 0.15;
+        if (radial.length() < 1) radial.set(1, 0, 0);
+        mid.add(radial.normalize().multiplyScalar(lift));
+        const curve = new THREE.QuadraticBezierCurve3(pa, mid, pb);
+        const geo = new THREE.BufferGeometry().setFromPoints(curve.getPoints(32));
+        const mat = new THREE.LineBasicMaterial({ color: EDGE_COLOR, transparent: true, opacity: 0.3 });
+        const line = new THREE.Line(geo, mat);
+        line.userData = { from: e.from, to: e.to, rankMax: Math.max(a.rank, b.rank) };
+        line.visible = false;
+        scene.add(line);
+        edgeLines.push(line);
+      });
+    }
+
+    function refreshEdges() {
+      edgeLines.forEach(line => {
+        const fromVisible = meshByTitle[line.userData.from] && meshByTitle[line.userData.from].visible;
+        const toVisible = meshByTitle[line.userData.to] && meshByTitle[line.userData.to].visible;
+        line.visible = showEdges && fromVisible && toVisible;
+      });
+    }
+
+    function toggleEdges() {
+      showEdges = document.getElementById('edgeToggle').checked;
+      refreshEdges();
+    }
+
+    function highlightEdges(title) {
+      edgeLines.forEach(line => {
+        const hit = line.userData.from === title || line.userData.to === title;
+        line.material.opacity = hit ? 0.95 : 0.05;
+        line.material.color.setHex(hit ? EDGE_HIGHLIGHT : EDGE_COLOR);
+      });
+    }
+
+    function resetEdgeHighlight() {
+      edgeLines.forEach(line => {
+        line.material.opacity = 0.3;
+        line.material.color.setHex(EDGE_COLOR);
+      });
+    }
+
+    // ---- Timeline animation ----
+
+    function applyVisibility() {
+      milestoneMeshes.forEach(mesh => {
+        const rankOk = mesh.userData.rank <= playIndex;
+        const filterOk = !activeFilter || activeFilter.has(mesh.userData);
+        mesh.visible = rankOk && filterOk;
+      });
+      refreshEdges();
+    }
+
+    function updateTimeLabel() {
+      const idx = Math.max(0, Math.min(Math.round(playIndex), sortedMilestones.length - 1));
+      const m = sortedMilestones[idx];
+      document.getElementById('timeLabel').innerText =
+        (idx + 1) + ' / ' + sortedMilestones.length + ' · ' + fmtYear(m.year);
+    }
+
+    function togglePlay() {
+      playing = !playing;
+      if (playing) {
+        if (playIndex >= sortedMilestones.length - 1) {
+          playIndex = 0;
+          clearKeywordField(); clearYearFields();
+          document.getElementById('categoryFilter').value = 'all';
+          activeFilter = null;
+        }
+        applyVisibility();
+      }
+      document.getElementById('playBtn').innerText = playing ? 'Pause' : 'Play';
+    }
+
+    function scrubTo(index) {
+      playing = false;
+      document.getElementById('playBtn').innerText = 'Play';
+      playIndex = Math.max(0, Math.min(index, sortedMilestones.length - 1));
+      document.getElementById('timeSlider').value = playIndex;
+      applyVisibility();
+      updateTimeLabel();
+    }
+
+    // ---- Filters (visibility-based) ----
+
+    function renderPoints(dataToRender) {
+      activeFilter = new Set(dataToRender);
+      if (playIndex < sortedMilestones.length - 1) {
+        playIndex = sortedMilestones.length - 1;
+        const slider = document.getElementById('timeSlider');
+        slider.value = playIndex;
+        playing = false;
+        document.getElementById('playBtn').innerText = 'Play';
+      }
+      applyVisibility();
+      updateTimeLabel();
     }
 
     function triggerCategoryFilter() {
       const selected = document.getElementById('categoryFilter').value;
       clearKeywordField(); clearYearFields();
-      if(selected === 'all') renderPoints(allMilestones);
+      if (selected === 'all') renderPoints(allMilestones);
       else renderPoints(allMilestones.filter(m => m.category === selected));
     }
 
@@ -170,6 +374,7 @@
     function resetDetailPanel() {
       document.getElementById('panel-title').innerText = "System Ready";
       document.getElementById('panel-content').innerHTML = "Select a node or use search tools.";
+      resetEdgeHighlight();
     }
 
     function searchByPeriod() {
@@ -182,50 +387,130 @@
     function searchByText() {
       clearYearFields();
       const term = document.getElementById('textSearch').value.toLowerCase();
-      renderPoints(allMilestones.filter(m => 
+      renderPoints(allMilestones.filter(m =>
         m.title.toLowerCase().includes(term) || m.description.toLowerCase().includes(term)
       ));
     }
 
-    function renderPoints(dataToRender) {
-      milestoneMeshes.forEach(m => scene.remove(m));
-      milestoneMeshes = [];
-      dataToRender.forEach(m => {
-        const geometry = new THREE.SphereGeometry(2.8, 12, 12);
-        const material = new THREE.MeshPhongMaterial({ color: getCategoryColor(m.category), emissive: getCategoryColor(m.category), emissiveIntensity: 0.2 });
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.set(m.location.lat * 2.8, normalizeYear(m.year), m.location.lon * 2.2);
-        mesh.userData = m; 
-        scene.add(mesh);
-        milestoneMeshes.push(mesh);
-      });
+    function animate() {
+      requestAnimationFrame(animate);
+      const now = performance.now();
+      const dt = Math.min((now - lastFrame) / 1000, 0.1);
+      lastFrame = now;
+      if (playing) {
+        playIndex += dt * MILLS_PER_SEC;
+        if (playIndex >= sortedMilestones.length - 1) {
+          playIndex = sortedMilestones.length - 1;
+          playing = false;
+          document.getElementById('playBtn').innerText = 'Replay';
+        }
+        document.getElementById('timeSlider').value = playIndex;
+        applyVisibility();
+        updateTimeLabel();
+      }
+      tickCamAnim(dt);
+      if (controls) controls.update();
+      renderer.render(scene, camera);
     }
 
-    function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
-    function resetView() { 
+    function resetView() {
       document.getElementById('categoryFilter').value = 'all';
       clearKeywordField(); clearYearFields();
-      camera.position.set(450, 450, 450); 
-      renderPoints(allMilestones); 
+      camera.position.set(260, 230, 260);
+      controls.target.set(0, 150, 0);
+      activeFilter = null;
+      scrubTo(sortedMilestones.length - 1);
     }
 
     window.addEventListener('click', (e) => {
+      if (e.target.closest('#controls, #results-panel, #timeline')) return;
       const raycaster = new THREE.Raycaster();
       const mouse = new THREE.Vector2((e.clientX/window.innerWidth)*2-1, -(e.clientY/window.innerHeight)*2+1);
       raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(milestoneMeshes);
+      const visibleMeshes = milestoneMeshes.filter(m => m.visible);
+      const intersects = raycaster.intersectObjects(visibleMeshes);
       if (intersects.length > 0) {
-        const m = intersects[0].object.userData;
-        document.getElementById('panel-title').innerText = m.title;
-        document.getElementById('panel-content').innerHTML = `
-          <p><strong style="color:#64ffda">Year:</strong> ${m.year > 0 ? m.year : Math.abs(m.year) + ' BCE'}</p>
-          <p><strong style="color:#64ffda">Context:</strong> ${m.culture || m.humanType}</p>
-          <hr style="border:0; border-top:1px solid #233554; margin: 10px 0;">
-          <p style="color:#ccd6f6;">${m.description}</p>
-          <a href="${m.url}" target="_blank" style="color: #64ffda; text-decoration:none; font-size:10px;">[ SOURCE ]</a>
-        `;
+        selectMilestone(intersects[0].object.userData);
+      } else {
+        resetDetailPanel();
       }
     });
+
+    function selectMilestone(m) {
+      document.getElementById('panel-title').innerText = m.title;
+      const influences = influenceEdges.filter(x => x.from === m.title).map(x => x.to);
+      const influencedBy = influenceEdges.filter(x => x.to === m.title).map(x => x.from);
+      const list = arr => arr.length
+        ? '<ul class="link-list">' + arr.slice(0, 8).map(t => '<li>' + t + '</li>').join('') + (arr.length > 8 ? '<li>…</li>' : '') + '</ul>'
+        : '<em style="color:#4b5563;">none mapped yet</em>';
+      document.getElementById('panel-content').innerHTML = `
+        <p><strong style="color:#64ffda">Year:</strong> ${fmtYear(m.year)}</p>
+        <p><strong style="color:#64ffda">Context:</strong> ${m.culture || m.humanType}</p>
+        <hr style="border:0; border-top:1px solid #233554; margin: 10px 0;">
+        <p style="color:#ccd6f6;">${m.description}</p>
+        <p style="margin-bottom:0;"><strong style="color:#64ffda">Drew from:</strong></p>${list(influencedBy)}
+        <p style="margin-bottom:0;"><strong style="color:#64ffda">Influenced:</strong></p>${list(influences)}
+        <a href="${m.url}" target="_blank" style="color: #64ffda; text-decoration:none; font-size:10px;">[ SOURCE ]</a>
+      `;
+      highlightEdges(m.title);
+      flyTo(meshByTitle[m.title]);
+    }
+
+    // ---- Camera fly-to ----
+    let controls = null, camAnim = null;
+
+    function flyTo(mesh) {
+      if (!mesh || !controls) return;
+      const target = mesh.position.clone();
+      const dir = camera.position.clone().sub(controls.target).normalize();
+      camAnim = {
+        t: 0,
+        fromPos: camera.position.clone(),
+        toPos: target.clone().add(dir.multiplyScalar(140)),
+        fromTgt: controls.target.clone(),
+        toTgt: target
+      };
+    }
+
+    function tickCamAnim(dt) {
+      if (!camAnim) return;
+      camAnim.t = Math.min(1, camAnim.t + dt / 0.9);
+      const k = 1 - Math.pow(1 - camAnim.t, 3);
+      camera.position.lerpVectors(camAnim.fromPos, camAnim.toPos, k);
+      controls.target.lerpVectors(camAnim.fromTgt, camAnim.toTgt, k);
+      if (camAnim.t >= 1) camAnim = null;
+    }
+
+    // ---- Seldon Query (semantic search) ----
+    async function seldonQuery() {
+      const q = document.getElementById('seldonInput').value.trim();
+      const status = document.getElementById('seldonStatus');
+      const box = document.getElementById('seldonResults');
+      if (!q) return;
+      status.innerText = 'Consulting the Plan…';
+      box.innerHTML = '';
+      try {
+        const res = await fetch('/api/seldon?q=' + encodeURIComponent(q) + '&k=8');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        status.innerText = 'Top resonance paths:';
+        data.results.forEach(r => {
+          const div = document.createElement('div');
+          div.className = 'seldon-item';
+          div.innerHTML = `<div class="t">${r.title}</div>` +
+            `<div class="m">${fmtYear(r.year)} · ${r.category} · resonance ${(r.score * 100).toFixed(1)}%</div>`;
+          div.addEventListener('click', () => {
+            const m = titleMap[r.title];
+            if (m) selectMilestone(m);
+          });
+          box.appendChild(div);
+        });
+        if (data.results.length === 0) status.innerText = 'The Plan is silent on this.';
+      } catch (err) {
+        status.innerText = 'Seldon unreachable (' + err.message + '). Start seldon_server.py or use keyword search.';
+      }
+    }
+
 
     init();
   </script>

@@ -1,0 +1,620 @@
+{
+ "edges": [
+  {
+   "from": "Oldowan Stone Tools",
+   "to": "Acheulean Stone Tools"
+  },
+  {
+   "from": "Acheulean Stone Tools",
+   "to": "Control of Fire (Secure)"
+  },
+  {
+   "from": "Control of Fire (Secure)",
+   "to": "Pyrotechnology (Fire Making At Will)"
+  },
+  {
+   "from": "Control of Fire (Secure)",
+   "to": "Ritualized Burial & Social Compassion (Empathy)"
+  },
+  {
+   "from": "Early Symbolic Behavior",
+   "to": "Abstract Geometric Engrawing (The First Drawing)"
+  },
+  {
+   "from": "Ochre Pigment Workshop (Symbolic Planning)",
+   "to": "Figurative Narrating Painting (The Hunt)"
+  },
+  {
+   "from": "Pottery Figurines",
+   "to": "Pottery Vessels"
+  },
+  {
+   "from": "Early Sedentism",
+   "to": "Neolithic Revolution"
+  },
+  {
+   "from": "Neolithic Revolution",
+   "to": "Agriculture - Fertile Crescent"
+  },
+  {
+   "from": "Agriculture - Fertile Crescent",
+   "to": "Early Towns - Jericho"
+  },
+  {
+   "from": "Early Towns - Jericho",
+   "to": "First Cities - Uruk"
+  },
+  {
+   "from": "Clay Accounting Tokens (Data Management)",
+   "to": "Writing - Cuneiform"
+  },
+  {
+   "from": "Vinča-Danube Proto-Writing (Oldest Symbolic Script)",
+   "to": "Writing - Cuneiform"
+  },
+  {
+   "from": "Writing - Cuneiform",
+   "to": "Writing - Hieroglyphs"
+  },
+  {
+   "from": "Writing - Hieroglyphs",
+   "to": "The Phonetic Alphabet (Democratic Literacy)"
+  },
+  {
+   "from": "Astronomy",
+   "to": "Early Babylonian Calendar"
+  },
+  {
+   "from": "Early Babylonian Calendar",
+   "to": "Babylonian Observational Astronomy and calendars"
+  },
+  {
+   "from": "Babylonian Observational Astronomy and calendars",
+   "to": "Antikythera Mechanism"
+  },
+  {
+   "from": "The first recorded knowledge of geometry",
+   "to": "The Pyramid of Djoser (The Stone Milestone)"
+  },
+  {
+   "from": "Mathematics, sexagesimal numeric system (base 60), enabling advanced Astronomy, Geometry",
+   "to": "Earliest Mathmatical Texts documanted"
+  },
+  {
+   "from": "Earliest Mathmatical Texts documanted",
+   "to": "The first recorded Trigonometry calculations"
+  },
+  {
+   "from": "The first known astrolabe (sextant's predecesor)",
+   "to": "The first account of latitude and longitude calculations"
+  },
+  {
+   "from": "Copper Smelting",
+   "to": "Bronze Age Begins"
+  },
+  {
+   "from": "Bronze Age Begins",
+   "to": "Systematic tin–bronze metallurgy for durable tools and artifacts in the ancient Near East"
+  },
+  {
+   "from": "Iron Age Begins",
+   "to": "First evidence of Steel production"
+  },
+  {
+   "from": "The Qanat System (Subsurface Water Transport)",
+   "to": "Roman Engineering - Aqueducts"
+  },
+  {
+   "from": "Roman Engineering - Aqueducts",
+   "to": "Large intercepting sewer network and pumping system to divert sewage away from the Thames and protect public health"
+  },
+  {
+   "from": "First Concrete Use Evidence",
+   "to": "Artificial hydraulic cement that hardens under water and in air"
+  },
+  {
+   "from": "Axial Age Philosophies",
+   "to": "Greek philosophers"
+  },
+  {
+   "from": "First Theoretical Science",
+   "to": "Greek philosophers"
+  },
+  {
+   "from": "Greek philosophers",
+   "to": "Alexandrian Anatomy - Systematic Human Dissection"
+  },
+  {
+   "from": "Athenian Democracy",
+   "to": "Roman Twelve Tables"
+  },
+  {
+   "from": "Code of Hammurabi",
+   "to": "Roman Twelve Tables"
+  },
+  {
+   "from": "Grid City Planning (Hippodamian System)",
+   "to": "Garden City Movement (Planned Communities)"
+  },
+  {
+   "from": "Garden City Movement (Planned Communities)",
+   "to": "Sustainable Architecture (Green Building Standards)"
+  },
+  {
+   "from": "Paper Invention",
+   "to": "Refined papermaking using plant fibers and rags as a lightweight writing surface"
+  },
+  {
+   "from": "Refined papermaking using plant fibers and rags as a lightweight writing surface",
+   "to": "Adoption and spread of Chinese papermaking into Islamic and Central Asian cities"
+  },
+  {
+   "from": "Adoption and spread of Chinese papermaking into Islamic and Central Asian cities",
+   "to": "Printing Press (Movable Type)"
+  },
+  {
+   "from": "Printing Press (Movable Type)",
+   "to": "The Printing Press (Gutenberg's Innovation)"
+  },
+  {
+   "from": "The Printing Press (Gutenberg's Innovation)",
+   "to": "Scientific Revolution Begins"
+  },
+  {
+   "from": "The Printing Press (Gutenberg's Innovation)",
+   "to": "Early printed news sheets – Venetian avvisi"
+  },
+  {
+   "from": "Early printed news sheets – Venetian avvisi",
+   "to": "One of the first printed weekly newspapers – Relation aller Fürnemmen und gedenckwürdigen Historien"
+  },
+  {
+   "from": "The Reading Stone - idea to place it over text to magnify the letters",
+   "to": "Spectacles, earliest recorded use of eyeglasses in a wearable form, were with convex lenses as reading aids for Italian monks with presbyopia (farsightedness)."
+  },
+  {
+   "from": "Spectacles, earliest recorded use of eyeglasses in a wearable form, were with convex lenses as reading aids for Italian monks with presbyopia (farsightedness).",
+   "to": "The Telescope, Greek - tele-skopos = 'far-seeing (Galileo’s Refinements),"
+  },
+  {
+   "from": "The Telescope, Greek - tele-skopos = 'far-seeing (Galileo’s Refinements),",
+   "to": "Kepler - Planetary Motion"
+  },
+  {
+   "from": "Kepler - Planetary Motion",
+   "to": "Laws of Motion/Calculus"
+  },
+  {
+   "from": "Galilean Kinematics & Inertia (Foundations of Motion)",
+   "to": "Laws of Motion/Calculus"
+  },
+  {
+   "from": "Rennaissance",
+   "to": "Renaissance Perspective & Architectural Theory"
+  },
+  {
+   "from": "Renaissance Perspective & Architectural Theory",
+   "to": "Scientific Revolution Begins"
+  },
+  {
+   "from": "The Scientific Method (Empiricism)",
+   "to": "Scientific Revolution Begins"
+  },
+  {
+   "from": "Magna Carta",
+   "to": "Separation of Powers"
+  },
+  {
+   "from": "Separation of Powers",
+   "to": "The Social Contract"
+  },
+  {
+   "from": "Magna Carta",
+   "to": "Universal Declaration of Human Rights"
+  },
+  {
+   "from": "Cogito, Ergo Sum",
+   "to": "Critique of Pure Reason"
+  },
+  {
+   "from": "Laws of Motion/Calculus",
+   "to": "Lagrangian Mechanics (Action Principle)"
+  },
+  {
+   "from": "Lagrangian Mechanics (Action Principle)",
+   "to": "Hamiltonian Mechanics (Energy Formalism)"
+  },
+  {
+   "from": "First Steam Engine",
+   "to": "First Industrial Revolution"
+  },
+  {
+   "from": "Use of coke instead of charcoal to smelt iron on an industrial scale",
+   "to": "First Industrial Revolution"
+  },
+  {
+   "from": "First Industrial Revolution",
+   "to": "Laws of Thermodynamics (Heat, Work, and Energy)"
+  },
+  {
+   "from": "Laws of Thermodynamics (Heat, Work, and Energy)",
+   "to": "Chemical Thermodynamics (Gibbs Free Energy)"
+  },
+  {
+   "from": "First Steam Engine",
+   "to": "First commercially successful Steam boat"
+  },
+  {
+   "from": "First commercially successful Steam boat",
+   "to": "First commercially successful Steam locomotive"
+  },
+  {
+   "from": "The Internal Combustion Engine - Otto's Cycle, utilizing the controlled explosion of fuel to generate power.",
+   "to": "The First Aeroplane with controlled flight characteristics"
+  },
+  {
+   "from": "Electricity, First battery, Voltaic Pile",
+   "to": "Telegraph Samuel Morse, Alfred Vail Morse - Gerke Standard International Telegraph Code"
+  },
+  {
+   "from": "Maxwell's Equations (Classical Field Unification)",
+   "to": "First successfully developed Radio system"
+  },
+  {
+   "from": "Telegraph Samuel Morse, Alfred Vail Morse - Gerke Standard International Telegraph Code",
+   "to": "First successfully developed Radio system"
+  },
+  {
+   "from": "First successfully developed Radio system",
+   "to": "First regular public audio radio broadcast"
+  },
+  {
+   "from": "Electricity, First battery, Voltaic Pile",
+   "to": "First successful Incadescent Light Bulb"
+  },
+  {
+   "from": "First Commercial AC Hydroelectric Power Plant (Ames)",
+   "to": "Niagara Falls Hydroelectric Power Station"
+  },
+  {
+   "from": "Niagara Falls Hydroelectric Power Station",
+   "to": "Hoover Dam Hydroelectric Power"
+  },
+  {
+   "from": "Hoover Dam Hydroelectric Power",
+   "to": "Three Gorges Dam Hydroelectric Power"
+  },
+  {
+   "from": "Atomic Theory (Modern Chemical Atoms)",
+   "to": "Periodicity of Elemental Properties - Periodic Table"
+  },
+  {
+   "from": "Periodicity of Elemental Properties - Periodic Table",
+   "to": "Chemical Bonding Theory (Lewis & Pauling)"
+  },
+  {
+   "from": "Discovery of the Atomic Nucleus",
+   "to": "Bohr Atom Model (Old Quantum Theory)"
+  },
+  {
+   "from": "Quantum Mechanics Foundations",
+   "to": "Bohr Atom Model (Old Quantum Theory)"
+  },
+  {
+   "from": "Quantum Mechanics Foundations",
+   "to": "Matrix Mechanics (Heisenberg Formulation)"
+  },
+  {
+   "from": "Matrix Mechanics (Heisenberg Formulation)",
+   "to": "Wave Mechanics (Schrödinger Equation)"
+  },
+  {
+   "from": "Wave Mechanics (Schrödinger Equation)",
+   "to": "Uncertainty Principle & Complementarity"
+  },
+  {
+   "from": "Uncertainty Principle & Complementarity",
+   "to": "Dirac Equation & Quantum Field Theory"
+  },
+  {
+   "from": "Dirac Equation & Quantum Field Theory",
+   "to": "Quantum Chromodynamics (QCD)"
+  },
+  {
+   "from": "Quantum Chromodynamics (QCD)",
+   "to": "Standard Model Consolidation"
+  },
+  {
+   "from": "Standard Model Consolidation",
+   "to": "Higgs Boson Discovery"
+  },
+  {
+   "from": "Null Result of Aether Drift",
+   "to": "Einstein:General Relativity"
+  },
+  {
+   "from": "Photoelectric Effect & Light Quanta",
+   "to": "The Laser"
+  },
+  {
+   "from": "The Laser",
+   "to": "Photonic Integrated Circuit Theory"
+  },
+  {
+   "from": "Photonic Integrated Circuit Theory",
+   "to": "CMOS Photonic Product Launch"
+  },
+  {
+   "from": "Hippocratic Medicine and Medical Ethics",
+   "to": "Alexandrian Anatomy - Systematic Human Dissection"
+  },
+  {
+   "from": "Alexandrian Anatomy - Systematic Human Dissection",
+   "to": "De Humani Corporis Fabrica - Modern Human Anatomy"
+  },
+  {
+   "from": "De Humani Corporis Fabrica - Modern Human Anatomy",
+   "to": "Blood Circulation Discovery (Harvey)"
+  },
+  {
+   "from": "Blood Circulation Discovery (Harvey)",
+   "to": "The Cell Theory - Cell as the Universal Unit of Life"
+  },
+  {
+   "from": "The Cell Theory - Cell as the Universal Unit of Life",
+   "to": "Microorganisms as Pathogens - Germ Theory of Disease"
+  },
+  {
+   "from": "Germ Theory",
+   "to": "Antiseptic Surgery (Lister)"
+  },
+  {
+   "from": "Anesthesia - Surgical Pain Relief",
+   "to": "Antiseptic Surgery (Lister)"
+  },
+  {
+   "from": "Antiseptic Surgery (Lister)",
+   "to": "Discovery of Penicillin"
+  },
+  {
+   "from": "Mendelian Inheritance",
+   "to": "DNA Double Helix Structure"
+  },
+  {
+   "from": "DNA Double Helix Structure",
+   "to": "Enzymatic Amplification of DNA - Polymerase Chain Reaction (PCR)"
+  },
+  {
+   "from": "Enzymatic Amplification of DNA - Polymerase Chain Reaction (PCR)",
+   "to": "CRISPR-Cas9 Gene Editing"
+  },
+  {
+   "from": "Darwin, Theory of Evolution",
+   "to": "Evolution by Natural Selection"
+  },
+  {
+   "from": "The Computer Conceptual - general-purpose programmable, mechanical computer",
+   "to": "Boolean Algebra & Logic Gates"
+  },
+  {
+   "from": "Boolean Algebra & Logic Gates",
+   "to": "Digital Computers"
+  },
+  {
+   "from": "Completeness Theorems",
+   "to": "Digital Computers"
+  },
+  {
+   "from": "Information Theory (Shannon's Theorem)",
+   "to": "Digital Computers"
+  },
+  {
+   "from": "Digital Computers",
+   "to": "The First Electronic Digital Computer - Electronic General-Purpose Computing (ENIAC) Electronic Numerical Integrator and Computer"
+  },
+  {
+   "from": "The First Electronic Digital Computer - Electronic General-Purpose Computing (ENIAC) Electronic Numerical Integrator and Computer",
+   "to": "Von Neumann Architecture"
+  },
+  {
+   "from": "Von Neumann Architecture",
+   "to": "Transistor Invention"
+  },
+  {
+   "from": "Transistor Invention",
+   "to": "Integrated Circuit (Microchip)"
+  },
+  {
+   "from": "Integrated Circuit (Microchip)",
+   "to": "Intel 4004 Microprocessor"
+  },
+  {
+   "from": "Intel 4004 Microprocessor",
+   "to": "Personal Computing Revolution"
+  },
+  {
+   "from": "Personal Computing Revolution",
+   "to": "Deep Learning Breakthroughs 2"
+  },
+  {
+   "from": "Birth of Artificial Intelligence",
+   "to": "Deep Learning Breakthroughs 1"
+  },
+  {
+   "from": "Deep Learning Breakthroughs 1",
+   "to": "Deep Learning Breakthroughs 2"
+  },
+  {
+   "from": "Deep Learning Breakthroughs 2",
+   "to": "Transformer Model Architecture"
+  },
+  {
+   "from": "Transformer Model Architecture",
+   "to": "Generative AI Era"
+  },
+  {
+   "from": "ARPANET - Internet Predecessor",
+   "to": "Universal internetworking protocol suite for heterogeneous networks"
+  },
+  {
+   "from": "Universal internetworking protocol suite for heterogeneous networks",
+   "to": "World Wide Web"
+  },
+  {
+   "from": "World Wide Web",
+   "to": "World Wide Web Launch"
+  },
+  {
+   "from": "World Wide Web Launch",
+   "to": "Web 2.0 idea – the participatory, user‑generated web"
+  },
+  {
+   "from": "Web 2.0 idea – the participatory, user‑generated web",
+   "to": "Mainstream social networking – Friendster, Myspace, Facebook, LinkedIn"
+  },
+  {
+   "from": "Mainstream social networking – Friendster, Myspace, Facebook, LinkedIn",
+   "to": "User‑generated video and photo platforms – YouTube, Flickr, Instagram"
+  },
+  {
+   "from": "User‑generated video and photo platforms – YouTube, Flickr, Instagram",
+   "to": "Generative AI Era"
+  },
+  {
+   "from": "ARPANET - Internet Predecessor",
+   "to": "Early online communities and forums – PLATO and Usenet"
+  },
+  {
+   "from": "Early online communities and forums – PLATO and Usenet",
+   "to": "Bulletin boards, IRC, and early online communities"
+  },
+  {
+   "from": "Bulletin boards, IRC, and early online communities",
+   "to": "Blogging as mass self‑publishing – Blogger and LiveJournal"
+  },
+  {
+   "from": "Statistical Mechanics (Micro to Macro Bridge)",
+   "to": "Information–Entropy Link (Physical Information)"
+  },
+  {
+   "from": "The first rocket to reach space",
+   "to": "Sputnik 1 (First Artificial Satellite)"
+  },
+  {
+   "from": "Sputnik 1 (First Artificial Satellite)",
+   "to": "Vostok 1 (First Human in Space)"
+  },
+  {
+   "from": "Vostok 1 (First Human in Space)",
+   "to": "Luna 2 (First Spacecraft to Reach Moon surface)"
+  },
+  {
+   "from": "Luna 2 (First Spacecraft to Reach Moon surface)",
+   "to": "First space station program in history, Salyut Space Station Program"
+  },
+  {
+   "from": "First space station program in history, Salyut Space Station Program",
+   "to": "International Space Station, ISS"
+  },
+  {
+   "from": "Nuclear Fission Discovery",
+   "to": "The world's first nuclear power station to generate electricity"
+  },
+  {
+   "from": "Expansion of the Universe (Hubble's Law)",
+   "to": "Big Bang Model & Cosmic Microwave Background"
+  },
+  {
+   "from": "Big Bang Model & Cosmic Microwave Background",
+   "to": "Dark Energy & Accelerated Expansion"
+  },
+  {
+   "from": "Dark Matter Evidence",
+   "to": "Dark Energy & Accelerated Expansion"
+  },
+  {
+   "from": "The Telescope, Greek - tele-skopos = 'far-seeing (Galileo’s Refinements),",
+   "to": "Hubble Space Telescope"
+  },
+  {
+   "from": "Hubble Space Telescope",
+   "to": "James Webb Space Telescope"
+  },
+  {
+   "from": "Daguerreotype Photography",
+   "to": "The Cinematograph"
+  },
+  {
+   "from": "The Cinematograph",
+   "to": "The Television, transmitting, receiving and displaying images electronically"
+  },
+  {
+   "from": "The Television, transmitting, receiving and displaying images electronically",
+   "to": "First fully electronic television transmission – Farnsworth demo"
+  },
+  {
+   "from": "The Phonograph, Capturing and playing back sound mechanically.",
+   "to": "The first practical tape recorder"
+  },
+  {
+   "from": "The first practical tape recorder",
+   "to": "The first Compact Disc (CD) developed"
+  },
+  {
+   "from": "The Moving Assembly Line (Mass Production Milestone)",
+   "to": "Intermodal Shipping Container"
+  },
+  {
+   "from": "The Dynamic Brain",
+   "to": "Classical Conditioning"
+  },
+  {
+   "from": "Classical Conditioning",
+   "to": "Hierarchy of Needs"
+  },
+  {
+   "from": "Neuroscience discovery of the Mirror Neuron",
+   "to": "The LaMDA Sentience Debate (The Recognition Milestone)"
+  },
+  {
+   "from": "Quantum Turing Machine (Benioff)",
+   "to": "Universal Quantum Computer (Deutsch)"
+  },
+  {
+   "from": "Quantum Computer for Simulating Physics (Feynman)",
+   "to": "Universal Quantum Computer (Deutsch)"
+  },
+  {
+   "from": "Universal Quantum Computer (Deutsch)",
+   "to": "Shor's Algorithm for Factoring"
+  },
+  {
+   "from": "Shor's Algorithm for Factoring",
+   "to": "First Functional Quantum Computer (NMR-based)"
+  },
+  {
+   "from": "First Functional Quantum Computer (NMR-based)",
+   "to": "First Commercial Quantum Annealing Computer (D-Wave)"
+  },
+  {
+   "from": "First Commercial Quantum Annealing Computer (D-Wave)",
+   "to": "Quantum Supremacy Demonstration (Google)"
+  },
+  {
+   "from": "The Discovery of Superconductivity (Zero-Resistance Milestone)",
+   "to": "First Solid-State Qubit (Superconducting)"
+  },
+  {
+   "from": "No-Cloning Theorem (Quantum Information)",
+   "to": "Quantum Key Distribution – BB84 Protocol"
+  },
+  {
+   "from": "Quantum Key Distribution – BB84 Protocol",
+   "to": "First Quantum Communication Satellite (Micius)"
+  },
+  {
+   "from": "First Quantum Communication Satellite (Micius)",
+   "to": "First Quantum Internet Demonstration"
+  }
+ ]
+}
