@@ -3,3 +3,9 @@ seldon.db
 *.xlsx
 GAP_REPORT.md
 predicted_edges.json
+FRONTIER_REPORT.md
+frontier_candidates.json
+frontier_last_run.txt
+frontier_auto.log
+FUTURE_SECTOR.md
+future_sector.json

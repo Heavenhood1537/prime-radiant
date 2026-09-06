@@ -1320,6 +1320,26 @@
    "url": "https://en.wikipedia.org/wiki/Tin_sources_and_trade_during_antiquity"
   },
   {
+   "category": "agriculture",
+   "title": "The Plough (Animal Traction Soil Preparation)",
+   "description": "The invention of the plough played a key role in the development of settled agricultural communities and the rise of civilization in Mesopotamia. The earliest pictorial and written records of the wooden plow appear in ancient Sumer around 3000-3500 BCE, while archaeological traces of scratch plows (ards) in the Near East and parts of Europe reach back to the dawn of regional agriculture.",
+   "year": -3000,
+   "yearsAgo": 3000,
+   "location": {
+    "lat": 32.3,
+    "lon": 44.2
+   },
+   "humanType": "Homo sapiens",
+   "culture": "Sumerian (Mesopotamia)",
+   "originators": [
+    "Sumerians"
+   ],
+   "ideas": [
+    "The Plough (Animal Traction Soil Preparation)"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Plough"
+  },
+  {
    "category": "mathematics",
    "title": "The Abacus",
    "description": "Sumeria / Mesopotamia. The earliest known calculating device, using beads or stones on a grid. It represents the first time human mathematical thought was offloaded to a portable, mechanical data-processing interface.",
@@ -2011,26 +2031,6 @@
     "The Socratic Method"
    ],
    "url": "https://en.wikipedia.org/wiki/Socratic_method"
-  },
-  {
-   "category": "agriculture",
-   "title": "The Plough (Animal Traction Soil Preparation)",
-   "description": "The invention of the plough played a key role in the development of settled agricultural communities and the rise of civilization in Mesopotamia. The earliest pictorial and written records of the wooden plow appear in ancient Sumer around 3000-3500 BCE, while archaeological traces of scratch plows (ards) in the Near East and parts of Europe reach back to the dawn of regional agriculture.",
-   "year": -3000,
-   "yearsAgo": 3000,
-   "location": {
-    "lat": 32.3,
-    "lon": 44.2
-   },
-   "humanType": "Homo sapiens",
-   "culture": "Sumerian (Mesopotamia)",
-   "originators": [
-    "Sumerians"
-   ],
-   "ideas": [
-    "The Plough (Animal Traction Soil Preparation)"
-   ],
-   "url": "https://en.wikipedia.org/wiki/Plough"
   },
   {
    "category": "science",
@@ -9610,24 +9610,24 @@
   },
   {
    "category": "space",
-   "title": "Hayabusa2 (Asteroid Ryugu Sample Return)",
-   "description": "Ambitious successor to Hayabusa, this JAXA mission successfully rendezvoused with asteroid Ryugu,  deployed two small rovers and the MASCOT lander, collected subsurface samples by firing a projectile into  the asteroid, and returned over 5 grams of pristine material to Earth in 2020. The mission exceeded all  expectations, providing scientists with invaluable samples from a carbon-rich asteroid that may hold clues to  the origins of life and the solar system.",
-   "year": 2014,
-   "yearsAgo": 12,
+   "title": "Curiosity Rover Landing (Mars Science Laboratory)",
+   "description": "Curiosity is lowered onto Gale Crater by the daring sky-crane maneuver, delivering a nuclear-powered mobile geology laboratory to Mars. It confirms ancient habitable freshwater environments and organic molecules, reshaping the search for life on Mars.",
+   "year": 2012,
+   "yearsAgo": 14,
    "location": {
-    "lat": 30.4,
-    "lon": 130.97
+    "lat": 28.39,
+    "lon": -80.61
    },
    "humanType": "Homo sapiens",
-   "culture": "international",
+   "culture": "United States",
    "originators": [
-    "Japan",
-    "Jaxa"
+    "NASA",
+    "Jet Propulsion Laboratory"
    ],
    "ideas": [
-    "Hayabusa2 (Asteroid Ryugu Sample Return)"
+    "Curiosity Rover Landing (Mars Science Laboratory)"
    ],
-   "url": "https://en.wikipedia.org/wiki/Hayabusa2"
+   "url": "https://en.wikipedia.org/wiki/Curiosity_(rover)"
   },
   {
    "category": "science",
@@ -9731,7 +9731,7 @@
     "lon": 39.2
    },
    "humanType": "Homo sapiens",
-   "culture": "Ancient Chinese",
+   "culture": null,
    "originators": [
     "VAS Hub and young artists in Dar es Salaam through initiatives like “Murals for  Social Change” and the “ZINGATIA Street Art Campaign”"
    ],
@@ -9739,6 +9739,72 @@
     "Youth‑led murals and street art as public health messaging and social change  tools."
    ],
    "url": "https://sdgactioncampaign.org/murals-as-movements-youth-artists-transform-public-spaces-into-platforms-for-change-in-tanzania/"
+  },
+  {
+   "category": "space",
+   "title": "First Orbital Booster Landing and Reuse (Falcon 9)",
+   "description": "A Falcon 9 first stage flies back from the edge of space and lands vertically on Landing Zone 1, proving orbital rocket boosters can be recovered and reflown. Reusability begins to collapse the cost of reaching orbit, reordering the global launch industry.",
+   "year": 2015,
+   "yearsAgo": 11,
+   "location": {
+    "lat": 28.39,
+    "lon": -80.61
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United States",
+   "originators": [
+    "SpaceX",
+    "Elon Musk"
+   ],
+   "ideas": [
+    "First Orbital Booster Landing and Reuse (Falcon 9)"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Falcon_9"
+  },
+  {
+   "category": "space",
+   "title": "New Horizons Pluto Flyby",
+   "description": "After a nine-and-a-half-year journey, New Horizons sweeps past Pluto at 14 km/s, returning the first close-up images of nitrogen glaciers, water-ice mountains and its heart-shaped Sputnik Planitia. Humanity completes the initial reconnaissance of the classical planets.",
+   "year": 2015,
+   "yearsAgo": 11,
+   "location": {
+    "lat": 28.39,
+    "lon": -80.61
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United States",
+   "originators": [
+    "NASA",
+    "Alan Stern",
+    "Applied Physics Laboratory"
+   ],
+   "ideas": [
+    "New Horizons Pluto Flyby"
+   ],
+   "url": "https://en.wikipedia.org/wiki/New_Horizons"
+  },
+  {
+   "category": "science",
+   "title": "First Gravitational Waves Detected (GW150914)",
+   "description": "Twin interferometers in Washington and Louisiana feel spacetime itself ripple as two black holes, 1.3 billion light-years away, spiral together. A thousand scientists from twenty countries confirm a prediction made a century earlier - humanity gains a new sense.",
+   "year": 2015,
+   "yearsAgo": 11,
+   "location": {
+    "lat": 46.46,
+    "lon": -119.41
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United States",
+   "originators": [
+    "LIGO Scientific Collaboration",
+    "Rainer Weiss",
+    "Kip Thorne",
+    "Barry Barish"
+   ],
+   "ideas": [
+    "First Gravitational Waves Detected (GW150914)"
+   ],
+   "url": "https://en.wikipedia.org/wiki/First_observation_of_gravitational_waves"
   },
   {
    "category": "science",
@@ -9761,6 +9827,48 @@
     "First Quantum Communication Satellite (Micius)"
    ],
    "url": "https://en.wikipedia.org/wiki/Quantum_Experiments_at_Space_Scale"
+  },
+  {
+   "category": "science",
+   "title": "FAST Five-hundred-meter Radio Telescope",
+   "description": "FAST, the largest single-dish radio telescope ever built, is completed in Guizhou province. Its 500-meter active surface discovers hundreds of new pulsars and rapidly becomes a leading instrument for fast radio burst science.",
+   "year": 2016,
+   "yearsAgo": 10,
+   "location": {
+    "lat": 25.65,
+    "lon": 106.86
+   },
+   "humanType": "Homo sapiens",
+   "culture": "China",
+   "originators": [
+    "National Astronomical Observatories of China",
+    "Nan Rendong"
+   ],
+   "ideas": [
+    "FAST Five-hundred-meter Radio Telescope"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Five-hundred-meter_Aperture_Spherical_Telescope"
+  },
+  {
+   "category": "technology",
+   "title": "National Drone Medical Delivery Network (Zipline)",
+   "description": "Rwanda launches the world's first national-scale drone delivery network, flying blood units to remote hospitals in minutes instead of hours - proving that the most advanced logistics technology can debut not in rich nations but in Africa, on Africa's own terms.",
+   "year": 2016,
+   "yearsAgo": 10,
+   "location": {
+    "lat": -1.94,
+    "lon": 30.06
+   },
+   "humanType": "Homo sapiens",
+   "culture": "Rwanda",
+   "originators": [
+    "Zipline",
+    "Rwanda Ministry of Health"
+   ],
+   "ideas": [
+    "National Drone Medical Delivery Network (Zipline)"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Zipline_(drone_delivery)"
   },
   {
    "category": "science",
@@ -9806,6 +9914,50 @@
   },
   {
    "category": "science",
+   "title": "SESAME Synchrotron First Light",
+   "description": "Under the hills of Allan, Jordan, the first beams circulate in SESAME, the Middle East's first major international research facility. Founded on the CERN model, its members include Egypt, Iran, Israel, Jordan, Pakistan, Palestine, Turkey and Bahrain - scientists from politically divided nations working on one accelerator.",
+   "year": 2017,
+   "yearsAgo": 9,
+   "location": {
+    "lat": 32.02,
+    "lon": 35.95
+   },
+   "humanType": "Homo sapiens",
+   "culture": "Jordan (Middle East)",
+   "originators": [
+    "SESAME member states",
+    "UNESCO",
+    "Khaled Toukan"
+   ],
+   "ideas": [
+    "SESAME Synchrotron First Light"
+   ],
+   "url": "https://en.wikipedia.org/wiki/SESAME"
+  },
+  {
+   "category": "science",
+   "title": "Beijing-Shanghai Quantum Key Distribution Backbone",
+   "description": "A 2,000-kilometer fiber link carries quantum keys between Beijing and Shanghai, and is integrated with the Micius satellite into the first space-ground quantum communication network - quantum-secured video conferences between real offices become routine.",
+   "year": 2017,
+   "yearsAgo": 9,
+   "location": {
+    "lat": 39.9,
+    "lon": 116.4
+   },
+   "humanType": "Homo sapiens",
+   "culture": "China",
+   "originators": [
+    "University of Science and Technology of China",
+    "Jian-Wei Pan",
+    "Chinese Academy of Sciences"
+   ],
+   "ideas": [
+    "Beijing-Shanghai Quantum Key Distribution Backbone"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Quantum_key_distribution"
+  },
+  {
+   "category": "science",
    "title": "Russian Quantum Computer Development (Russian Quantum Center)",
    "description": "At the Russian Quantum Center in Skolkovo near Moscow, researchers led by Alexey Fedorov develop  Russia's superconducting quantum computing platform, advancing domestic quantum technologies  independent of Western systems. The center focuses on building quantum processors, quantum  communication networks, and quantum cryptography systems tailored for Russian infrastructure and security  needs. This work establishes Russia as a significant quantum computing nation, contributing to global  quantum research while ensuring technological sovereignty in critical quantum information technologies for  government and industry applications.",
    "year": 2018,
@@ -9828,6 +9980,27 @@
    "url": "https://en.wikipedia.org/wiki/Quantum_computing"
   },
   {
+   "category": "science",
+   "title": "EU Quantum Flagship (EUR 1 Billion, 10 Years)",
+   "description": "Europe unites behind a ten-year, one-billion-euro flagship program coordinating quantum research across the continent - the largest coordinated quantum initiative to date, elevating quantum technology from scattered laboratories to continental strategic infrastructure.",
+   "year": 2018,
+   "yearsAgo": 8,
+   "location": {
+    "lat": 50.85,
+    "lon": 4.35
+   },
+   "humanType": "Homo sapiens",
+   "culture": "European Union",
+   "originators": [
+    "European Commission",
+    "EU member states"
+   ],
+   "ideas": [
+    "EU Quantum Flagship (EUR 1 Billion, 10 Years)"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Quantum_Flagship"
+  },
+  {
    "category": "space",
    "title": "Chang'e 4 (First Far Side Moon Landing)",
    "description": "Historic mission achieving the first soft landing on the far side of the Moon on January 3,  2019, deployed the Yutu-2 rover to explore the lunar surface, and demonstrated China's  advanced space capabilities. The mission uses a relay satellite to communicate with  Earth, revealing new insights about the Moon's mysterious far side.",
@@ -9838,7 +10011,7 @@
     "lon": 102.03
    },
    "humanType": "Homo sapiens",
-   "culture": "Ancient Chinese",
+   "culture": "China",
    "originators": [
     "China"
    ],
@@ -10010,6 +10183,47 @@
   },
   {
    "category": "science",
+   "title": "First Image of a Black Hole (M87*)",
+   "description": "Eight radio observatories on four continents - from Chile to Hawaii, Mexico to Spain to the South Pole - synchronize by atomic clocks to form one Earth-sized virtual eye. The image of glowing plasma around M87*'s event horizon makes the invisible visible.",
+   "year": 2019,
+   "yearsAgo": 7,
+   "location": {
+    "lat": -23.03,
+    "lon": -67.75
+   },
+   "humanType": "Homo sapiens",
+   "culture": "International",
+   "originators": [
+    "Event Horizon Telescope Collaboration"
+   ],
+   "ideas": [
+    "First Image of a Black Hole (M87*)"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Event_Horizon_Telescope"
+  },
+  {
+   "category": "space",
+   "title": "Hayabusa2 (Asteroid Ryugu Sample Return)",
+   "description": "Ambitious successor to Hayabusa, this JAXA mission successfully rendezvoused with asteroid Ryugu,  deployed two small rovers and the MASCOT lander, collected subsurface samples by firing a projectile into  the asteroid, and returned over 5 grams of pristine material to Earth in 2020. The mission exceeded all  expectations, providing scientists with invaluable samples from a carbon-rich asteroid that may hold clues to  the origins of life and the solar system.",
+   "year": 2020,
+   "yearsAgo": 6,
+   "location": {
+    "lat": 30.4,
+    "lon": 130.97
+   },
+   "humanType": "Homo sapiens",
+   "culture": "Japan",
+   "originators": [
+    "Japan",
+    "Jaxa"
+   ],
+   "ideas": [
+    "Hayabusa2 (Asteroid Ryugu Sample Return)"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Hayabusa2"
+  },
+  {
+   "category": "science",
    "title": "Jiuzhang Photonic Quantum Computer (Room Temperature)",
    "description": "At the University of Science and Technology of China in Hefei, Pan Jianwei and Chao-Yang Lu's team  demonstrates Jiuzhang, a photonic quantum computer using 76 detected photons to perform Gaussian boson  sampling, achieving quantum computational advantage while operating at room temperature. Using lasers and  optical components rather than superconducting circuits, Jiuzhang completes in 200 seconds a calculation  that would take classical supercomputers 2.5 billion years, proving that photonic approaches offer a distinct  path to quantum supremacy without requiring extreme cooling.",
    "year": 2020,
@@ -10165,6 +10379,26 @@
   },
   {
    "category": "space",
+   "title": "Chang'e 5 Lunar Sample Return",
+   "description": "Chang'e 5 lands in Oceanus Procellarum, drills and scoops 1,731 grams of young lunar basalt, and returns them to Earth - the first lunar samples delivered by any nation since the Soviet Luna 24 mission of 1976.",
+   "year": 2020,
+   "yearsAgo": 6,
+   "location": {
+    "lat": 19.61,
+    "lon": 110.95
+   },
+   "humanType": "Homo sapiens",
+   "culture": "China",
+   "originators": [
+    "China National Space Administration"
+   ],
+   "ideas": [
+    "Chang'e 5 Lunar Sample Return"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Chang%27e_5"
+  },
+  {
+   "category": "space",
    "title": "James Webb Space Telescope",
    "description": "Most powerful space telescope ever built, launched in 2021 as an international  collaboration between NASA, ESA, and CSA. Positioned at the Lagrange L2 point  (discovered by mathematician Joseph-Louis Lagrange) 1.5 million km from Earth, JWST  observes the universe in infrared light, capturing the earliest galaxies formed after the  Big Bang, analyzing exoplanet atmospheres, and revealing unprecedented details of  star formation, fundamentally transforming astronomy and cosmology.",
    "year": 2021,
@@ -10275,6 +10509,89 @@
    "url": "https://en.wikipedia.org/wiki/Quantum_computing"
   },
   {
+   "category": "space",
+   "title": "Tianwen-1 / Zhurong Mars Rover",
+   "description": "In a single mission China orbits, lands and drives on Mars: the Zhurong rover rolls off its lander in Utopia Planitia, making China the second nation to operate a rover on Mars and completing an interplanetary hat-trick on the first attempt.",
+   "year": 2021,
+   "yearsAgo": 5,
+   "location": {
+    "lat": 19.61,
+    "lon": 110.95
+   },
+   "humanType": "Homo sapiens",
+   "culture": "China",
+   "originators": [
+    "China National Space Administration"
+   ],
+   "ideas": [
+    "Tianwen-1 / Zhurong Mars Rover"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Tianwen-1"
+  },
+  {
+   "category": "space",
+   "title": "Emirates Mars Mission (Hope) Orbit Insertion",
+   "description": "The Hope probe enters Mars orbit, making the United Arab Emirates the fifth nation to reach the Red Planet and the first Arab country to fly an interplanetary mission. Its global imaging of the Martian atmosphere rewards the world with new dust and aurora science.",
+   "year": 2021,
+   "yearsAgo": 5,
+   "location": {
+    "lat": 25.06,
+    "lon": 55.21
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United Arab Emirates",
+   "originators": [
+    "Mohammed bin Rashid Space Centre",
+    "Omran Sharaf",
+    "UAE Space Agency"
+   ],
+   "ideas": [
+    "Emirates Mars Mission (Hope) Orbit Insertion"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Emirates_Mars_Mission"
+  },
+  {
+   "category": "space",
+   "title": "Ingenuity: First Powered Flight on Another Planet",
+   "description": "A 1.8-kg helicopter rises three meters above Jezero Crater into air one-hundredth as dense as Earth's, achieving the first powered, controlled flight on another world. Designed for five flights, Ingenuity completes seventy-two over three years.",
+   "year": 2021,
+   "yearsAgo": 5,
+   "location": {
+    "lat": 18.44,
+    "lon": 77.45
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United States",
+   "originators": [
+    "NASA",
+    "Jet Propulsion Laboratory"
+   ],
+   "ideas": [
+    "Ingenuity: First Powered Flight on Another Planet"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Ingenuity_(helicopter)"
+  },
+  {
+   "category": "science",
+   "title": "D-Wave Advantage 5000-Qubit Annealer",
+   "description": "D-Wave's Advantage system reaches 5,000+ qubits with 15-way connectivity, the first quantum computer of this scale offered in the cloud. Annealing optimization runs for logistics, manufacturing and finance move from experiments to regular production use.",
+   "year": 2021,
+   "yearsAgo": 5,
+   "location": {
+    "lat": 49.25,
+    "lon": -122.98
+   },
+   "humanType": "Homo sapiens",
+   "culture": "Canada",
+   "originators": [
+    "D-Wave Systems"
+   ],
+   "ideas": [
+    "D-Wave Advantage 5000-Qubit Annealer"
+   ],
+   "url": "https://en.wikipedia.org/wiki/D-Wave_Systems"
+  },
+  {
    "category": "technology",
    "title": "Generative AI Era",
    "description": "Open AI, San Francisco, California, Google, LLMs like GPT-4 and  Gemini, Seatle, Washington",
@@ -10383,6 +10700,74 @@
    "url": "https://www.unesco.org/en/decades/indigenous-languages"
   },
   {
+   "category": "space",
+   "title": "DART: First Planetary Defense Test",
+   "description": "The DART spacecraft deliberately rams the asteroid moonlet Dimorphos at 6.6 km/s, shortening its orbit by 32 minutes - far more than expected. For the first time in history, humanity measurably moves a celestial body, validating asteroid deflection as a real capability.",
+   "year": 2022,
+   "yearsAgo": 4,
+   "location": {
+    "lat": 28.39,
+    "lon": -80.61
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United States",
+   "originators": [
+    "NASA",
+    "Johns Hopkins Applied Physics Laboratory"
+   ],
+   "ideas": [
+    "DART: First Planetary Defense Test"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Double_Asteroid_Redirection_Test"
+  },
+  {
+   "category": "space",
+   "title": "Danuri Lunar Orbiter",
+   "description": "South Korea's first lunar mission enters polar orbit around the Moon, carrying the shadow camera that will image permanently darkened craters at the poles where water ice may persist, and testing interplanetary internet-like DTN communications.",
+   "year": 2022,
+   "yearsAgo": 4,
+   "location": {
+    "lat": 36.39,
+    "lon": 127.36
+   },
+   "humanType": "Homo sapiens",
+   "culture": "South Korea",
+   "originators": [
+    "Korea Aerospace Research Institute"
+   ],
+   "ideas": [
+    "Danuri Lunar Orbiter"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Danuri"
+  },
+  {
+   "category": "science",
+   "title": "ITER Tokamak Assembly Milestone",
+   "description": "In Provence, the half-million-tonne tokamak begins to take shape as the first vacuum vessel sections are installed - the largest scientific collaboration in history, building a device meant to release ten times the fusion power it consumes, financed by half of humanity.",
+   "year": 2022,
+   "yearsAgo": 4,
+   "location": {
+    "lat": 43.71,
+    "lon": 5.77
+   },
+   "humanType": "Homo sapiens",
+   "culture": "France (35 nations)",
+   "originators": [
+    "ITER Organization",
+    "European Union",
+    "China",
+    "India",
+    "Japan",
+    "South Korea",
+    "Russia",
+    "United States"
+   ],
+   "ideas": [
+    "ITER Tokamak Assembly Milestone"
+   ],
+   "url": "https://en.wikipedia.org/wiki/ITER"
+  },
+  {
    "category": "science",
    "title": "First Fault-Tolerant Quantum Error Correction Demonstration",
    "description": "At Google's quantum computing lab in Mountain View, California, the Google Quantum AI team demonstrates  for the first time that increasing the number of qubits in a logical qubit using surface code error correction  actually reduces the error rate below the physical error rate of individual qubits, crossing the critical threshold  for fault-tolerant quantum computation. This breakthrough proves that quantum error correction works in  practice and that scalable, reliable quantum computers are achievable, representing a watershed moment in  the transition from noisy intermediate-scale quantum devices to fault-tolerant quantum computing.",
@@ -10448,6 +10833,133 @@
    "url": "https://www.photondelta.com/news/why-can-silicon-nitride-sin-be-ideal-platform-for-photonic-integrated-circuits/"
   },
   {
+   "category": "space",
+   "title": "Chandrayaan-3 South Pole Landing",
+   "description": "Vikram lander touches down near the lunar south pole at 69 degrees south - the closest landing to the pole ever achieved - making India the fourth nation to soft-land on the Moon and the first to reach its polar region, the promised land of water ice.",
+   "year": 2023,
+   "yearsAgo": 3,
+   "location": {
+    "lat": 13.72,
+    "lon": 80.23
+   },
+   "humanType": "Homo sapiens",
+   "culture": "India",
+   "originators": [
+    "Indian Space Research Organisation"
+   ],
+   "ideas": [
+    "Chandrayaan-3 South Pole Landing"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Chandrayaan-3"
+  },
+  {
+   "category": "space",
+   "title": "OSIRIS-REx Asteroid Sample Return (Bennu)",
+   "description": "The OSIRIS-REx capsule lands in Utah with 121.6 grams of rock and dust from asteroid Bennu. Analysis reveals clays, phosphates and abundant carbon - the kind of primitive material that may have seeded water and prebiotic chemistry on Earth.",
+   "year": 2023,
+   "yearsAgo": 3,
+   "location": {
+    "lat": 28.39,
+    "lon": -80.61
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United States",
+   "originators": [
+    "NASA",
+    "Dante Lauretta",
+    "University of Arizona"
+   ],
+   "ideas": [
+    "OSIRIS-REx Asteroid Sample Return (Bennu)"
+   ],
+   "url": "https://en.wikipedia.org/wiki/OSIRIS-REx"
+  },
+  {
+   "category": "science",
+   "title": "IBM Condor 1,121-Qubit Processor",
+   "description": "IBM unveils Condor, the first superconducting quantum processor to cross the four-digit qubit threshold, packing 1,121 qubits onto a chip the size of a coin using flexible superconducting cabling - and in the same year shifts its roadmap toward quality over raw count.",
+   "year": 2023,
+   "yearsAgo": 3,
+   "location": {
+    "lat": 41.27,
+    "lon": -73.77
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United States",
+   "originators": [
+    "IBM"
+   ],
+   "ideas": [
+    "IBM Condor 1,121-Qubit Processor"
+   ],
+   "url": "https://en.wikipedia.org/wiki/IBM_Condor"
+  },
+  {
+   "category": "science",
+   "title": "48 Logical Qubits on Neutral Atoms",
+   "description": "A reconfigurable array of rubidium atoms runs quantum algorithms on 48 logical qubits - error-corrected qubits built from hundreds of physical ones - executing algorithmic circuits beyond the reach of uncorrected machines and crossing from quantity to quality.",
+   "year": 2023,
+   "yearsAgo": 3,
+   "location": {
+    "lat": 42.38,
+    "lon": -71.12
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United States",
+   "originators": [
+    "Harvard University",
+    "MIT",
+    "QuEra",
+    "Mikhail Lukin"
+   ],
+   "ideas": [
+    "48 Logical Qubits on Neutral Atoms"
+   ],
+   "url": "https://arxiv.org/abs/2312.03982"
+  },
+  {
+   "category": "medicine",
+   "title": "Casgevy: First Approved CRISPR Medicine",
+   "description": "Britain's regulator authorizes Casgevy (exa-cel), the first licensed therapy built on CRISPR gene editing, effectively curing sickle-cell disease by rewriting patients' blood stem cells. Gene editing leaves the laboratory and becomes medicine.",
+   "year": 2023,
+   "yearsAgo": 3,
+   "location": {
+    "lat": 51.5,
+    "lon": -0.12
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United Kingdom",
+   "originators": [
+    "MHRA",
+    "Vertex Pharmaceuticals",
+    "CRISPR Therapeutics"
+   ],
+   "ideas": [
+    "Casgevy: First Approved CRISPR Medicine"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Exa-cel"
+  },
+  {
+   "category": "science",
+   "title": "Square Kilometre Array Construction Start",
+   "description": "Construction begins on the largest radio telescope ever conceived: nearly 200 dishes across South Africa's Karoo and 130,000 antennas across Western Australia, coordinated by an intergovernmental organization and built on agreements honoring Aboriginal heritage.",
+   "year": 2023,
+   "yearsAgo": 3,
+   "location": {
+    "lat": -30.72,
+    "lon": 21.44
+   },
+   "humanType": "Homo sapiens",
+   "culture": "South Africa + Australia",
+   "originators": [
+    "SKA Organisation"
+   ],
+   "ideas": [
+    "Square Kilometre Array Construction Start"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Square_Kilometre_Array"
+  },
+  {
    "category": "technology",
    "title": "High‑mobility bismuth‑based 2D semiconductors as next‑generation channel materials",
    "description": "Chinese research groups have reported bismuth‑based two‑dimensional semiconductors such as Bi₂O₂Se with  high carrier mobility and good stability, positioning them as strong candidates for ultra‑fast, low‑power transistors  that could sustain AI hardware scaling beyond conventional silicon CMOS.",
@@ -10458,14 +10970,140 @@
     "lon": 116.4
    },
    "humanType": "Homo sapiens",
-   "culture": "Ancient Chinese",
+   "culture": "China",
    "originators": [
-    "Chinese materials scientists developing Bi‑based 2D semiconductors"
+    "Peking University (Peng group)"
    ],
    "ideas": [
     "High‑mobility bismuth‑based 2D semiconductors as next‑generation channel  materials"
    ],
    "url": "https://www.nature.com/articles/s41467-025-66263-0"
+  },
+  {
+   "category": "space",
+   "title": "SLIM Precision Lunar Landing",
+   "description": "Japan's Smart Lander for Investigating Moon touches down within 55 meters of its target crater rim - sniper-grade accuracy - making Japan the fifth nation to soft-land on the Moon and demonstrating vision-based autonomous pinpoint landing.",
+   "year": 2024,
+   "yearsAgo": 2,
+   "location": {
+    "lat": 30.4,
+    "lon": 130.97
+   },
+   "humanType": "Homo sapiens",
+   "culture": "Japan",
+   "originators": [
+    "JAXA"
+   ],
+   "ideas": [
+    "SLIM Precision Lunar Landing"
+   ],
+   "url": "https://en.wikipedia.org/wiki/SLIM_(lunar_lander)"
+  },
+  {
+   "category": "space",
+   "title": "Chang'e 6 Far-Side Sample Return",
+   "description": "Chang'e 6 lands in the South Pole-Aitken basin on the far side of the Moon - hidden from Earth - collects 1,935 grams of the oldest lunar crust, and relays the samples home through the Queqiao satellite. The first far-side samples in history.",
+   "year": 2024,
+   "yearsAgo": 2,
+   "location": {
+    "lat": 19.61,
+    "lon": 110.95
+   },
+   "humanType": "Homo sapiens",
+   "culture": "China",
+   "originators": [
+    "China National Space Administration"
+   ],
+   "ideas": [
+    "Chang'e 6 Far-Side Sample Return"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Chang%27e_6"
+  },
+  {
+   "category": "space",
+   "title": "Odysseus IM-1: First Commercial Moon Landing",
+   "description": "The privately built Nova-C lander Odysseus stands upright near the lunar south pole - the first commercial spacecraft to reach the lunar surface and the first US soft landing since Apollo 17 in 1972, opening the CLPS era of commercial Moon logistics.",
+   "year": 2024,
+   "yearsAgo": 2,
+   "location": {
+    "lat": 28.39,
+    "lon": -80.61
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United States",
+   "originators": [
+    "Intuitive Machines"
+   ],
+   "ideas": [
+    "Odysseus IM-1: First Commercial Moon Landing"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Odysseus_(spacecraft)"
+  },
+  {
+   "category": "science",
+   "title": "Google Willow: Error Correction Below Threshold",
+   "description": "The Willow processor demonstrates quantum error correction below threshold: as the code grows from distance 3 to 5 to 7, the logical error rate falls by half each step. Fifty years after the idea was proposed, scaling up now means becoming more reliable, not less.",
+   "year": 2024,
+   "yearsAgo": 2,
+   "location": {
+    "lat": 34.42,
+    "lon": -119.7
+   },
+   "humanType": "Homo sapiens",
+   "culture": "United States",
+   "originators": [
+    "Google Quantum AI"
+   ],
+   "ideas": [
+    "Google Willow: Error Correction Below Threshold"
+   ],
+   "url": "https://en.wikipedia.org/wiki/Willow_(quantum_computer)"
+  },
+  {
+   "category": "science",
+   "title": "Tianyan-504 Superconducting Quantum Computer (Xiaohong Chip)",
+   "description": "China's largest single-machine superconducting quantum computer, built around the 504-qubit Xiaohong chip, enters service on the Tianyan quantum cloud - a state telecom operator running quantum computing as public infrastructure, with millions of user visits from over fifty countries.",
+   "year": 2024,
+   "yearsAgo": 2,
+   "location": {
+    "lat": 31.84,
+    "lon": 117.27
+   },
+   "humanType": "Homo sapiens",
+   "culture": "China",
+   "originators": [
+    "China Telecom Quantum Group",
+    "Chinese Academy of Sciences",
+    "QuantumCTek"
+   ],
+   "ideas": [
+    "Tianyan-504 Superconducting Quantum Computer (Xiaohong Chip)"
+   ],
+   "url": "http://en.sasac.gov.cn/2024/12/30/c_18552.htm"
+  },
+  {
+   "category": "medicine",
+   "title": "RTS,S Malaria Vaccine Rollout Across Africa",
+   "description": "Cameroon administers the first routine doses of RTS,S - the first vaccine ever created against a parasite, forty years in the making. Burkina Faso, Ghana, Kenya, Malawi and others follow, protecting children across the continent where malaria claims most of its victims.",
+   "year": 2024,
+   "yearsAgo": 2,
+   "location": {
+    "lat": 3.87,
+    "lon": 11.52
+   },
+   "humanType": "Homo sapiens",
+   "culture": "African nations",
+   "originators": [
+    "World Health Organization",
+    "GSK",
+    "PATH",
+    "Gavi",
+    "Cameroon Ministry of Health"
+   ],
+   "ideas": [
+    "RTS,S Malaria Vaccine Rollout Across Africa"
+   ],
+   "url": "https://en.wikipedia.org/wiki/RTS,S"
   },
   {
    "category": "technology",
@@ -10499,7 +11137,7 @@
     "lon": 118.1
    },
    "humanType": "Homo sapiens",
-   "culture": "Ancient Chinese",
+   "culture": "China",
    "originators": [
     "CATL (Contemporary Amperex Technology Co. Limited) and Chinese  battery engineers"
    ],
